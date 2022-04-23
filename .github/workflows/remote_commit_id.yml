@@ -23,4 +23,5 @@ jobs:
         env:
          GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
-          echo " variable is $TEST"
+        #  echo "variable is $TEST"
+          ECHO "${{ github.event.pull_request.head.sha }}
