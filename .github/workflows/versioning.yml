@@ -17,7 +17,7 @@ jobs:
       - name: Run a multi-line script
         run: |
           dir
-          temp=$(cat "test_file.txt")
+          temp=$(cat "VERSION")
           var1="${temp:8:1}"
           var2="${temp:10:1}"
           var3="${temp:12:1}"
@@ -45,9 +45,8 @@ jobs:
           echo "var2 $var2"
           echo "var3 $var3"
           
-          cat /dev/null > test_file.txt
-          echo -n "Version $var1.$var2.$var3 - '${{ env.lastCommit }}'" > test_file.txt
-      #    echo -n "$var1.$var2.$var3" > test_file.txt
+          cat /dev/null > VERSION
+          echo -n "Version $var1.$var2.$var3 - '${{ env.lastCommit }}'" > VERSION
           
       - name: Push changes
         env:
@@ -56,7 +55,7 @@ jobs:
         run: |
           git config --global user.email "${{ secrets.EMAIL_CREDENTIALS }}"
           git config --global user.name "${{ secrets.NAME_CREDENTIALS }}"
-          git add test_file.txt
+          git add VERSION
           git commit -m "updated file for versioning"
           git fetch origin main
           git push origin HEAD:main
