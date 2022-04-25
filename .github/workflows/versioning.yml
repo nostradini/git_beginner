@@ -17,8 +17,8 @@ jobs:
       - name: Run a multi-line script
         run: |
           dir
-          chmod +x ./git_beginner/action_script/version_update.sh
-          ./git_beginner/action_script/version_update.sh
+          chmod +x ./action_script/version_update.sh
+          ./action_script/version_update.sh
         shell: bash
           
       - name: Push changes
