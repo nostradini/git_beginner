@@ -46,7 +46,7 @@ jobs:
           echo "var3 $var3"
           
           cat /dev/null > VERSION
-          echo -n "Version $var1.$var2.$var3 - \#${{ env.lastCommit }}\#" > VERSION
+          echo -n "Version $var1.$var2.$var3 - \"${{ env.lastCommit }}\"" > VERSION
           
       - name: Push changes
         env:
