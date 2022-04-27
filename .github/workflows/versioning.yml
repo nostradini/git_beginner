@@ -40,7 +40,7 @@ jobs:
           echo "Found patch in commit"
           var3=$((var3+1))
           else
-          echo "Fall on default"
+          echo "Default condition"
           var3=$((var3+1))
           fi
           
