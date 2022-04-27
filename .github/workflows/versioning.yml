@@ -16,8 +16,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Run a multi-line script
         run: |
-          shell: bash
-          chmod +x ./action_script/version_update.sh
+       #   shell: bash
+       #   chmod +x ./action_script/version_update.sh
           temp=$(cat "VERSION")
           var1="${temp:8:1}"
           var2="${temp:10:1}"
@@ -28,14 +28,14 @@ jobs:
           echo "lower = $lowerstr"
           if [[ "$lowerstr" == *"#major"* ]]
           then
-          echo "found major in commit"
+          echo "Found major in commit"
           var1=$((var1+1))
           var2=0
           var3=0
           fi
           if [[ "$lowerstr" == *"#minor"* ]]
           then
-          echo "found minor in commit"
+          echo "Found minor in commit"
           var2=$((var2+1))
           var3=0
           fi
