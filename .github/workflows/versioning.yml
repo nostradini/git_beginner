@@ -16,8 +16,6 @@ jobs:
       - uses: actions/checkout@v3
       - name: Run a multi-line script
         run: |
-       #   shell: bash
-       #   chmod +x ./action_script/version_update.sh
           temp=$(cat "VERSION")
           var1="${temp:8:1}"
           var2="${temp:10:1}"
