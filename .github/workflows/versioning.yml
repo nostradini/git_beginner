@@ -14,20 +14,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          persist-credentials: false
       - name: Run a multi-line script
         run: |
           shell: bash
           chmod +x ./action_script/version_update.sh
-          ciMsg="${{ env.lastCommit }}"
-          ./action_script/version_update.sh "${ciMsg}"
+        #  ciMsg="${{ env.lastCommit }}"
+        #  ./action_script/version_update.sh "${ciMsg}"
           
       - name: Push changes
         env:
             credentials1: ${{ secrets.EMAIL_CREDENTIALS }}
             credentials2: ${{ secrets.NAME_CREDENTIALS }}
         run: |
-          git config --global user.email "${{ secrets.EMAIL_CREDENTIALS }}"
-          git config --global user.name "${{ secrets.NAME_CREDENTIALS }}"
+          git config --global user.email "${{ env.credentials1 }}"
+          git config --global user.name "${{ env.credentials2 }}"
           git add VERSION
           git commit -m "updated file for versioning"
           git fetch origin main
