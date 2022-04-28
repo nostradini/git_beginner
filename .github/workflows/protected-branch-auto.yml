@@ -1,8 +1,8 @@
 name: Protected_Branch_auto
 
 on:
-    pull_request
-    branches: [ main ]
+    pull_request:
+        branches: [ main ]
 
 jobs:
   auto-approve:
