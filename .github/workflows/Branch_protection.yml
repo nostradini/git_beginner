@@ -1,5 +1,4 @@
 name: Check on Protection
-
 on:
   push:
     branches: [ main ]
@@ -29,5 +28,4 @@ jobs:
           null 
         env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-       
        
