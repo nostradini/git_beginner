@@ -3,7 +3,8 @@ name: Protected_Branch_auto
 on:
     pull_request:
         branches: [ main ]
-
+env:
+  lastCommit: ${{ github.event.commits[0].message }}
 jobs:
   auto-approve:
     runs-on: ubuntu-latest
@@ -14,3 +15,7 @@ jobs:
       if: github.actor == 'dependabot[bot]'
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Show something
+      run: |
+       echo ${{ env.lastCOmmit }}
+    
