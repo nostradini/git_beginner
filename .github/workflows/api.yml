@@ -13,6 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Run a multi-line script
+      - name: Running Logic
         run: |
-           curl -i -u nostradini https://api.github.com/git_beginner
+           curl -i -u nostradini@${{secret.TEST_TOKEN}} https://api.github.com/git_beginner
