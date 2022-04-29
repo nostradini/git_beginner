@@ -8,7 +8,7 @@ on:
 
   workflow_dispatch:
 env:
-  PAT: ${{secret.TEST_TOKEN}}
+  PAT: ${{secrets.TEST_TOKEN}}
 jobs:
   API:
     runs-on: ubuntu-latest
