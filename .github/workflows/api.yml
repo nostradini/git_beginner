@@ -16,4 +16,10 @@ jobs:
       - uses: actions/checkout@v3
       - name: Running Logic
         run: |
-           curl -i -u nostradini@$PAT https://api.github.com/git_beginner
+           #curl -i -u nostradini@$PAT https://api.github.com/git_beginner
+           #cartella="/var/myfolder"
+            # update the file
+            curl -i -X PUT -H 'Authorization: token @$PAT' -d "{\"path\": \"VERSION\", \
+            \"message\": \"update\", \"content\": \"$(openssl base64 -A -in ./VERSION)\", \"branch\": \"main\",\
+            \"sha\": $(curl -X GET https://api.github.com/git_beginner/nostradini/git_beginner/VERSION | jq .sha)}" \
+            https://api.github.com/git_beginner/nostradini/git_beginner/VERSION
