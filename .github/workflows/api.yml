@@ -7,7 +7,8 @@ on:
     branches: [ main ]
 
   workflow_dispatch:
-
+env:
+  PAT: ${{secret.TEST_TOKEN}}
 jobs:
   API:
     runs-on: ubuntu-latest
@@ -15,4 +16,4 @@ jobs:
       - uses: actions/checkout@v3
       - name: Running Logic
         run: |
-           curl -i -u nostradini@${{secret.TEST_TOKEN}} https://api.github.com/git_beginner
+           curl -i -u nostradini@$PAT https://api.github.com/git_beginner
