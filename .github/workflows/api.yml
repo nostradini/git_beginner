@@ -15,4 +15,4 @@ jobs:
       - uses: actions/checkout@v3
       - name: Run a multi-line script
         run: |
-          curl https://api.github.com/git_beginner
+           curl -i -u nostradini https://api.github.com/git_beginner
