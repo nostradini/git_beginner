@@ -18,7 +18,7 @@ jobs:
            #curl -i -u nostradini@$PAT https://api.github.com/git_beginner
            #cartella="/var/myfolder"
             # update the file
-            curl -i -X PUT -H 'Authorization: token @$PAT' -d "{\"path\": \"VERSION\", \
+            curl -i -X PUT -H 'Authorization: token $PAT' -d "{\"path\": \"VERSION\", \
             \"message\": \"update\", \"content\": \"$(openssl base64 -A -in ./VERSION)\", \"branch\": \"main\",\
             \"sha\": $(curl -X GET https://api.github.com/git_beginner/nostradini/git_beginner/VERSION | jq .sha)}" \
             https://api.github.com/git_beginner/nostradini/git_beginner/VERSION
