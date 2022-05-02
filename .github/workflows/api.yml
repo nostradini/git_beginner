@@ -2,8 +2,8 @@ name: API
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  #pull_request:
+    #branches: [ main ]
 
   workflow_dispatch:
 env:
@@ -18,7 +18,7 @@ jobs:
            #curl -i -u nostradini@$PAT https://api.github.com/git_beginner
            #cartella="/var/myfolder"
             # update the file
-            curl -i -X PUT -H 'Authorization: token $PAT' -d "{\"path\": \"VERSION\", \
-            \"message\": \"update\", \"content\": \"$(openssl base64 -A -in ./VERSION)\", \"branch\": \"main\",\
-            \"sha\": $(curl -X GET https://api.github.com/git_beginner/nostradini/git_beginner/VERSION | jq .sha)}" \
-            https://api.github.com/git_beginner/nostradini/git_beginner/VERSION
+            curl -X PUT \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/nostradini/git_beginner/contents/README.md \
+            -d '{\"message\":\"my commit message\",\"committer\":{\"name\":\"nostradini\",\"email\":\"nostradini@live.com\"},\"content\":\"VGVzdGluZyBmaWxl\",\"sha\": \"c96cd92498d90647e6c22b4e08ad298e2f8d40e8\"}'
