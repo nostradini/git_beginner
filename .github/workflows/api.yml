@@ -15,10 +15,4 @@ jobs:
       - uses: actions/checkout@v3
       - name: Running Logic
         run: |
-           #curl -i -u nostradini@$PAT https://api.github.com/git_beginner
-           #cartella="/var/myfolder"
-            # update the file
-            curl -X PUT \
-            -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/nostradini/git_beginner/contents/README.md \
-            -d '{\"message\":\"my commit message\",\"committer\":{\"name\":\"nostradini\",\"email\":\"nostradini@live.com\"},\"content\":\"VGVzdGluZyBmaWxl\",\"sha\": \"c96cd92498d90647e6c22b4e08ad298e2f8d40e8\"}'
+          curl -X GET https://api.github.com/repos/nostradini/MYREPO2/contents/VERSION | jq .sha
