@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [v0.0.8](https://github.com/nostradini/git_beginner/releases/tag/v0.0.8) - 2022-05-11 13:15:25
+
+*No description*
+
+### Bug Fixes
+
+- general:
+  - check with action permissions policy ([104f8de](https://github.com/nostradini/git_beginner/commit/104f8dee2e2000bdfcf6aca3381b49a4d976405b))
+
 ## [v0.0.7](https://github.com/nostradini/git_beginner/releases/tag/v0.0.7) - 2022-05-11 13:08:22
 
 *No description*
