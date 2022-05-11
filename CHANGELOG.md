@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [v0.0.9](https://github.com/nostradini/git_beginner/releases/tag/v0.0.9) - 2022-05-11 13:25:40
+
+*No description*
+
+### Feature
+
+- general:
+  - follow approval flow ([0e804d1](https://github.com/nostradini/git_beginner/commit/0e804d11e6eb03abb4a5f04a9c7ee164869aa812)) ([#4](https://github.com/nostradini/git_beginner/pull/4))
+
 ## [v0.0.8](https://github.com/nostradini/git_beginner/releases/tag/v0.0.8) - 2022-05-11 13:15:25
 
 *No description*
@@ -7,7 +16,7 @@
 ### Bug Fixes
 
 - general:
-  - check with action permissions policy ([104f8de](https://github.com/nostradini/git_beginner/commit/104f8dee2e2000bdfcf6aca3381b49a4d976405b))
+  - check with action permissions policy ([104f8de](https://github.com/nostradini/git_beginner/commit/104f8dee2e2000bdfcf6aca3381b49a4d976405b)) ([#3](https://github.com/nostradini/git_beginner/pull/3))
 
 ## [v0.0.7](https://github.com/nostradini/git_beginner/releases/tag/v0.0.7) - 2022-05-11 13:08:22
 
@@ -16,7 +25,7 @@
 ### Feature
 
 - general:
-  - first commit ([825f7e1](https://github.com/nostradini/git_beginner/commit/825f7e11f80696fc7c50fe665f6a785fd12f5431))
+  - first commit ([825f7e1](https://github.com/nostradini/git_beginner/commit/825f7e11f80696fc7c50fe665f6a785fd12f5431)) ([#3](https://github.com/nostradini/git_beginner/pull/3))
 
 ## [v0.0.6](https://github.com/nostradini/git_beginner/releases/tag/v0.0.6) - 2022-05-11 05:51:41
 
@@ -29,7 +38,7 @@
 ### Feature
 
 - general:
-  - test on feature ([ef759f9](https://github.com/nostradini/git_beginner/commit/ef759f9d4a77bc6f71d270f60c654e7ac2cce88f))
+  - test on feature ([ef759f9](https://github.com/nostradini/git_beginner/commit/ef759f9d4a77bc6f71d270f60c654e7ac2cce88f)) ([#3](https://github.com/nostradini/git_beginner/pull/3))
 
 ## [v0.0.4](https://github.com/nostradini/git_beginner/releases/tag/v0.0.4) - 2022-05-11 02:55:30
 
