@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [v0.0.10](https://github.com/nostradini/git_beginner/releases/tag/v0.0.10) - 2022-05-12 07:03:20
+
+*No description*
+
+### Feature
+
+- general:
+  - feature change ([d9a8610](https://github.com/nostradini/git_beginner/commit/d9a8610a1f0eae0a366472d334d6c3299d277b7a)) ([#5](https://github.com/nostradini/git_beginner/pull/5))
+
 ## [v0.0.9](https://github.com/nostradini/git_beginner/releases/tag/v0.0.9) - 2022-05-11 13:25:40
 
 *No description*
