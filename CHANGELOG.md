@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [v0.0.12](https://github.com/nostradini/git_beginner/releases/tag/v0.0.12) - 2022-05-12 08:54:10
+
+performance change - release desc
+
+### Performance Improvements
+
+- general:
+  - performance change ([2255d92](https://github.com/nostradini/git_beginner/commit/2255d92915429079e571a9be87ea77895b9daccb)) ([#7](https://github.com/nostradini/git_beginner/pull/7))
+
 ## [v0.0.11](https://github.com/nostradini/git_beginner/releases/tag/v0.0.11) - 2022-05-12 08:46:49
 
 *No description*
