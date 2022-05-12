@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [v0.0.11](https://github.com/nostradini/git_beginner/releases/tag/v0.0.11) - 2022-05-12 08:46:49
+
+*No description*
+
+### Bug Fixes
+
+- general:
+  - fix change ([37ebabd](https://github.com/nostradini/git_beginner/commit/37ebabd8c5e526cd7cb953f09d10bfcf68e8ce25)) ([#6](https://github.com/nostradini/git_beginner/pull/6))
+
 ## [v0.0.10](https://github.com/nostradini/git_beginner/releases/tag/v0.0.10) - 2022-05-12 07:03:20
 
 *No description*
