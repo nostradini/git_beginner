@@ -5,7 +5,7 @@ on:
 env:
   message: ${{ github.event.head_commit.message }}
 jobs:
-  generate-changelog:
+  run_script:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -14,4 +14,8 @@ jobs:
     - name: Test github.event
       run: |
         echo $message
+    - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
       
