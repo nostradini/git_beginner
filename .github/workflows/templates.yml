@@ -1,0 +1,17 @@
+name: Template Workflow
+on:
+  push:
+    branches: [main]
+env:
+  message: ${{ github.event.head_commit.message }}
+jobs:
+  generate-changelog:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Test github.event
+      run: |
+        echo $message
+      
