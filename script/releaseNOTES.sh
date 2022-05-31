@@ -27,5 +27,6 @@ echo "$(prep_post_data)"
 curl \
   -X POST \
   -H "Accept: application/vnd.github.v3+json" \
+  -H "Authorization: token $ENV_TOKEN" \
   https://api.github.com/repos//$user/$repo/releases/generate-notes \
   -d "$(prep_post_data)"
