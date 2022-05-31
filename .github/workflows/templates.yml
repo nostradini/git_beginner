@@ -21,8 +21,8 @@ jobs:
         # git tag | xargs git tag -d
     - name: Release Notes
       run: |
-        chmod +x ./script/releaseNOTEs.sh
-        ./script/releaseNOTEs.sh $ENV_TOKEN
+        chmod +x ./script/releaseNOTES.sh
+        ./script/releaseNOTES.sh $ENV_TOKEN
     - name: Dump GitHub context
       env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
