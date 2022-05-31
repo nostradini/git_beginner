@@ -9,14 +9,13 @@ echo "$(git log --after="2022-05-31T01:16:29Z" --format=oneline)"
 
 
 arrCom=()
-# while IFS= read -r line; do
-#     arrCom+=( "$line" )
-# done < <( "$(git log --after="2022-05-31T01:16:29Z" --format=oneline)" )
-# echo "arrCom = " $arrCom[0]
+while IFS= read -r line; do
+    arrCom+=( "$line" )
+done < <( git log --after="2022-05-31T01:16:29Z" --format=oneline )
 
-IFS=$'\n' read -r -d '' -a arrCom < <( $(git log --after="2022-05-31T01:16:29Z" --format=oneline) && printf '\0' )
-declare -p arrCom
-echo "arrCom = " $arrCom[0]
+echo "arrCom = " ${arrCom[0]}
+
+
 
 tag=$(curl \
   -H "Accept: application/vnd.github.v3+json" \
