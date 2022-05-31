@@ -1,6 +1,7 @@
 # !/usr/bin/bash
 user="$(git log -n 1 --pretty=format:%an)"
 repo="git_beginer"
+echo "user= $user , repo= $repo"
 
 curl \
   -H "Accept: application/vnd.github.v3+json" \
