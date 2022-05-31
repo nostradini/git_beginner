@@ -7,16 +7,16 @@ echo "cred = $ENV_TOKEN"
 
 echo "$(git log --after="2022-05-31T01:16:29Z" --format=oneline)"
 
-# curl \
-#   -H "Accept: application/vnd.github.v3+json" \
-#   https://api.github.com/repos/$user/$repo/releases/latest | jq .id"
+tag=$(curl \
+  -H "Accept: application/vnd.github.v3+json" \
+  https://api.github.com/repos/$user/$repo/releases/latest | jq .tag_name)
 
 
 prep_post_data()
 {
   cat <<EOF
 {
-  "tag_name":"v0.0.2",
+  "tag_name":"$tag",
   "target_commitish":"main",
   "previous_tag_name":"v0.0.1",
   "configuration_file_path":".github/release.yml",
