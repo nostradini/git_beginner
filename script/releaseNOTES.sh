@@ -17,7 +17,10 @@ echo "arrCom = " ${arrCom[0]:0:7}
 
 body="## Release v$tag"
 
-body+=$body && "\n ${arrCom[0]:0:7} - $(cut -d' ' -f2 <<< "${arrCom[0]}")"
+for i in ${arrCom[*]}; do
+  echo $i
+  body+=$body && "\n ${i:0:7} - $(cut -d' ' -f2 <<< "$i")"
+done
 
 
 tag=$(curl \
