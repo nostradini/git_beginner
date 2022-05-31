@@ -16,8 +16,8 @@ done < <( git log --after="2022-05-31T01:16:29Z" --format=oneline )
 echo "arrCom = " ${arrCom[0]:0:7}
 
 body="## Release v$tag"
-
-for ((idx=0; ${#args_copy[@]}; ++idx)); do
+echo "array size= " ${#arrCom[@]}
+for ((idx=0; ${#arrCom[@]}; ++idx)); do
     echo "$idx" "${arrCom[idx]}"
 done
 
@@ -40,7 +40,7 @@ prep_post_data()
   "target_commitish":"main",
   "previous_tag_name":"v0.0.1",
   "configuration_file_path":".github/release.yml",
-  "body":$body
+  "body":"$body"
   }
 EOF
 }
