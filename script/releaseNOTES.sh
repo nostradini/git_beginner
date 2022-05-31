@@ -11,16 +11,16 @@ prep_post_data()
 {
   cat <<EOF
 {
-  "tag_name":"v1.0.0",
+  "tag_name":"v0.0.2",
   "target_commitish":"main",
-  "previous_tag_name":"v0.9.2",
-#   "configuration_file_path":".github/custom_release_config.yml"
+  "previous_tag_name":"v0.0.1",
 }
 EOF
 }
 
 echo "$(prep_post_data)"
 
+#   "configuration_file_path":".github/custom_release_config.yml"
 
 curl \
   -X POST \
