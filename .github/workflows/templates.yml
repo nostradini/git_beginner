@@ -1,0 +1,30 @@
+name: Template Workflow
+on:
+  push:
+    branches: [main]
+env:
+  message: ${{ github.event.head_commit.message }}
+  ENV_TOKEN: ${{ secrets.DOOR }}
+jobs:
+  run_script:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - name: Test github.event
+      run: |
+        echo $message
+        # git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        # git config --global user.name "github-actions[bot]"
+        # git tag -l | xargs -n 1 git push --delete origin
+        # git tag | xargs git tag -d
+    - name: Release Notes
+      run: |
+        chmod +x ./script/releaseNOTES.sh
+        ./script/releaseNOTES.sh
+    - name: Dump GitHub context
+      env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
+      
