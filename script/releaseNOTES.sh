@@ -17,7 +17,7 @@ echo "arrCom = " ${arrCom[0]:0:7}
 
 body="## Release v$tag"
 
-for ((idx=0; idx<${#arrCom[@]}; ++idx)); do
+for ((idx=0; ${#args_copy[@]}; ++idx)); do
     echo "$idx" "${arrCom[idx]}"
 done
 
