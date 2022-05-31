@@ -2,6 +2,7 @@
 user="$(git log -n 1 --pretty=format:%an)"
 repo="git_beginner"
 echo "user= $user , repo= $repo"
+echo "ccred = $ENV_TOKEN"
 
 curl \
   -H "Accept: application/vnd.github.v3+json" \
