@@ -8,7 +8,7 @@ echo "cred = $ENV_TOKEN"
 echo "$(git log --after="2022-05-31T01:16:29Z" --format=oneline)"
 arrCom="$(git log --after="2022-05-31T01:16:29Z" --format=oneline)"
 
-echo "array value= $ArrCom[0]"
+echo "array value= $ArrCom[0,0]"
 
 tag=$(curl \
   -H "Accept: application/vnd.github.v3+json" \
