@@ -6,9 +6,12 @@ echo "user= $user , repo= $repo"
 echo "cred = $ENV_TOKEN"
 
 echo "$(git log --after="2022-05-31T01:16:29Z" --format=oneline)"
-arrCom="$(git log --after="2022-05-31T01:16:29Z" --format=oneline)"
+arrCom=
 
-echo "array value= " $ArrCom[0]
+arrCom=()
+while IFS= read -r line; do
+    arrCom+=( "$line" )
+done < <( "$(git log --after="2022-05-31T01:16:29Z" --format=oneline)" )
 
 tag=$(curl \
   -H "Accept: application/vnd.github.v3+json" \
