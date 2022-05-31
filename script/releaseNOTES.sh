@@ -17,7 +17,7 @@ echo "arrCom = " ${arrCom[0]:0:7}
 
 body="## Release v$tag"
 
-body+=$body "\n ${arrCom[0]:0:7} - $(cut -d' ' -f2 <<< "${arrCom[0]}")"
+body+=$body && "\n ${arrCom[0]:0:7} - $(cut -d' ' -f2 <<< "${arrCom[0]}")"
 
 
 tag=$(curl \
@@ -33,7 +33,7 @@ prep_post_data()
   "target_commitish":"main",
   "previous_tag_name":"v0.0.1",
   "configuration_file_path":".github/release.yml",
-  "body":"## Release v0.0.2 - by $user"
+  "body":$body
   }
 EOF
 }
