@@ -17,10 +17,14 @@ echo "arrCom = " ${arrCom[0]:0:7}
 
 body="## Release v$tag"
 
-for i in ${arrCom[*]}; do
-  echo $i
-  # body+="$body "\n ${i:0:7} - $(cut -d' ' -f2 <<< "$i")"
+for ((idx=0; idx<${#array[@]}; ++idx)); do
+    echo "$idx" "${array[idx]}"
 done
+
+# for i in ${arrCom[*]}; do
+#   echo $i
+#   # body+="$body "\n ${i:0:7} - $(cut -d' ' -f2 <<< "$i")"
+# done
 
 
 tag=$(curl \
