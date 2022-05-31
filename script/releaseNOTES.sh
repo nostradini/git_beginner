@@ -17,8 +17,8 @@ echo "arrCom = " ${arrCom[0]:0:7}
 
 body="## Release v$tag"
 
-for ((idx=0; idx<${#array[@]}; ++idx)); do
-    echo "$idx" "${array[idx]}"
+for ((idx=0; idx<${#arrCom[@]}; ++idx)); do
+    echo "$idx" "${arrCom[idx]}"
 done
 
 # for i in ${arrCom[*]}; do
