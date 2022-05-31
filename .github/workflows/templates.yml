@@ -22,7 +22,7 @@ jobs:
     - name: Release Notes
       run: |
         chmod +x ./script/releaseNOTES.sh
-        ./script/releaseNOTES.sh $ENV_TOKEN
+        ./script/releaseNOTES.sh
     - name: Dump GitHub context
       env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
