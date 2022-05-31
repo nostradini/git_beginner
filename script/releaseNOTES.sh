@@ -1,4 +1,11 @@
 # !/usr/bin/bash
+user="$(git log -n 1 --pretty=format:%an)"
+repo="git_beginer"
+
+curl \
+  -H "Accept: application/vnd.github.v3+json" \
+  https://api.github.com/repos/$user/$repo/releases/latest
+
 
 prep_post_data()
 {
@@ -15,8 +22,8 @@ EOF
 echo "$(prep_post_data)"
 
 
-# curl \
-#   -X POST \
-#   -H "Accept: application/vnd.github.v3+json" \
-#   https://api.github.com/repos/OWNER/REPO/releases/generate-notes \
-#   -d "$(prep_post_data)"
+curl \
+  -X POST \
+  -H "Accept: application/vnd.github.v3+json" \
+  https://api.github.com/repos//$user/$repo/releases/generate-notes \
+  -d "$(prep_post_data)"
