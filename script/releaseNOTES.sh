@@ -13,8 +13,11 @@ while IFS= read -r line; do
     arrCom+=( "$line" )
 done < <( git log --after="2022-05-31T01:16:29Z" --format=oneline )
 
-echo "arrCom = " ${arrCom[0]:0:6}
+echo "arrCom = " ${arrCom[0]:0:7}
 
+body="## Release v$tag"
+
+body+=$body "\n ${arrCom[0]:0:7} - $(cut -d' ' -f2 <<< "${arrCom[0]}")"
 
 
 tag=$(curl \
