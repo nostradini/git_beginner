@@ -6,6 +6,8 @@ echo "user= $user , repo= $repo"
 echo "cred = $ENV_TOKEN"
 
 echo "$(git log --after="2022-05-31T01:16:29Z" --format=oneline)"
+arrCom[]="$(git log --after="2022-05-31T01:16:29Z" --format=oneline)"
+echo ${Unix[@]}
 
 tag=$(curl \
   -H "Accept: application/vnd.github.v3+json" \
@@ -16,7 +18,7 @@ prep_post_data()
 {
   cat <<EOF
 {
-  "tag_name":"$tag",
+  "tag_name":$tag,
   "target_commitish":"main",
   "previous_tag_name":"v0.0.1",
   "configuration_file_path":".github/release.yml",
