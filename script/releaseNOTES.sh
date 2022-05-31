@@ -5,9 +5,11 @@ repo="git_beginner"
 echo "user= $user , repo= $repo"
 echo "cred = $ENV_TOKEN"
 
-curl \
-  -H "Accept: application/vnd.github.v3+json" \
-  https://api.github.com/repos/$user/$repo/releases/latest
+echo "$(git log --after="2022-05-31T01:16:29Z" --format=oneline)"
+
+# curl \
+#   -H "Accept: application/vnd.github.v3+json" \
+#   https://api.github.com/repos/$user/$repo/releases/latest | jq .id"
 
 
 prep_post_data()
@@ -26,9 +28,9 @@ EOF
 echo "$(prep_post_data)"
 
 
-curl \
-  -X POST \
-  -H "Accept: application/vnd.github.v3+json" \
-  -H "Authorization: token $ENV_TOKEN" \
-  https://api.github.com/repos//$user/$repo/releases/generate-notes \
-  -d "$(prep_post_data)"
+# curl \
+#   -X POST \
+#   -H "Accept: application/vnd.github.v3+json" \
+#   -H "Authorization: token $ENV_TOKEN" \
+#   https://api.github.com/repos//$user/$repo/releases/generate-notes \
+#   -d "$(prep_post_data)"
