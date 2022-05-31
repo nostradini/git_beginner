@@ -15,7 +15,7 @@ prep_post_data()
   "tag_name":"v0.0.2",
   "target_commitish":"main",
   "previous_tag_name":"v0.0.1",
-  "body":"## v0.0.2 - "
+  "body":"## Release v0.0.2 - by $user"
 }
 EOF
 }
