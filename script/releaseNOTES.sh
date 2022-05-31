@@ -19,7 +19,7 @@ body="## Release v$tag"
 
 for i in ${arrCom[*]}; do
   echo $i
-  body+=$body && "\n ${i:0:7} - $(cut -d' ' -f2 <<< "$i")"
+  # body+="$body "\n ${i:0:7} - $(cut -d' ' -f2 <<< "$i")"
 done
 
 
