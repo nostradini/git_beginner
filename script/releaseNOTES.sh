@@ -15,14 +15,14 @@ prep_post_data()
   "tag_name":"v0.0.2",
   "target_commitish":"main",
   "previous_tag_name":"v0.0.1",
+  "configuration_file_path":".github/release.yml",
   "body":"## Release v0.0.2 - by $user"
-}
+  }
 EOF
 }
 
 echo "$(prep_post_data)"
 
-#   "configuration_file_path":".github/custom_release_config.yml"
 
 curl \
   -X POST \
