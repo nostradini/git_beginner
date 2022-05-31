@@ -13,7 +13,7 @@ while IFS= read -r line; do
     arrCom+=( "$line" )
 done < <( git log --after="2022-05-31T01:16:29Z" --format=oneline )
 
-echo "arrCom = " ${arrCom[0]}
+echo "arrCom = " ${${arrCom[0]}:0:6}
 
 
 
