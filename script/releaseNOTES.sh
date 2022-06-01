@@ -11,7 +11,7 @@ arrCom=()
 while IFS= read -r line; do
     arrCom+=( "$line" )
     echo "arrCom = " ${line:0:7}
-    echo ${$line:7:50}
+    echo ${line:7:50}
 done < <( git log --after="2022-05-31T01:16:29Z" --format=oneline )
 
 body="## Release v$tag"
