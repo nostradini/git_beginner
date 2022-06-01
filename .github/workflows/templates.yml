@@ -14,7 +14,7 @@ jobs:
         fetch-depth: 0
     - name: Delete tags
       run: |
-        echo $message
+        echo "message= " $message
         # git config --global user.email "github-actions[bot]@users.noreply.github.com"
         # git config --global user.name "github-actions[bot]"
         # git tag -l | xargs -n 1 git push --delete origin
@@ -26,9 +26,10 @@ jobs:
 
     - name: Release Notes
       run: |
+         echo "count =" $COUNT
         # chmod +x ./script/releaseNOTES.sh
         # ./script/releaseNOTES.sh
-        echo "count =" $COUNT
+
 
     # - name: Dump GitHub context
     #   env:
