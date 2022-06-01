@@ -22,14 +22,13 @@ jobs:
         # git config --global user.name "github-actions[bot]"
         # git tag -l | xargs -n 1 git push --delete origin
         # git tag | xargs git tag -d
-    - name: work on logic
+    - name: Work on logic
       id: setvar
       run: |
-        chmod +x ./script/get_defaults.sh
-        ./script/get_defaults.sh
-        shell: bash
-        echo "CN=" $cn
-        echo "COUNT=$ENV_COUNT" >> $GITHUB_ENV
+        targetD=$(curl \
+                -H "Accept: application/vnd.github.v3+json" \
+                https://api.github.com/repos/$user/$repo/releases/latest | jq .created_at)
+        echo "targetD= " $targetD
   
     - name: Release Notes
       run: |
