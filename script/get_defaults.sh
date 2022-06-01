@@ -15,5 +15,5 @@ cn=$((cn+1))
 done < <( git log --after="$targetD" --format=oneline )
 
 echo " arrCOUNT= ${#arrCom[@]} , CN= $cn"
-echo "COUNT:$cn" >> $github_ENV
+echo "COUNT:$cn" >> $GITHUB_ENV
 echo "data == \n" $data
