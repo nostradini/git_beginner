@@ -6,24 +6,20 @@ echo "user= $user , repo= $repo"
 echo "cred = $ENV_TOKEN"
 
 # echo "$(git log --after="2022-05-31T01:16:29Z" --format=oneline)"
+
+tag=$(curl \
+-H "Accept: application/vnd.github.v3+json" \
+https://api.github.com/repos/$user/$repo/releases/latest | jq .tag_name)
+
 body="## Release v$tag"
 
 arrCom=()
 while IFS= read -r line; do
     arrCom+=( "$line" )
-    echo "arrCom = " ${line:0:7}
-    echo ${line:41:50}
-    body="$body ${line:0:7} - ${line:41:50}"
+    # echo "arrCom = " ${line:0:7}
+    # echo ${line:41:50}
+    body="$body ${line:0:7} - ${line:41:50} \n"
 done < <( git log --after="2022-05-31T01:16:29Z" --format=oneline )
-
-
-echo "array size= " ${#arrCom[@]}
-
-
-
-tag=$(curl \
-  -H "Accept: application/vnd.github.v3+json" \
-  https://api.github.com/repos/$user/$repo/releases/latest | jq .tag_name)
 
 
 prep_post_data()
