@@ -11,14 +11,18 @@ tag=$(curl \
 -H "Accept: application/vnd.github.v3+json" \
 https://api.github.com/repos/$user/$repo/releases/latest | jq .tag_name)
 
-body="## Release v$tag"
+prevtag=$(git describe --abbrev=0 --tags)
+
+echo "tag = $tag , prevtag = $prevtag"
+
+body="## Release $tag"
 
 arrCom=()
 while IFS= read -r line; do
     arrCom+=( "$line" )
     # echo "arrCom = " ${line:0:7}
     # echo ${line:41:50}
-    body="$body ${line:0:7} - ${line:41:50} \n"
+    body="$body * ${line:0:7} - ${line:41:50} \n"
 done < <( git log --after="2022-05-31T01:16:29Z" --format=oneline )
 
 
@@ -39,8 +43,8 @@ echo "$(prep_post_data)"
 
 
 # curl \
-#   -X POST \
-#   -H "Accept: application/vnd.github.v3+json" \
-#   -H "Authorization: token $ENV_TOKEN" \
-#   https://api.github.com/repos//$user/$repo/releases/generate-notes \
-#   -d "$(prep_post_data)"
+#-X POST \
+#-H "Accept: application/vnd.github.v3+json" \
+#-H "Authorization: token $ENV_TOKEN" \
+#https://api.github.com/repos/$user/$repo/releases/generate-notes \
+#-d "$(prep_post_data)"
