@@ -11,7 +11,7 @@ arrCom=()
 while IFS= read -r line; do
 arrCom+=( "$line" )
 data="$data * ${line:0:7} - ${line:41:50} \n "
-cn+=1
+cn=$((cn+1))
 done < <( git log --after="$targetD" --format=oneline )
 
 echo " arrCOUNT= ${#arrCom[@]} , CN= $cn"
