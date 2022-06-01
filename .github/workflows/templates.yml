@@ -34,7 +34,7 @@ jobs:
         arrCom=()
         while IFS= read -r line; do
           arrCom+=( "$line" )
-          if [[ ${line:41:50} == "[JOB]"* ]]
+          if [[ ${line:41:50} != "[JOB]"* ]]
           then
           lowerstr=$(echo ${line:41:50} |tr '[:upper:]' '[:lower:]')
           # echo "transformed to lower = $lowerstr"
