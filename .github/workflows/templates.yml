@@ -23,6 +23,7 @@ jobs:
       run: |
         chmod +x ./script/get_defaults.sh
         ./script/get_defaults.sh
+        echo "CN=" $cn
         echo "COUNT=$cn" >> $GITHUB_ENV
   
     - name: Release Notes
