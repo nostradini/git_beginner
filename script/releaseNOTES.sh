@@ -14,8 +14,12 @@ https://api.github.com/repos/$user/$repo/releases/latest | jq .tag_name)
 prevtag=$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-count=1))
 
 echo "tag = $tag , prevtag = $prevtag"
-echo "commitslast tag= $(git log $(git describe --tags --abbrev=0)..HEAD --no-merges --oneline)"
 
+targetD=$(curl \
+-H "Accept: application/vnd.github.v3+json" \
+https://api.github.com/repos/nostradini/git_beginner/releases/latest | jq .created_at)
+
+echo "target date= $targetD"
 body="## Release $tag"
 
 arrCom=()
@@ -24,7 +28,7 @@ while IFS= read -r line; do
     # echo "arrCom = " ${line:0:7}
     # echo ${line:41:50}
     body="$body * ${line:0:7} - ${line:41:50} \n"
-done < <( git log --after="2022-05-31T01:16:29Z" --format=oneline )
+done < <( git log --after="$targetD" --format=oneline )
 
 
 prep_post_data()
