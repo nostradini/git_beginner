@@ -11,17 +11,12 @@ arrCom=()
 while IFS= read -r line; do
     arrCom+=( "$line" )
     echo "arrCom = " ${line:0:7}
-    echo $(cut -d' ' -f2 <<< "$line")
+    echo ${$line:7:50}
 done < <( git log --after="2022-05-31T01:16:29Z" --format=oneline )
 
-# echo "arrCom = " ${arrCom[0]:0:7}
 body="## Release v$tag"
 echo "array size= " ${#arrCom[@]}
 
-# for i in ${arrCom[*]}; do
-#   echo $i
-#   # body+="$body "\n ${i:0:7} - $(cut -d' ' -f2 <<< "$i")"
-# done
 
 
 tag=$(curl \
