@@ -28,6 +28,7 @@ jobs:
       run: |
         # chmod +x ./script/releaseNOTES.sh
         # ./script/releaseNOTES.sh
+        echo "count =" $COUNT
 
     # - name: Dump GitHub context
     #   env:
