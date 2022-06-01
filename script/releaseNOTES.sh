@@ -6,20 +6,17 @@ echo "user= $user , repo= $repo"
 echo "cred = $ENV_TOKEN"
 
 echo "$(git log --after="2022-05-31T01:16:29Z" --format=oneline)"
-
+echo "arrCom = " ${arrCom[0]:0:7}
+body="## Release v$tag"
+echo "array size= " ${#arrCom[@]}
 
 arrCom=()
 while IFS= read -r line; do
     arrCom+=( "$line" )
+    echo "arrCom = " $line
+    echo $(cut -d' ' -f2 <<< "$line")
 done < <( git log --after="2022-05-31T01:16:29Z" --format=oneline )
 
-echo "arrCom = " ${arrCom[0]:0:7}
-
-body="## Release v$tag"
-echo "array size= " ${#arrCom[@]}
-for ((idx=0; ${#arrCom[@]}; ++idx)); do
-    echo "$idx" "${arrCom[idx]}"
-done
 
 # for i in ${arrCom[*]}; do
 #   echo $i
