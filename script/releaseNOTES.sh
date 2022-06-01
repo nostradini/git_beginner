@@ -11,7 +11,7 @@ tag=$(curl \
 -H "Accept: application/vnd.github.v3+json" \
 https://api.github.com/repos/$user/$repo/releases/latest | jq .tag_name)
 
-prevtag=$(git describe --abbrev=0 --tags)
+prevtag=$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-count=1))
 
 echo "tag = $tag , prevtag = $prevtag"
 
