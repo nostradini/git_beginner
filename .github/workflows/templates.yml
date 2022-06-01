@@ -8,6 +8,9 @@ env:
 jobs:
   run_script:
     runs-on: ubuntu-latest
+    outputs:
+      ENV_COUNT: ${{ steps.setvar.outputs.arrcount }}
+      # ENV_VER: ${{ steps.setvar.outputs.sh_ver }}
     steps:
     - uses: actions/checkout@v3
       with:
@@ -20,15 +23,17 @@ jobs:
         # git tag -l | xargs -n 1 git push --delete origin
         # git tag | xargs git tag -d
     - name: work on logic
+      id: setvar
       run: |
         chmod +x ./script/get_defaults.sh
         ./script/get_defaults.sh
         echo "CN=" $cn
-        echo "COUNT=$cn" >> $GITHUB_ENV
+        echo "COUNT=$ENV_COUNT" >> $GITHUB_ENV
   
     - name: Release Notes
       run: |
          echo "count =" $COUNT
+         echo "value form env= " ${{run_script.outputs.ENV_COUNT}}
         # chmod +x ./script/releaseNOTES.sh
         # ./script/releaseNOTES.sh
 
