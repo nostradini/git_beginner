@@ -19,10 +19,16 @@ jobs:
         # git config --global user.name "github-actions[bot]"
         # git tag -l | xargs -n 1 git push --delete origin
         # git tag | xargs git tag -d
+    - name: work on logic
+      run: |
+        chmod +x ./script/get_defaults.sh
+        ./script/get_defaults.sh
+
     - name: Release Notes
       run: |
-        chmod +x ./script/releaseNOTES.sh
-        ./script/releaseNOTES.sh
+        # chmod +x ./script/releaseNOTES.sh
+        # ./script/releaseNOTES.sh
+
     # - name: Dump GitHub context
     #   env:
     #       GITHUB_CONTEXT: ${{ toJson(github) }}
