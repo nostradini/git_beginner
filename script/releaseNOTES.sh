@@ -32,7 +32,7 @@ prep_post_data()
 {
   "tag_name":$tag,
   "target_commitish":"main",
-  "previous_tag_name":"v0.0.1",
+  "previous_tag_name":"$prevtag",
   "configuration_file_path":".github/release.yml",
   "body":"$body"
   }
@@ -42,9 +42,9 @@ EOF
 echo "$(prep_post_data)"
 
 
-# curl \
-#-X POST \
-#-H "Accept: application/vnd.github.v3+json" \
-#-H "Authorization: token $ENV_TOKEN" \
-#https://api.github.com/repos/$user/$repo/releases/generate-notes \
-#-d "$(prep_post_data)"
+curl \
+-X POST \
+-H "Accept: application/vnd.github.v3+json" \
+-H "Authorization: token $ENV_TOKEN" \
+https://api.github.com/repos/$user/$repo/releases/generate-notes \
+-d "$(prep_post_data)"
