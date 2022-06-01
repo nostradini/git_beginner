@@ -3,8 +3,6 @@ on:
   push:
     branches: [main]
 
-outputs:
-  ENV_COUNT: ${{ steps.setvar.outputs.arrcount }}
 env:
   message: ${{ github.event.head_commit.message }}
   ENV_TOKEN: ${{ secrets.DOOR }}
