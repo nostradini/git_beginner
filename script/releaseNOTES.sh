@@ -27,7 +27,10 @@ while IFS= read -r line; do
     arrCom+=( "$line" )
     # echo "arrCom = " ${line:0:7}
     # echo ${line:41:50}
-    body="$body * ${line:0:7} - ${line:41:50} \n"
+    if [[ ${line:41:50} == "run it"* ]]
+    then
+      body="$body * ${line:0:7} - ${line:41:50} \n"
+    fi
 done < <( git log --after="$targetD" --format=oneline )
 
 
