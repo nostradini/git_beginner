@@ -14,6 +14,7 @@ https://api.github.com/repos/$user/$repo/releases/latest | jq .tag_name)
 prevtag=$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-count=1))
 
 echo "tag = $tag , prevtag = $prevtag"
+echo "commitslast tag= $(git log $(git describe --tags --abbrev=0)..HEAD --no-merges --oneline)"
 
 body="## Release $tag"
 
@@ -42,9 +43,9 @@ EOF
 echo "$(prep_post_data)"
 
 
-curl \
--X POST \
--H "Accept: application/vnd.github.v3+json" \
--H "Authorization: token $ENV_TOKEN" \
-https://api.github.com/repos/$user/$repo/releases/generate-notes \
--d "$(prep_post_data)"
+# curl \
+# -X POST \
+# -H "Accept: application/vnd.github.v3+json" \
+# -H "Authorization: token $ENV_TOKEN" \
+# https://api.github.com/repos/$user/$repo/releases/generate-notes \
+# -d "$(prep_post_data)"
