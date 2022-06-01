@@ -5,7 +5,7 @@ repo="git_beginner"
 echo "user= $user , repo= $repo"
 echo "cred = $ENV_TOKEN"
 
-echo "$(git log --after="2022-05-31T01:16:29Z" --format=oneline)"
+# echo "$(git log --after="2022-05-31T01:16:29Z" --format=oneline)"
 
 arrCom=()
 while IFS= read -r line; do
