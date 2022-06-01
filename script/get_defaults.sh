@@ -14,5 +14,6 @@ data="$data * ${line:0:7} - ${line:41:50} \n "
 cn=$((cn+1))
 done < <( git log --after="$targetD" --format=oneline )
 
+echo "::set-env name=COUNT::$cn"
 echo " arrCOUNT= ${#arrCom[@]} , CN= $cn"
 echo "data == \n" $data
