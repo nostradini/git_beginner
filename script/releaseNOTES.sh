@@ -27,7 +27,7 @@ while IFS= read -r line; do
     arrCom+=( "$line" )
     # echo "arrCom = " ${line:0:7}
     # echo ${line:41:50}
-    if [[ ${line:41:50} == "run it"* ]]
+    if [[ ${line:41:50} != "run it"* ]]
     then
       body="$body * ${line:0:7} - ${line:41:50} \n"
     fi
