@@ -24,7 +24,7 @@ jobs:
         ./script/initialize_checkpoints.sh
 
     - name: Apply Logic
-      id: value
+      id: logic
       run: |
         chmod +x ./script/do_logic.sh
         ./script/do_logic.sh
