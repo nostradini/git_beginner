@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       COUNTER:
-      description: Get commits count
+        description: Get commits count
      steps:
     - uses: actions/checkout@v3
       with:
