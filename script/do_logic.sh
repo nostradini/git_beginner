@@ -40,7 +40,7 @@ then
     fi
 fi
 done < <( git log --after="$targetD" --format=oneline )
-echo "bMajor - bMinor - bPatch"
+echo "$bMajor - $bMinor - $bPatch"
 if [[ $bMajor=true ]]
 then
     gitmojiko=":boom: Breaking Changes"
