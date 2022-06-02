@@ -40,18 +40,18 @@ then
     fi
 fi
 done < <( git log --after="$targetD" --format=oneline )
-if [[ bMajor=true ]]
+if [[ $bMajor=true ]]
 then
     gitmojiko=":boom: Breaking Changes"
     ver_major=$((ver_major+1))
     ver_minor=0
     ver_patch=0
-elif [[ bMinor=true ]]
+elif [[ $bMinor=true ]]
 then
     gitmojiko=":sparkles: New Features"
     ver_minor=$((ver_minor+1))
     ver_patch=0
-elif [[ bPatch=true ]]
+elif [[ $bPatch=true ]]
 then
     gitmojiko=":bug: Bug Fixes"
     ver_patch=$((ver_patch+1))
