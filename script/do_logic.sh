@@ -4,6 +4,9 @@ ver_minor=$2
 ver_patch=$3
 user="$(git log -n 1 --pretty=format:%an)"
 repo="git_beginner"
+bMajor=false
+bMinor=false
+bPatch=false
 
 # targetD=$(curl \
 # -H "Accept: application/vnd.github.v3+json" \
