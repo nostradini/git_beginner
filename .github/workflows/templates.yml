@@ -9,6 +9,13 @@ env:
 jobs:
   run_script:
     runs-on: ubuntu-latest
+    inputs:
+    some_input:
+      description: some input
+      required: false
+    outputs:
+      COUNTER:
+      description: some output
     steps:
     - uses: actions/checkout@v3
       with:
@@ -20,11 +27,13 @@ jobs:
         # git config --global user.name "github-actions[bot]"
         # git tag -l | xargs -n 1 git push --delete origin
         # git tag | xargs git tag -d
-        
-    - name: RUN COUNTER
-      uses: ./
-      id: value
 
+    - name: RUN COUNTER
+      id: value
+      run: |
+        chmod +x ./script/get_defaults.sh
+        ./script/get_defaults.sh
+    
     - name: TEST VALUE
       run: |
         echo "value= ${{ steps.value.outputs.COUNTER }}""
