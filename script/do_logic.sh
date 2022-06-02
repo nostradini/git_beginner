@@ -19,34 +19,34 @@ echo "commit= ${line:41:50}"
 if [[ "${line:41:50}" != "[JOB]"* ]]
 then
     echo "passed check on job"
-    # if [[ \"${line:41:50}\" == *"#major"* ]]
-    # then
-    # echo "Found major in commit"
-    # gitmojiko=":boom: Breaking Changes"
-    # ver_major=$((ver_major+1))
-    # ver_minor=0
-    # ver_patch=0
-    # bMajor=true
-    # colMajor="$colMajor ## * ${line:0:7} - ${line:41:50} \n "
-    # elif [[ \"${line:41:50}\" == *"#minor"* ]]
-    # then
-    # echo "Found minor in commit"
-    # gitmojiko=":sparkles: New Features"
-    # ver_minor=$((ver_minor+1))
-    # ver_patch=0
-    # bMinor=true
-    # colMinor="$colMinor ## * ${line:0:7} - ${line:41:50} \n "
-    # elif [[ \"${line:41:50}\" == *"#patch"* ]]
-    # then
-    # echo "Found patch in commit"
-    # gitmojiko=":bug: Bug Fixes"
-    # ver_patch=$((ver_patch+1))
-    # bPatch=true
-    # colPatch="$colPatch ## * ${line:0:7} - ${line:41:50} \n "
-    # else
-    # echo "Default condition"
-    # gitmojiko="UNRELEASED"
-    # fi
+    if [[ "${line:41:50}" == *"#major"* ]]
+    then
+    echo "Found major in commit"
+    gitmojiko=":boom: Breaking Changes"
+    ver_major=$((ver_major+1))
+    ver_minor=0
+    ver_patch=0
+    bMajor=true
+    colMajor="$colMajor ## * ${line:0:7} - ${line:41:50} \n "
+    elif [[ "${line:41:50}" == *"#minor"* ]]
+    then
+    echo "Found minor in commit"
+    gitmojiko=":sparkles: New Features"
+    ver_minor=$((ver_minor+1))
+    ver_patch=0
+    bMinor=true
+    colMinor="$colMinor ## * ${line:0:7} - ${line:41:50} \n "
+    elif [[ "${line:41:50}" == *"#patch"* ]]
+    then
+    echo "Found patch in commit"
+    gitmojiko=":bug: Bug Fixes"
+    ver_patch=$((ver_patch+1))
+    bPatch=true
+    colPatch="$colPatch ## * ${line:0:7} - ${line:41:50} \n "
+    else
+    echo "Default condition"
+    gitmojiko="UNRELEASED"
+    fi
     echo "gitmojiko= $gitmojiko"
     echo "colMajor= $colMajor"
     echo "colMinor= $colMinor"
