@@ -9,10 +9,6 @@ env:
 jobs:
   run_script:
     runs-on: ubuntu-latest
-    # inputs:
-    # some_input:
-    #   description: some input
-    #   required: false
     outputs:
       COUNTER:
       description: some output
@@ -36,7 +32,7 @@ jobs:
     
     - name: TEST VALUE
       run: |
-        echo "value= ${{ steps.value.outputs.COUNTER }}""
+        echo "value= ${{ steps.value.outputs.COUNTER }}"
 
 
     - name: Work on logic
