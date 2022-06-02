@@ -25,7 +25,7 @@ then
     ver_major=$((ver_major+1))
     ver_minor=0
     ver_patch=0
-    bMajor= true
+    bMajor=true
     colMajor="$colMajor ## * ${line:0:7} - ${line:41:50} \n "
     elif [[ "$lowerstr" == *"#minor"* ]]
     then
@@ -33,14 +33,14 @@ then
     gitmojiko=":sparkles: New Features"
     ver_minor=$((ver_minor+1))
     ver_patch=0
-    bMinor= true
+    bMinor=true
     colMinor="$colMinor ## * ${line:0:7} - ${line:41:50} \n "
     elif [[ "$lowerstr" == *"#patch"* ]]
     then
     echo "Found patch in commit"
     gitmojiko=":bug: Bug Fixes"
     ver_patch=$((ver_patch+1))
-    bPatch= true
+    bPatch=true
     colPatch="$colPatch ## * ${line:0:7} - ${line:41:50} \n "
     else
     echo "Default condition"
