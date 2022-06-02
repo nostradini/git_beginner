@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       COUNTER:
-      description: some output
+      description: Get commits count
+      default: 0
     steps:
     - uses: actions/checkout@v3
       with:
@@ -34,18 +35,9 @@ jobs:
       run: |
         echo "value= ${{ steps.value.outputs.COUNTER }}"
 
-
     - name: Work on logic
       id: setvar
       run: |
-        # user="$(git log -n 1 --pretty=format:%an)"
-        # repo="git_beginner"
-        # tag=""
-        # targetD=$(curl \
-        #         -H "Accept: application/vnd.github.v3+json" \
-        #         https://api.github.com/repos/$user/$repo/releases/latest | jq .created_at)
-        # echo "targetD= " $targetD
-        # data="## Release $tag"
         # arrCom=()
         # while IFS= read -r line; do
         #   arrCom+=( "$line" )
