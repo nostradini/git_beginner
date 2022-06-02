@@ -23,12 +23,12 @@ prep_data()
   "message":"[JOB] Push version",
   "branch":"main",
   "sha":'$Repo_SHA',
-  "content":'$content',
+  "content":'$content'
   }
 EOF
 }
 
-echo "pre_data = $pre_data"
+echo "pre_data = $prep_data"
 
 curl -i -X PUT \
 -H "Authorization: token $Env_Token" \
