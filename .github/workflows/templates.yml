@@ -23,11 +23,12 @@ jobs:
     - name: Test Value
       id: value
       shell: bash
-        chmod +x ./script/get_defaults.sh
-        ./script/get_defaults.sh
       with:
         COUNTER: ${{ env.COUNTER}} 
-      run: echo "COUNTER = $COUNTER"
+      run: |
+        chmod +x ./script/get_defaults.sh
+        ./script/get_defaults.sh
+        echo "COUNTER = $COUNTER"
 
     - name: Work on logic
       id: setvar
