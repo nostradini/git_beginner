@@ -22,9 +22,8 @@ jobs:
         # git tag | xargs git tag -d
     - name: Test Value
       id: value
-      shell: bash
       with:
-        COUNTER: ${{ env.COUNTER}} 
+        COUNTER: ${{ env.COUNTER }} 
       run: |
         chmod +x ./script/get_defaults.sh
         ./script/get_defaults.sh
