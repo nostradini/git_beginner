@@ -21,7 +21,6 @@ then
     if [[ "${line:41:50}" == *"#major"* ]]
     then
     echo "Found major in commit"
-    gitmojiko=":boom: Breaking Changes"
     ver_major=$((ver_major+1))
     ver_minor=0
     ver_patch=0
@@ -30,7 +29,6 @@ then
     elif [[ "${line:41:50}" == *"#minor"* ]]
     then
     echo "Found minor in commit"
-    gitmojiko=":sparkles: New Features"
     ver_minor=$((ver_minor+1))
     ver_patch=0
     bMinor=true
@@ -38,16 +36,23 @@ then
     elif [[ "${line:41:50}" == *"#patch"* ]]
     then
     echo "Found patch in commit"
-    gitmojiko=":bug: Bug Fixes"
     ver_patch=$((ver_patch+1))
     bPatch=true
     colPatch="$colPatch ## * ${line:0:7} - ${line:41:50} \n "
     else
     echo "Default condition"
-    gitmojiko="UNRELEASED"
     fi
 fi
 done < <( git log --after="$targetD" --format=oneline )
+if [[ bMajor=true ]] then
+    gitmojiko=":boom: Breaking Changes"
+elif [[ bMinor=true ]] then
+    gitmojiko=":sparkles: New Features"
+elif [[ bPatch=true ]] then
+    gitmojiko=":bug: Bug Fixes"
+else
+    gitmojiko="UNRELEASED"
+fi
 echo "gitmojiko= $gitmojiko"
 echo "colMajor= $colMajor"
 echo "colMinor= $colMinor"
@@ -56,4 +61,5 @@ echo "::set-output name=envgitmojiko::$gitmojiko"
 echo "::set-output name=envMajor::$colMajor"
 echo "::set-output name=envMinor::$colMinor"
 echo "::set-output name=envPatch::$colPatch"
+echo "NEW= ver_major=$ver_major,ver_minor=$ver_minor,ver_patch=$ver_patch"
 # echo "data == \n" $data

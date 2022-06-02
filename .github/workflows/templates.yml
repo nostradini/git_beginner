@@ -37,10 +37,10 @@ jobs:
       run: |
         echo "commit count= ${{ steps.value.outputs.COUNTER }}"
         echo "last commit= ${{ steps.value.outputs.LASTCOM }}"
-        echo "last commit= ${{ steps.logic.outputs.envgitmojiko }}"
-        echo "last commit= ${{ steps.logic.outputs.envMajor }}"
-        echo "last commit= ${{ steps.logic.outputs.envMinor }}"
-        echo "last commit= ${{ steps.logic.outputs.envPatch }}"
+        echo "envgitmojiko= ${{ steps.logic.outputs.envgitmojiko }}"
+        echo "envMajor= ${{ steps.logic.outputs.envMajor }}"
+        echo "envMinor= ${{ steps.logic.outputs.envMinor }}"
+        echo "envPatch= ${{ steps.logic.outputs.envPatch }}"
 
     - name: Work on logic
       id: setvar
