@@ -15,8 +15,23 @@ content=$(echo $content | tr -d ' ')
 content=\"${content}\"
 echo "Content is = " $content
 
+prep_data()
+{
+  cat <<EOF
+{
+  "path":"VERSION",
+  "message":"[JOB] Push version",
+  "branch":"main",
+  "sha":'$Repo_SHA',
+  "content":'$content',
+  }
+EOF
+}
+
+
 curl -i -X PUT \
 -H "Authorization: token $Env_Token" \
 -H "Accept: application/vnd.github.v3+json" \
--d '{ "path":"VERSION","message":"[JOB] Push version","content":'$content',"branch":"main","sha":'$Repo_SHA' }' \
- https://api.github.com/repos/nostradini/myrepo3/contents/VERSION
+https://api.github.com/repos/$user/$repo/contents/VERSION \
+-d "$(prep_post_data)"
+ 

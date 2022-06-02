@@ -47,4 +47,4 @@ prep_data()
 EOF
 }
 
-echo "$(prep_post_data)"
+echo "$(prep_data)"
