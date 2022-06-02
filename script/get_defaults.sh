@@ -7,7 +7,7 @@ repo="git_beginner"
 # -H "Accept: application/vnd.github.v3+json" \
 # https://api.github.com/repos/$user/$repo/releases/latest | jq .created_at)
 
-targetD=""
+targetD="2022-06-02"
 
 arrCom=()
 while IFS= read -r line; do
