@@ -10,7 +10,8 @@ jobs:
   run_script:
     runs-on: ubuntu-latest
     outputs:
-      COUNTER: Placeholder
+      COUNTER: Commit count
+      LASTCOM: Last commit
     steps:
     - uses: actions/checkout@v3
       with:
@@ -32,7 +33,7 @@ jobs:
     - name: TEST VALUE
       run: |
         echo "value= ${{ steps.value.outputs.COUNTER }}"
-
+        echo "value= ${{ steps.value.outputs.LASTCOM }}"
     - name: Work on logic
       id: setvar
       run: |
