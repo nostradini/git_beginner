@@ -45,6 +45,10 @@ jobs:
         chmod +x ./script/do_logic.sh
         ./script/do_logic.sh $curmajor $curminor $curpatch ${{ steps.value.outputs.LASTCOM }}
 
+    - name: Push New Version
+        chmod +x ./script/version_update.sh
+        ./script/version_update.sh $ENV_TOKEN
+
     # - name: Release Tag
     #   run: |
       #   chmod +x ./script/releaseNOTES.sh

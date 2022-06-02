@@ -1,30 +1,22 @@
-temp=$(cat "VERSION")
-var1="${temp:8:1}"
-var2="${temp:10:1}"
-var3="${temp:12:1}"
-echo "${{ env.lastCommit }}"
-varA="${{ env.lastCommit }}"
- echo "assign to var $varA"
-lowerstr=$(echo $varA |tr '[:upper:]' '[:lower:]')
-echo "lower = $lowerstr"
-if [[ "$lowerstr" == *"#major"* ]]
-then
-echo "found major in commit"
-var1=$((var1+1))
-fi
-if [[ "$lowerstr" == *"#minor"* ]]
-then
-echo "found minor in commit"
-var2=$((var2+1))
-fi
-if [[ "$lowerstr" == *"#patch"* ]]
-then
-echo "found patch in commit"
-var3=$((var3+1))
-fi
-echo "var1 $var1"
-echo "var2 $var2"
-echo "var3 $var3"
-          
-cat /dev/null > VERSION
-echo -n "Version $var1.$var2.$var3 - \"${{ env.lastCommit }}\"" > VERSION
+#!/usr/bin/bash
+Env_Token=$1
+user="$(git log -n 1 --pretty=format:%an)"
+repo="git_beginner"
+
+Repo_SHA=$(curl -H "Authorization: token $Env_Token" \
+-X GET https://api.github.com/repos/$user/$repo/contents/VERSION | jq .sha)
+
+echo "This is repo_sha = " $Repo_SHA
+
+UpdatedVer=$(cat ./VERSION)
+echo "Updated Version = " $UpdatedVer
+content=$(echo $UpdatedVer | base64)
+content=$(echo $content | tr -d ' ')
+content=\"${content}\"
+echo "Content is = " $content
+
+curl -i -X PUT \
+-H "Authorization: token $Env_Token" \
+-H "Accept: application/vnd.github.v3+json" \
+-d '{ "path":"VERSION","message":"[JOB] Push version","content":'$content',"branch":"main","sha":'$Repo_SHA' }' \
+ https://api.github.com/repos/nostradini/myrepo3/contents/VERSION
