@@ -15,8 +15,8 @@ arrCom=()
 while IFS= read -r line; do
 arrCom+=( "$line" )
 # data="$data ## * ${line:0:7} - ${line:41:50} \n "
-echo "if ${line:41:50}"
-if [["${line:41:50}" != "[JOB]"* ]]
+echo "commit= ${line:41:50}"
+if [[ "${line:41:50}" != "[JOB]"* ]]
 then
     echo "passed check on job"
     # if [[ \"${line:41:50}\" == *"#major"* ]]
