@@ -44,11 +44,14 @@ then
     fi
 fi
 done < <( git log --after="$targetD" --format=oneline )
-if [[ bMajor=true ]] then
+if [[ bMajor=true ]]
+then
     gitmojiko=":boom: Breaking Changes"
-elif [[ bMinor=true ]] then
+elif [[ bMinor=true ]]
+then
     gitmojiko=":sparkles: New Features"
-elif [[ bPatch=true ]] then
+elif [[ bPatch=true ]]
+then
     gitmojiko=":bug: Bug Fixes"
 else
     gitmojiko="UNRELEASED"
