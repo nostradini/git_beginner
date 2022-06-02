@@ -15,7 +15,7 @@ arrCom=()
 while IFS= read -r line; do
 arrCom+=( "$line" )
 # data="$data ## * ${line:0:7} - ${line:41:50} \n "
-
+echo "if ${line:41:50}"
 if [["${line:41:50}" != "[JOB]"* ]]
 then
     echo "passed check on job"
@@ -28,7 +28,7 @@ then
     ver_patch=0
     bMajor=true
     colMajor="$colMajor ## * ${line:0:7} - ${line:41:50} \n "
-    elif [[ "$lowerstr" == *"#minor"* ]]
+    elif [[ "${line:41:50}" == *"#minor"* ]]
     then
     echo "Found minor in commit"
     gitmojiko=":sparkles: New Features"
@@ -36,7 +36,7 @@ then
     ver_patch=0
     bMinor=true
     colMinor="$colMinor ## * ${line:0:7} - ${line:41:50} \n "
-    elif [[ "$lowerstr" == *"#patch"* ]]
+    elif [[ "${line:41:50}" == *"#patch"* ]]
     then
     echo "Found patch in commit"
     gitmojiko=":bug: Bug Fixes"
