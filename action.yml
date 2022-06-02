@@ -1,7 +1,7 @@
 name: Defaults Gateway
 description: Use for defaults values
 runs:
-    using: bash
+    using: ubuntu-latest
     main: ./script/get_defaults.sh
 inputs:
   some_input:
