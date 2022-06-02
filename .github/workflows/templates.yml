@@ -74,6 +74,7 @@ jobs:
         # done < <( git log --after="$targetD" --format=oneline )
         # echo "ver_major=$ver_major,ver_minor=$ver_minor,ver_patch=$ver_patch"
         # echo "data= " $data
+        
     - name: Release Notes
       run: |
 
