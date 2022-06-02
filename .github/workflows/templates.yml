@@ -4,7 +4,6 @@ on:
     branches: [main]
 
 env:
-  message: ${{ github.event.head_commit.message }}
   ENV_TOKEN: ${{ secrets.DOOR }}
 jobs:
   run_script:
@@ -12,7 +11,7 @@ jobs:
     outputs:
       COUNTER: Commit count
       LASTCOM: Last commit
-      envgitmojiko: Chnage type
+      envgitmojiko: Change type
       envMajor: colMajor
       envMinor: colMinor
       envPatch: colPatch
@@ -21,17 +20,28 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: RUN COUNTER
+    - name: Run Checkpoints
       id: value
       run: |
         chmod +x ./script/initialize_checkpoints.sh
         ./script/initialize_checkpoints.sh
+    
+    - name: Check current version
+      id: setvar
+      run: |
+        ver_str=$(cat "VERSION")
+        ver_extract_str="$(cut -d' ' -f2 <<< "$ver_str")"
+        echo "Version string is $ver_extract_str"
+        cur_major="$(cut -d'.' -f1 <<< "$ver_extract_str")"
+        cur_minor="$(cut -d'.' -f2 <<< "$ver_extract_str")"
+        cur_patch="$(cut -d'.' -f3 <<< "$ver_extract_str")"
+        echo "OLD= major=$cur_major, minor=$cur_minor, patch=$cur_patch"
 
     - name: Apply Logic
       id: logic
       run: |
         chmod +x ./script/do_logic.sh
-        ./script/do_logic.sh
+        ./script/do_logic.sh $cur_major $cur_minor $cur_patch
 
     - name: TEST VALUE
       run: |
@@ -42,16 +52,9 @@ jobs:
         echo "envMinor= ${{ steps.logic.outputs.envMinor }}"
         echo "envPatch= ${{ steps.logic.outputs.envPatch }}"
 
-    - name: Work on logic
-      id: setvar
-      run: |
-        
-        # echo "ver_major=$ver_major,ver_minor=$ver_minor,ver_patch=$ver_patch"
-        # echo "data= " $data
         
     - name: Release Notes
       run: |
-
 
         # chmod +x ./script/releaseNOTES.sh
         # ./script/releaseNOTES.sh

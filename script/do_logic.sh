@@ -1,5 +1,7 @@
 # !/usr/bin/bash
-
+ver_major=$1
+ver_minor=$2
+ver_patch=$3
 user="$(git log -n 1 --pretty=format:%an)"
 repo="git_beginner"
 
@@ -10,12 +12,9 @@ repo="git_beginner"
 targetD="2022-06-02T03:00:00Z"
 
 echo "Date = $targetD"
-data="# $ENV_GM date "+%F-%H-%M-%S" \n "
 arrCom=()
 while IFS= read -r line; do
 arrCom+=( "$line" )
-# data="$data ## * ${line:0:7} - ${line:41:50} \n "
-
 if [[ "${line:41:50}" != "[JOB]"* ]]
 then
     if [[ "${line:41:50}" == *"#major"* ]]
@@ -65,4 +64,7 @@ echo "::set-output name=envMajor::$colMajor"
 echo "::set-output name=envMinor::$colMinor"
 echo "::set-output name=envPatch::$colPatch"
 echo "NEW= ver_major=$ver_major,ver_minor=$ver_minor,ver_patch=$ver_patch"
+data="# $ENV_GM date "+%F-%H-%M-%S" \n "
+echo "data initial= $data"
+# data="$data ## * ${line:0:7} - ${line:41:50} \n "
 # echo "data == \n" $data
