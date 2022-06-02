@@ -1,7 +1,7 @@
 # !/usr/bin/bash
 
-USER= ${{ steps.value.outputs.USER }}
-REPO= $GITREPO
+USER=$1
+REPO= $2
 
 echo "User= $USER , REPO= $REPO"
 

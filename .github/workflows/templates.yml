@@ -32,7 +32,7 @@ jobs:
         echo "::set-output name=USER::$(git log -n 1 --pretty=format:%an)"
         echo "::set-output name=REPO::git_beginner"
         chmod +x ./script/initialize_checkpoints.sh
-        ./script/initialize_checkpoints.sh
+        ./script/initialize_checkpoints.sh ${{ steps.value.outputs.USER }} ${{ steps.value.outputs.REPO }}
 
     
     - name: TEST VALUE
@@ -41,7 +41,6 @@ jobs:
         echo "last commit= ${{ steps.value.outputs.LASTCOM }}"
         echo "git user= ${{ steps.value.outputs.USER }}"
         echo "git repo= ${{ steps.value.outputs.REPO }}"
-        echo "GITREPO:${{ steps.value.outputs.REPO }}" >> GITHUB_ENV
 
     - name: Work on logic
       id: setvar
