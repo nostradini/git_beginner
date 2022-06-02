@@ -45,8 +45,8 @@ jobs:
         chmod +x ./script/do_logic.sh
         ./script/do_logic.sh $curmajor $curminor $curpatch
 
-    - name: Release Tag
-      # run: |
+    # - name: Release Tag
+    #   run: |
       #   chmod +x ./script/releaseNOTES.sh
       #   ./script/releaseNOTES.sh
 
@@ -64,9 +64,9 @@ jobs:
     #       GITHUB_CONTEXT: ${{ toJson(github) }}
       # run: echo "$GITHUB_CONTEXT"
       
-    - name: Delete tags
-      run: |
-        echo "message= " $message
+    # - name: Delete tags
+    #   run: |
+        # echo "message= " $message
         # git config --global user.email "github-actions[bot]@users.noreply.github.com"
         # git config --global user.name "github-actions[bot]"
         # git tag -l | xargs -n 1 git push --delete origin
