@@ -10,7 +10,7 @@ jobs:
   run_script:
     runs-on: ubuntu-latest
     outputs:
-      COUNTER: ${{ steps.value.outputs.COUNTER }}
+      COUNTER: Placeholder
       description: Get commits count
     steps:
     - uses: actions/checkout@v3
