@@ -28,7 +28,7 @@ prep_data()
 EOF
 }
 
-echo "pre_data = $prep_data"
+echo "prep data= $(prep_data)"
 
 curl -i -X PUT \
 -H "Authorization: token $Env_Token" \
