@@ -22,8 +22,8 @@ prep_data()
   "path":"VERSION",
   "message":"[JOB] Push version",
   "branch":"main",
-  "sha":'$Repo_SHA',
-  "content":'$content'
+  "sha": $Repo_SHA,
+  "content": $content
   }
 EOF
 }
