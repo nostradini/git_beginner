@@ -20,22 +20,16 @@ then
     if [[ "${line:41:50}" == *"#major"* ]]
     then
     echo "Found major in commit"
-    ver_major=$((ver_major+1))
-    ver_minor=0
-    ver_patch=0
     bMajor=true
     colMajor="$colMajor ## * ${line:0:7} - ${line:41:50} \n "
     elif [[ "${line:41:50}" == *"#minor"* ]]
     then
     echo "Found minor in commit"
-    ver_minor=$((ver_minor+1))
-    ver_patch=0
     bMinor=true
     colMinor="$colMinor ## * ${line:0:7} - ${line:41:50} \n "
     elif [[ "${line:41:50}" == *"#patch"* ]]
     then
     echo "Found patch in commit"
-    ver_patch=$((ver_patch+1))
     bPatch=true
     colPatch="$colPatch ## * ${line:0:7} - ${line:41:50} \n "
     else
@@ -46,12 +40,18 @@ done < <( git log --after="$targetD" --format=oneline )
 if [[ bMajor=true ]]
 then
     gitmojiko=":boom: Breaking Changes"
+    ver_major=$((ver_major+1))
+    ver_minor=0
+    ver_patch=0
 elif [[ bMinor=true ]]
 then
     gitmojiko=":sparkles: New Features"
+    ver_minor=$((ver_minor+1))
+    ver_patch=0
 elif [[ bPatch=true ]]
 then
     gitmojiko=":bug: Bug Fixes"
+    ver_patch=$((ver_patch+1))
 else
     gitmojiko="UNRELEASED"
 fi
