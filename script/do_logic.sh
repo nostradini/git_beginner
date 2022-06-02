@@ -8,8 +8,6 @@ bMajor=false
 bMinor=false
 bPatch=false
 
-echo "curpatch= $curpatch"
-
 # targetD=$(curl \
 # -H "Accept: application/vnd.github.v3+json" \
 # https://api.github.com/repos/$user/$repo/releases/latest | jq .created_at)
@@ -17,9 +15,9 @@ echo "curpatch= $curpatch"
 targetD="2022-06-02T10:00:00Z"
 
 echo "Date = $targetD"
-arrCom=()
+# arrCom=()
 while IFS= read -r line; do
-arrCom+=( "$line" )
+# arrCom+=( "$line" )
 if [[ "${line:41:50}" != "[JOB]"* ]]
 then
     if [[ "${line:41:50}" == *"#major"* ]]

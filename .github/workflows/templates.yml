@@ -27,7 +27,6 @@ jobs:
         ./script/initialize_checkpoints.sh
     
     - name: Check current version
-      id: setvar
       run: |
         ver_str=$(cat "VERSION")
         ver_extract_str="$(cut -d' ' -f2 <<< "$ver_str")"
