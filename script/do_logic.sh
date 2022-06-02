@@ -14,35 +14,42 @@ data="# $ENV_GM date "+%F-%H-%M-%S" \n "
 arrCom=()
 while IFS= read -r line; do
 arrCom+=( "$line" )
-data="$data ## * ${line:0:7} - ${line:41:50} \n "
+# data="$data ## * ${line:0:7} - ${line:41:50} \n "
 
 if [["${line:41:50}" != "[JOB]"* ]]
     if [[ "${line:41:50}" == *"#major"* ]]
     then
     echo "Found major in commit"
-    echo "gitmojiko=:boom: Breaking Changes"
+    gitmojiko=":boom: Breaking Changes"
     ver_major=$((ver_major+1))
     ver_minor=0
     ver_patch=0
     bMajor= true
-    arrMajor="$arrMajor"
+    colMajor="$colMajor ## * ${line:0:7} - ${line:41:50} \n "
     elif [[ "$lowerstr" == *"#minor"* ]]
     then
     echo "Found minor in commit"
-    echo "gitmojiko=:sparkles: New Features"
+    gitmojiko=":sparkles: New Features"
     ver_minor=$((ver_minor+1))
     ver_patch=0
+    bMinor= true
+    colMinor="$colMinor ## * ${line:0:7} - ${line:41:50} \n "
     elif [[ "$lowerstr" == *"#patch"* ]]
     then
     echo "Found patch in commit"
-    echo "gitmojiko=:bug: Bug Fixes"
+    gitmojiko=":bug: Bug Fixes"
     ver_patch=$((ver_patch+1))
+    bPatch= true
+    colPatch="$colPatch ## * ${line:0:7} - ${line:41:50} \n "
     else
     echo "Default condition"
-    echo "gitmojiko=UNRELEASED"
+    gitmojiko="UNRELEASED"
     fi
-
+echo "gitmojiko= $gitmojiko"
+echo "colMajor= $colMajor"
+echo "colMinor= $colMinor"
+echo "colPatch= $colPatch"
 fi
 done < <( git log --after="$targetD" --format=oneline )
 
-echo "data == \n" $data
+# echo "data == \n" $data
