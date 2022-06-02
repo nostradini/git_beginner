@@ -19,5 +19,6 @@ arrCom+=( "$line" )
 done < <( git log --after="$targetD" --format=oneline )
 echo " arrCOUNT= ${#arrCom[@]}"
 echo "::set-output name=COUNTER::${#arrCom[@]}"
-lcommit=$(git log --format=%B -n 1 HEAD)
-echo "::set-output name=LASTCOM::$lcommit"
+lastCommit=$(git log --format=%B -n 1 HEAD)
+echo "Last commit = " $lastCommit
+echo "::set-output name=LASTCOM::$lastCommit"

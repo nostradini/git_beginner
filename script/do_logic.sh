@@ -18,19 +18,22 @@ echo "Date = $targetD"
 # arrCom=()
 while IFS= read -r line; do
 # arrCom+=( "$line" )
-if [[ "${line:41:50}" != "[JOB]"* ]]
+## handlle char case
+lowerstr=$(echo ${line:41:50}|tr '[:upper:]' '[:lower:]')
+echo "transformed to lower = $lowerstr"
+if [[ "${lowerstr}" != "[job]"* ]]
 then
-    if [[ "${line:41:50}" == *"#major"* ]]
+    if [[ "${lowerstr}" == *"#major"* ]]
     then
     echo "Found major in commit"
     bMajor=true
     colMajor="$colMajor ## * ${line:0:7} - ${line:41:50} \n "
-    elif [[ "${line:41:50}" == *"#minor"* ]]
+    elif [[ "${lowerstr}" == *"#minor"* ]]
     then
     echo "Found minor in commit"
     bMinor=true
     colMinor="$colMinor ## * ${line:0:7} - ${line:41:50} \n "
-    elif [[ "${line:41:50}" == *"#patch"* ]]
+    elif [[ "${lowerstr}" == *"#patch"* ]]
     then
     echo "Found patch in commit"
     bPatch=true
@@ -68,6 +71,22 @@ echo "::set-output name=envMajor::$colMajor"
 echo "::set-output name=envMinor::$colMinor"
 echo "::set-output name=envPatch::$colPatch"
 echo "NEW= ver_major=$ver_major,ver_minor=$ver_minor,ver_patch=$ver_patch"
+
+
+trLC="$LASTCOM"
+echo "trLC= $trLC"
+LenlastComm=${#trLC}
+echo "size of commit is = " $LenlastComm
+if [[ $LenlastComm -gt 50 ]]
+then
+    trimLC="${trLC:0:50}..."
+else
+    trimLC=${trLC}
+fi
+echo "trimmed = " $trimLC
+cat /dev/null > ./VERSION
+echo -n "Version $ver_major.$ver_minor.$ver_patch - $trimLC" > ./VERSION
+
 data="# $ENV_GM date "+%F-%H-%M-%S" \n "
 echo "data initial= $data"
 # data="$data ## * ${line:0:7} - ${line:41:50} \n "

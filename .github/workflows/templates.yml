@@ -45,6 +45,11 @@ jobs:
         chmod +x ./script/do_logic.sh
         ./script/do_logic.sh $curmajor $curminor $curpatch
 
+    - name: Release Tag
+      # run: |
+      #   chmod +x ./script/releaseNOTES.sh
+      #   ./script/releaseNOTES.sh
+
     - name: TEST VALUE
       run: |
         echo "commit count= ${{ steps.value.outputs.COUNTER }}"
@@ -53,16 +58,8 @@ jobs:
         echo "envMajor= ${{ steps.logic.outputs.envMajor }}"
         echo "envMinor= ${{ steps.logic.outputs.envMinor }}"
         echo "envPatch= ${{ steps.logic.outputs.envPatch }}"
-
-        
-    - name: Release Notes
-      run: |
-
-        # chmod +x ./script/releaseNOTES.sh
-        # ./script/releaseNOTES.sh
-
-
-    # - name: Dump GitHub context
+     
+    - name: Dump GitHub context
     #   env:
     #       GITHUB_CONTEXT: ${{ toJson(github) }}
       # run: echo "$GITHUB_CONTEXT"

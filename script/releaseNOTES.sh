@@ -15,26 +15,26 @@ prevtag=$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-co
 
 echo "tag = $tag , prevtag = $prevtag"
 
-targetD=$(curl \
--H "Accept: application/vnd.github.v3+json" \
-https://api.github.com/repos/nostradini/git_beginner/releases/latest | jq .created_at)
+# targetD=$(curl \
+# -H "Accept: application/vnd.github.v3+json" \
+# https://api.github.com/repos/nostradini/git_beginner/releases/latest | jq .created_at)
 
-echo "target date= $targetD"
-body="## Release $tag"
+# echo "target date= $targetD"
+# body="## Release $tag"
 
-arrCom=()
-while IFS= read -r line; do
-    arrCom+=( "$line" )
-    # echo "arrCom = " ${line:0:7}
-    # echo ${line:41:50}
-    if [[ ${line:41:50} != "run it"* ]]
-    then
-      body="$body * ${line:0:7} - ${line:41:50} \n"
-    fi
-done < <( git log --after="$targetD" --format=oneline )
+# arrCom=()
+# while IFS= read -r line; do
+#     arrCom+=( "$line" )
+#     # echo "arrCom = " ${line:0:7}
+#     # echo ${line:41:50}
+#     if [[ ${line:41:50} != "run it"* ]]
+#     then
+#       body="$body * ${line:0:7} - ${line:41:50} \n"
+#     fi
+# done < <( git log --after="$targetD" --format=oneline )
 
 
-prep_post_data()
+prep_data()
 {
   cat <<EOF
 {
