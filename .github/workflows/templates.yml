@@ -12,8 +12,7 @@ jobs:
     outputs:
       COUNTER:
       description: Get commits count
-      default: 0
-    steps:
+     steps:
     - uses: actions/checkout@v3
       with:
         fetch-depth: 0
@@ -28,8 +27,8 @@ jobs:
     - name: RUN COUNTER
       id: value
       run: |
-        chmod +x ./script/get_defaults.sh
-        ./script/get_defaults.sh
+        chmod +x ./script/initialize_checkpoints.sh
+        ./script/initialize_checkpoints.sh
     
     - name: TEST VALUE
       run: |
