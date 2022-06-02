@@ -31,8 +31,8 @@ jobs:
       run: |
         chmod +x ./script/initialize_checkpoints.sh
         ./script/initialize_checkpoints.sh
-        echo "USER= $USER"
-        echo "REPO= $REPO"
+        echo "USER= ${{ steps.value.outputs.USER }}"
+        echo "REPO= ${{ steps.value.outputs.REPO }}"
     
     - name: TEST VALUE
       run: |
