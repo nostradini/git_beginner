@@ -47,11 +47,10 @@ then
     echo "Default condition"
     gitmojiko="UNRELEASED"
     fi
-    echo "gitmojiko= $gitmojiko"
-    echo "colMajor= $colMajor"
-    echo "colMinor= $colMinor"
-    echo "colPatch= $colPatch"
 fi
 done < <( git log --after="$targetD" --format=oneline )
-
+echo "gitmojiko= $gitmojiko"
+echo "colMajor= $colMajor"
+echo "colMinor= $colMinor"
+echo "colPatch= $colPatch"
 # echo "data == \n" $data
