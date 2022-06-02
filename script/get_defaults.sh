@@ -15,5 +15,5 @@ cn=$((cn+1))
 done < <( git log --after="$targetD" --format=oneline )
 
 echo " arrCOUNT= ${#arrCom[@]} , CN= $cn"
-echo "::set-output name=arrcount::$cn"
+echo "::set-output name=COUNTER::$cn"
 # echo "data == \n" $data
