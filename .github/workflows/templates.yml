@@ -12,6 +12,10 @@ jobs:
     outputs:
       COUNTER: Commit count
       LASTCOM: Last commit
+      envgitmojiko: Chnage type
+      envMajor: colMajor
+      envMinor: colMinor
+      envPatch: colPatch
     steps:
     - uses: actions/checkout@v3
       with:
@@ -33,45 +37,15 @@ jobs:
       run: |
         echo "commit count= ${{ steps.value.outputs.COUNTER }}"
         echo "last commit= ${{ steps.value.outputs.LASTCOM }}"
+        echo "last commit= ${{ steps.logic.outputs.envgitmojiko }}"
+        echo "last commit= ${{ steps.logic.outputs.envMajor }}"
+        echo "last commit= ${{ steps.logic.outputs.envMinor }}"
+        echo "last commit= ${{ steps.logic.outputs.envPatch }}"
 
     - name: Work on logic
       id: setvar
       run: |
-        # arrCom=()
-        # while IFS= read -r line; do
-        #   arrCom+=( "$line" )
-        #   if [[ ${line:41:50} != "[JOB]"* ]]
-        #   then
-        #   lowerstr=$(echo ${line:41:50} |tr '[:upper:]' '[:lower:]')
-        #   # echo "transformed to lower = $lowerstr"
-        #   if [[ "$lowerstr" == *"#major"* ]]
-        #   then
-        #   echo "Found major in commit"
-        #   echo "gitmojiko=:boom: Breaking Changes" >> $GITHUB_ENV
-        #   ver_major=$((ver_major+1))
-        #   ver_minor=0
-        #   ver_patch=0
-        #   elif [[ "$lowerstr" == *"#minor"* ]]
-        #   then
-        #   echo "Found minor in commit"
-        #   echo "gitmojiko=:sparkles: New Features" >> $GITHUB_ENV
-        #   ver_minor=$((ver_minor+1))
-        #   ver_patch=0
-        #   elif [[ "$lowerstr" == *"#patch"* ]]
-        #   then
-        #   echo "Found patch in commit"
-        #   echo "gitmojiko=:bug: Bug Fixes" >> $GITHUB_ENV
-        #   ver_patch=$((ver_patch+1))
-        #   else
-        #   echo "Default condition"
-        #   echo "gitmojiko=:bug: Bug Fixes" >> $GITHUB_ENV
-        #   ver_patch=$((ver_patch+1))
-        #   fi
-        #   data="$data $gitmojiko \n * ${line:0:7} - ${line:41:50} \n "
-        #   fi
-        #   cn=$((cn+1))
-        #   echo "gitmojiko= ${{env.gitmojiko}}"
-        # done < <( git log --after="$targetD" --format=oneline )
+        
         # echo "ver_major=$ver_major,ver_minor=$ver_minor,ver_patch=$ver_patch"
         # echo "data= " $data
         

@@ -15,10 +15,9 @@ arrCom=()
 while IFS= read -r line; do
 arrCom+=( "$line" )
 # data="$data ## * ${line:0:7} - ${line:41:50} \n "
-echo "commit= ${line:41:50}"
+
 if [[ "${line:41:50}" != "[JOB]"* ]]
 then
-    echo "passed check on job"
     if [[ "${line:41:50}" == *"#major"* ]]
     then
     echo "Found major in commit"
@@ -53,4 +52,8 @@ echo "gitmojiko= $gitmojiko"
 echo "colMajor= $colMajor"
 echo "colMinor= $colMinor"
 echo "colPatch= $colPatch"
+echo "::set-output name=envgitmojiko::$gitmojiko"
+echo "::set-output name=envMajor::$colMajor"
+echo "::set-output name=envMinor::$colMinor"
+echo "::set-output name=envPatch::$colPatch"
 # echo "data == \n" $data
