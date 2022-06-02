@@ -1,7 +1,7 @@
 # !/usr/bin/bash
 
 USER= ${{ steps.value.outputs.USER }}
-REPO= ${{ steps.value.outputs.REPO }}
+REPO= $REPO
 
 echo "User= $USER , REPO= $REPO"
 
