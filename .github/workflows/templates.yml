@@ -31,7 +31,7 @@ jobs:
       run: |
         echo "::set-output name=USER::$(git log -n 1 --pretty=format:%an)"
         echo "::set-output name=REPO::git_beginner"
-        echo "REPO:${{ steps.value.outputs.REPO }}" >> GITHUB_ENV
+        echo "GITREPO:${{ steps.value.outputs.REPO }}" >> GITHUB_ENV
         chmod +x ./script/initialize_checkpoints.sh
         ./script/initialize_checkpoints.sh
 
