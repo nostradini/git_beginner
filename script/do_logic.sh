@@ -18,6 +18,7 @@ arrCom+=( "$line" )
 
 if [["${line:41:50}" != "[JOB]"* ]]
 then
+    echo "passed check on job"
     if [[ "${line:41:50}" == *"#major"* ]]
     then
     echo "Found major in commit"
@@ -46,10 +47,10 @@ then
     echo "Default condition"
     gitmojiko="UNRELEASED"
     fi
-echo "gitmojiko= $gitmojiko"
-echo "colMajor= $colMajor"
-echo "colMinor= $colMinor"
-echo "colPatch= $colPatch"
+    echo "gitmojiko= $gitmojiko"
+    echo "colMajor= $colMajor"
+    echo "colMinor= $colMinor"
+    echo "colPatch= $colPatch"
 fi
 done < <( git log --after="$targetD" --format=oneline )
 
