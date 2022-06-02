@@ -17,6 +17,7 @@ arrCom+=( "$line" )
 # data="$data ## * ${line:0:7} - ${line:41:50} \n "
 
 if [["${line:41:50}" != "[JOB]"* ]]
+then
     if [[ "${line:41:50}" == *"#major"* ]]
     then
     echo "Found major in commit"
