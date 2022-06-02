@@ -1,8 +1,7 @@
 name: Defaults Gateway
 description: Use for defaults values
 runs:
-  - name: Step
-    using: composite
+    using: bash
     main: ./script/get_defaults.sh
 inputs:
   some_input:
