@@ -8,6 +8,8 @@ bMajor=false
 bMinor=false
 bPatch=false
 
+echo "curpatch= $curpatch"
+
 # targetD=$(curl \
 # -H "Accept: application/vnd.github.v3+json" \
 # https://api.github.com/repos/$user/$repo/releases/latest | jq .created_at)
