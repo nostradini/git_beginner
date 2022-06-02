@@ -9,10 +9,10 @@ env:
 jobs:
   run_script:
     runs-on: ubuntu-latest
-    inputs:
-    some_input:
-      description: some input
-      required: false
+    # inputs:
+    # some_input:
+    #   description: some input
+    #   required: false
     outputs:
       COUNTER:
       description: some output
