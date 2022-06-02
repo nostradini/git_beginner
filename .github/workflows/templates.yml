@@ -35,9 +35,9 @@ jobs:
         cur_major="$(cut -d'.' -f1 <<< "$ver_extract_str")"
         cur_minor="$(cut -d'.' -f2 <<< "$ver_extract_str")"
         cur_patch="$(cut -d'.' -f3 <<< "$ver_extract_str")"
-        echo "curmajor:$cur_major" >> $GITHUB_ENV
-        echo "curminor:$cur_minor" >> $GITHUB_ENV
-        echo "curpatch:$cur_patch" >> $GITHUB_ENV
+        echo "curmajor=$cur_major" >> $GITHUB_ENV
+        echo "curminor=$cur_minor" >> $GITHUB_ENV
+        echo "curpatch=$cur_patch" >> $GITHUB_ENV
         echo "OLD= major=$cur_major, minor=$cur_minor, patch=$cur_patch"
 
     - name: Apply Logic
