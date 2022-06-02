@@ -46,6 +46,7 @@ jobs:
         ./script/do_logic.sh $curmajor $curminor $curpatch ${{ steps.value.outputs.LASTCOM }}
 
     - name: Push New Version
+      run: |
         chmod +x ./script/version_update.sh
         ./script/version_update.sh $ENV_TOKEN
 
