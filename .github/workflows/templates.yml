@@ -20,15 +20,14 @@ jobs:
         # git config --global user.name "github-actions[bot]"
         # git tag -l | xargs -n 1 git push --delete origin
         # git tag | xargs git tag -d
-    - name: Test Value
-      with:
-        COUNTER: ${{ env.COUNTER }} 
-      id: value
     - name: RUN COUNTER
+      uses: ./
+      id: value
+
+    - name: TEST VALUE
       run: |
-        chmod +x ./script/get_defaults.sh
-        ./script/get_defaults.sh
-        echo "COUNTER = $COUNTER"
+        echo "value= ${{ steps.value.outputs.COUNTER }}""
+
 
     - name: Work on logic
       id: setvar

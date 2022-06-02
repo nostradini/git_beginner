@@ -1,0 +1,12 @@
+name: Defaults Gateway
+description: Use for defaults values
+runs:
+  using: composite
+  main: ./script/get_defaults.sh
+inputs:
+  some_input:
+    description: some input
+    required: false
+outputs:
+  COUNTER:
+    description: some output
