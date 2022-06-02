@@ -21,9 +21,10 @@ jobs:
         # git tag -l | xargs -n 1 git push --delete origin
         # git tag | xargs git tag -d
     - name: Test Value
-      id: value
       with:
         COUNTER: ${{ env.COUNTER }} 
+      id: value
+    - name: RUN COUNTER
       run: |
         chmod +x ./script/get_defaults.sh
         ./script/get_defaults.sh
