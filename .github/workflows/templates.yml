@@ -10,8 +10,6 @@ jobs:
   run_script:
     runs-on: ubuntu-latest
     outputs:
-      USER: Git User
-      REPO: Git Repo
       COUNTER: Commit count
       LASTCOM: Last commit
     steps:

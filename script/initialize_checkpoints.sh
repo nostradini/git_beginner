@@ -1,7 +1,7 @@
 # !/usr/bin/bash
 
-USER::$(git log -n 1 --pretty=format:%an)"
-REPO::git_beginner"
+USER= $(git log -n 1 --pretty=format:%an)
+REPO= "git_beginner"
 
 echo "User= $USER , REPO= $REPO"
 
