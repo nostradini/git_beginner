@@ -21,3 +21,11 @@ echo " arrCOUNT= ${#arrCom[@]}"
 echo "::set-output name=COUNTER::${#arrCom[@]}"
 lcommit=$(git log --format=%B -n 1 HEAD)
 echo "::set-output name=LASTCOM::$lcommit"
+
+ver_str=$(cat "VERSION")
+ver_extract_str="$(cut -d' ' -f2 <<< "$ver_str")"
+echo "Version string is $ver_extract_str"
+ver_major="$(cut -d'.' -f1 <<< "$ver_extract_str")"
+ver_minor="$(cut -d'.' -f2 <<< "$ver_extract_str")"
+ver_patch="$(cut -d'.' -f3 <<< "$ver_extract_str")"
+echo "ver_major=$ver_major,ver_minor=$ver_minor,ver_patch=$ver_patch"
