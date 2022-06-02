@@ -30,13 +30,10 @@ jobs:
         chmod +x ./script/initialize_checkpoints.sh
         ./script/initialize_checkpoints.sh
 
-    
     - name: TEST VALUE
       run: |
         echo "commit count= ${{ steps.value.outputs.COUNTER }}"
         echo "last commit= ${{ steps.value.outputs.LASTCOM }}"
-        echo "git user= ${{ steps.value.outputs.USER }}"
-        echo "git repo= ${{ steps.value.outputs.REPO }}"
 
     - name: Work on logic
       id: setvar
