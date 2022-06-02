@@ -2,7 +2,9 @@
 
 USER= ${{ steps.value.outputs.USER }}
 REPO= ${{ steps.value.outputs.REPO }}
+
 echo "User= $USER , REPO= $REPO"
+
 # targetD=$(curl \
 # -H "Accept: application/vnd.github.v3+json" \
 # https://api.github.com/repos/$user/$repo/releases/latest | jq .created_at)
