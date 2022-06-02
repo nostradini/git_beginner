@@ -28,10 +28,11 @@ prep_data()
 EOF
 }
 
+echo "pre_data = $pre_data"
 
 curl -i -X PUT \
 -H "Authorization: token $Env_Token" \
 -H "Accept: application/vnd.github.v3+json" \
 https://api.github.com/repos/$user/$repo/contents/VERSION \
--d "$(prep_post_data)"
+-d "$(prep_data)"
  
