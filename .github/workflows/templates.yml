@@ -9,6 +9,10 @@ env:
 jobs:
   run_script:
     runs-on: ubuntu-latest
+    inputs:
+      some_input:
+        description: some input
+        required: false
     outputs:
       COUNTER:
         description: Get commits count
