@@ -10,6 +10,8 @@ jobs:
   run_script:
     runs-on: ubuntu-latest
     outputs:
+      USER: "$(git log -n 1 --pretty=format:%an)"
+      REPO: "git_beginner"
       COUNTER: Commit count
       LASTCOM: Last commit
     steps:
@@ -29,11 +31,14 @@ jobs:
       run: |
         chmod +x ./script/initialize_checkpoints.sh
         ./script/initialize_checkpoints.sh
+        echo "USER= $USER"
+        echo "REPO= $REPO"
     
     - name: TEST VALUE
       run: |
-        echo "value= ${{ steps.value.outputs.COUNTER }}"
-        echo "value= ${{ steps.value.outputs.LASTCOM }}"
+        echo "commit count= ${{ steps.value.outputs.COUNTER }}"
+        echo "last commit= ${{ steps.value.outputs.LASTCOM }}"
+
     - name: Work on logic
       id: setvar
       run: |
