@@ -3,11 +3,11 @@
 user="$(git log -n 1 --pretty=format:%an)"
 repo="git_beginner"
 
-targetD=$(curl \
--H "Accept: application/vnd.github.v3+json" \
-https://api.github.com/repos/$user/$repo/releases/latest | jq .created_at)
+# targetD=$(curl \
+# -H "Accept: application/vnd.github.v3+json" \
+# https://api.github.com/repos/$user/$repo/releases/latest | jq .created_at)
 
-# targetD="2022-06-02"
+targetD="2022-06-02T02:00:00Z"
 
 echo "Date = $targetD"
 
