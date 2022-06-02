@@ -73,7 +73,7 @@ echo "::set-output name=envPatch::$colPatch"
 echo "NEW= ver_major=$ver_major,ver_minor=$ver_minor,ver_patch=$ver_patch"
 
 
-trLC="$LASTCOM"
+trLC=$4
 echo "trLC= $trLC"
 LenlastComm=${#trLC}
 echo "size of commit is = " $LenlastComm
