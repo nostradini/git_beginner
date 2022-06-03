@@ -63,7 +63,7 @@ jobs:
         echo "envMinor=${{ steps.logic.outputs.envMinor }}" >> $GITHUB_ENV
         echo "envPatch=${{ steps.logic.outputs.envPatch }}" >> $GITHUB_ENV
         chmod +x ./script/releaseNOTES.sh
-        ./script/releaseNOTES.sh envgitmojiko envVersion
+        ./script/releaseNOTES.sh $envgitmojiko $envVersion $envMajor $envMinor $envPatch
 
     - name: TEST VALUE
       run: |
