@@ -46,7 +46,7 @@ jobs:
       id: logic
       run: |
         chmod +x ./script/do_logic.sh
-        ./script/do_logic.sh $curmajor $curminor $curpatch ${{ steps.value.outputs.LASTCOM }}
+        ./script/do_logic.sh $curmajor $curminor $curpatch "${{ steps.value.outputs.LASTCOM }}"
 
     - name: Push New Version
       run: |
@@ -56,7 +56,7 @@ jobs:
     - name: Release Tag
       run: |
         chmod +x ./script/releaseNOTES.sh
-        ./script/releaseNOTES.sh ${{ steps.logic.outputs.envgitmojiko }} ${{ steps.logic.outputs.envVersion }}
+        ./script/releaseNOTES.sh "${{ steps.logic.outputs.envgitmojiko }}" "${{ steps.logic.outputs.envVersion }}"
 
     - name: TEST VALUE
       run: |
