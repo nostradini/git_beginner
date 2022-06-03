@@ -59,7 +59,7 @@ jobs:
         echo "Major=${{ steps.logic.outputs.envMajor }}" >> $GITHUB_ENV
         echo "Minor=${{ steps.logic.outputs.envMinor }}" >> $GITHUB_ENV
         echo "Patch=${{ steps.logic.outputs.envPatch }}" >> $GITHUB_ENV
-        echo "Gitmojiko = ${{ steps.logic.outputs.envgitmojiko }}"
+        echo "Gitmojiko = $Gitmojiko"
         if [[ "${{ steps.logic.outputs.envgitmojiko }}" != "UNRELEASED" ]]
         then
         chmod +x ./script/version_update.sh
@@ -81,7 +81,7 @@ jobs:
       run: |
         echo "commit count= ${{ steps.value.outputs.COUNTER }}"
         echo "last commit= ${{ steps.value.outputs.LASTCOM }}"
-        echo "envuser= ${{ steps.value.outputs.envuser }}"
+        echo "envuser= ${{ steps.value.outputs.USER }}"
         echo "REPO= $REPO"
         echo "envgitmojiko= ${{ steps.logic.outputs.envgitmojiko }}"
         echo "envMajor= ${{ steps.logic.outputs.envMajor }}"
