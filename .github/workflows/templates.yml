@@ -47,14 +47,14 @@ jobs:
       run: |
         chmod +x ./script/do_logic.sh
         ./script/do_logic.sh $curmajor $curminor $curpatch "${{ steps.value.outputs.LASTCOM }}"
-        echo "Gitmojiko=${{ steps.logic.outputs.envgitmojiko }}" >> $GITHUB_ENV
-        echo "Version= ${{ steps.logic.outputs.envVersion }}" >> $GITHUB_ENV
-        echo "Major=${{ steps.logic.outputs.envMajor }}" >> $GITHUB_ENV
-        echo "Minor=${{ steps.logic.outputs.envMinor }}" >> $GITHUB_ENV
-        echo "Patch=${{ steps.logic.outputs.envPatch }}" >> $GITHUB_ENV
 
     - name: Push New Version
       run: |
+        echo "Gitmojiko=${{ steps.logic.outputs.envgitmojiko }}" >> $GITHUB_ENV
+        echo "Version=${{ steps.logic.outputs.envVersion }}" >> $GITHUB_ENV
+        echo "Major=${{ steps.logic.outputs.envMajor }}" >> $GITHUB_ENV
+        echo "Minor=${{ steps.logic.outputs.envMinor }}" >> $GITHUB_ENV
+        echo "Patch=${{ steps.logic.outputs.envPatch }}" >> $GITHUB_ENV
         chmod +x ./script/version_update.sh
         ./script/version_update.sh $ENV_TOKEN
 
