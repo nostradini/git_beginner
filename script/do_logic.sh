@@ -39,7 +39,7 @@ then
     bPatch=true
     colPatch="$colPatch ## * ${line:0:7} - ${line:41:50} \n "
     else
-    echo "Default condition"
+    # echo "Default condition"
     fi
 fi
 done < <( git log --after="$targetD" --format=oneline )

@@ -55,8 +55,15 @@ jobs:
 
     - name: Release Tag
       run: |
+        echo "commit count=${{ steps.value.outputs.COUNTER }}" >> $GITHUB_ENV
+        echo "last commit=${{ steps.value.outputs.LASTCOM }}" >> $GITHUB_ENV
+        echo "envgitmojiko=${{ steps.logic.outputs.envgitmojiko }}" >> $GITHUB_ENV
+        echo "envVersion= ${{ steps.logic.outputs.envVersion }}" >> $GITHUB_ENV
+        echo "envMajor=${{ steps.logic.outputs.envMajor }}" >> $GITHUB_ENV
+        echo "envMinor=${{ steps.logic.outputs.envMinor }}" >> $GITHUB_ENV
+        echo "envPatch=${{ steps.logic.outputs.envPatch }}" >> $GITHUB_ENV
         chmod +x ./script/releaseNOTES.sh
-        ./script/releaseNOTES.sh "${{ steps.logic.outputs.envgitmojiko }}" "${{ steps.logic.outputs.envVersion }}"
+        ./script/releaseNOTES.sh envgitmojiko envVersion
 
     - name: TEST VALUE
       run: |
@@ -66,7 +73,7 @@ jobs:
         echo "envMajor= ${{ steps.logic.outputs.envMajor }}"
         echo "envMinor= ${{ steps.logic.outputs.envMinor }}"
         echo "envPatch= ${{ steps.logic.outputs.envPatch }}"
-        echo "envPatch= ${{ steps.logic.outputs.envVersion }}"
+        echo "envVersion= ${{ steps.logic.outputs.envVersion }}"
      
     # - name: Dump GitHub context
     #   env:

@@ -17,17 +17,17 @@ prevtag=$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-co
 
 echo "tag = $tag , prevtag = $prevtag , new = $envVer"
 
-data="# v$envVer " && date "+%F-%H-%M-%S" && "\n "
+data="# v$envVer " && $(date "+%F-%H-%M-%S")
 echo "data initial= $data"
-data="$data \n ## $envGM \n "
+data="\n $data \n ## $envGM \n ### "
 
 prep_data()
 {
   cat <<EOF
 {
-  "tag_name": $envVer,
+  "tag_name": "$envVer",
   "target_commitish":"main" , 
-  "name": $v$envVer ,
+  "name": "v$envVer" ,
   "body": "$data" ,
   "draft":false,"prerelease":false,
   "generate_release_notes":false
