@@ -21,8 +21,8 @@ prevtag=$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-co
 
 echo "tag = $tag , prevtag = $prevtag , new = $envVer"
 
-data="# v$envVer  $(date "+%F-%H-%M-%S")"
-echo "data initial= $data"
+# data="# v$envVer  $(date "+%F-%H-%M-%S")"
+# echo "data initial= $data"
 data="$data \n ## $envGM \n ### * Major Changes \n $envMj ### * Minor Changes \n $envMn ### * Patches \n $envPt"
 
 prep_data()
@@ -31,7 +31,7 @@ prep_data()
 {
   "tag_name": "$envVer",
   "target_commitish":"main" , 
-  "name": "v$envVer" ,
+  "name": "v$envVer - $(date "+%F-%H-%M-%S")" ,
   "body": "$data" ,
   "draft":false,"prerelease":false,
   "generate_release_notes":false
@@ -41,9 +41,9 @@ EOF
 
 echo "$(prep_data)"
 
-curl \
--X POST \
--H "Authorization: token $token" \
--H "Accept: application/vnd.github.v3+json" \
-https://api.github.com/repos/$user/$repo/releases  \
--d "$(prep_data)"
+# curl \
+# -X POST \
+# -H "Authorization: token $token" \
+# -H "Accept: application/vnd.github.v3+json" \
+# https://api.github.com/repos/$user/$repo/releases  \
+# -d "$(prep_data)"
