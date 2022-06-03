@@ -12,9 +12,9 @@ envMn=$4
 envPt=$5
 
 if [[ ${#envMj} != 0 ]]
-then  MjTitle="#### - Major Changes"
+then  MjTitle="- #### Major Changes"
 elif [[ ${#envMn} != 0 ]]
-then MnTitle="#### - Minor Changes"
+then MnTitle="- #### Minor Changes"
 elif [[ ${#envPt} != 0 ]]
 then PtTitle="- #### Patches"
 fi
