@@ -13,7 +13,7 @@ bDefault=false
 # -H "Accept: application/vnd.github.v3+json" \
 # https://api.github.com/repos/$user/$repo/releases/latest | jq .created_at)
 
-targetD="2022-06-02T10:00:00Z"
+targetD="2022-06-03T02:00:00Z"
 
 echo "Date = $targetD"
 # arrCom=()
@@ -28,21 +28,21 @@ then
     then
     echo "Found major in commit"
     bMajor=true
-    colMajor="$colMajor ### - ${line:0:7} - ${line:41:50} \n "
+    colMajor="$colMajor #### * ${line:0:7} - ${line:41:50} \n "
     elif [[ "${lowerstr}" == *"#minor"* ]]
     then
     echo "Found minor in commit"
     bMinor=true
-    colMinor="$colMinor ### - ${line:0:7} - ${line:41:50} \n "
+    colMinor="$colMinor #### * ${line:0:7} - ${line:41:50} \n "
     elif [[ "${lowerstr}" == *"#patch"* ]]
     then
     echo "Found patch in commit"
     bPatch=true
-    colPatch="$colPatch ### - ${line:0:7} - ${line:41:50} \n "
+    colPatch="$colPatch #### * ${line:0:7} - ${line:41:50} \n "
     else
     # echo "Default condition"
     bDefault=true
-    colDefault="$colDefault ### * ${line:0:7} - ${line:41:50} \n "
+    colDefault="$colDefault #### * ${line:0:7} - ${line:41:50} \n "
     fi
 fi
 done < <( git log --after="$targetD" --format=oneline )
