@@ -20,9 +20,9 @@ prevtag=$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-co
 
 echo "tag = $tag , prevtag = $prevtag , new = $envVer"
 
-data="# v$envVer  $(date "+%F-%H-%M-%S") \n"
+data="# v$envVer  $(date "+%F-%H-%M-%S")"
 echo "data initial= $data"
-data="$data \n ## $envGM \n $envMj \n $envMn \n $envPt"
+data="$data \n ## $envGM \n ### * Major Changes \n $envMj \n ### * Minor Changes \n $envMn \n ### * Patches \n $envPt"
 
 prep_data()
 {

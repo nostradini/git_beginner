@@ -47,7 +47,7 @@ jobs:
       id: logic
       run: |
         chmod +x ./script/do_logic.sh
-        ./script/do_logic.sh $curmajor $curminor $curpatch "lcommit"
+        ./script/do_logic.sh $curmajor $curminor $curpatch "$lcommit"
 
     - name: Push New Version
       run: |
