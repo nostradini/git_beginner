@@ -57,7 +57,7 @@ jobs:
         echo "Minor=${{ steps.logic.outputs.envMinor }}" >> $GITHUB_ENV
         echo "Patch=${{ steps.logic.outputs.envPatch }}" >> $GITHUB_ENV
         echo "Gitmojiko = $Gitmojiko"
-        if [[ $Gitmojiko != "UNRELEASED" ]]
+        if [[ "$Gitmojiko" != "UNRELEASED" ]]
         then
         chmod +x ./script/version_update.sh
         ./script/version_update.sh $ENV_TOKEN
