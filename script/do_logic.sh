@@ -7,6 +7,7 @@ repo="git_beginner"
 bMajor=false
 bMinor=false
 bPatch=false
+bDefault=false
 
 # targetD=$(curl \
 # -H "Accept: application/vnd.github.v3+json" \
@@ -40,6 +41,8 @@ then
     colPatch="$colPatch ## * ${line:0:7} - ${line:41:50} \n "
     else
     # echo "Default condition"
+    bDefault=true
+    colDefault="$colDefault ## * ${line:0:7} - ${line:41:50} \n "
     fi
 fi
 done < <( git log --after="$targetD" --format=oneline )
