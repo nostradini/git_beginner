@@ -16,7 +16,7 @@ then  MjTitle="#### - Major Changes"
 elif [[ ${#envMn} != 0 ]]
 then MnTitle="#### - Minor Changes"
 elif [[ ${#envPt} != 0 ]]
-then PtTitle="#### - Patches"
+then PtTitle="- #### Patches"
 fi
 
 
