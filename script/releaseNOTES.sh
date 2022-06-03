@@ -1,7 +1,7 @@
 # !/usr/bin/bash
 
-user="$(git log -n 1 --pretty=format:%an)"
-repo="git_beginner"
+# user="$(git log -n 1 --pretty=format:%an)"
+# repo="git_beginner"
 token=$ENV_TOKEN
 echo "user= $user , repo= $repo"
 echo "cred = $ENV_TOKEN"
@@ -10,6 +10,7 @@ envVer=$2
 envMj=$3
 envMn=$4
 envPt=$5
+user=$6
 
 if [[ ${#envMj} != 0 ]]
 then  MjTitle="- #### Major Changes"

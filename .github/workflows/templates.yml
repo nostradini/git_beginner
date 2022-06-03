@@ -7,12 +7,14 @@ on:
 
 env:
   ENV_TOKEN: ${{ secrets.DOOR }}
+  repo: "git_beginner"
 jobs:
   run_script:
     runs-on: ubuntu-latest
     outputs:
-      COUNTER: Commit count
+      # COUNTER: Commit count
       LASTCOM: Last commit
+      envuser: GitHub User
       envgitmojiko: Change type
       envMajor: colMajor
       envMinor: colMinor
@@ -41,13 +43,14 @@ jobs:
         echo "curminor=$cur_minor" >> $GITHUB_ENV
         echo "curpatch=$cur_patch" >> $GITHUB_ENV
         echo "lcommit=${{ steps.value.outputs.LASTCOM }}" >> $GITHUB_ENV
+        echo "envUSER=${{ steps.value.outputs.envuser }}" >> $GITHUB_ENV
         echo "OLD= major=$cur_major, minor=$cur_minor, patch=$cur_patch"
 
     - name: Apply Logic
       id: logic
       run: |
         chmod +x ./script/do_logic.sh
-        ./script/do_logic.sh $curmajor $curminor $curpatch "$lcommit"
+        ./script/do_logic.sh $curmajor $curminor $curpatch "envUSER" "$lcommit"
 
     - name: Push New Version
       run: |
@@ -63,7 +66,7 @@ jobs:
         ./script/version_update.sh $ENV_TOKEN
         fi
 
-    - name: Release Tag
+    - name: Create Release
       run: |
         echo "commit count=${{ steps.value.outputs.COUNTER }}" >> $GITHUB_ENV
         echo "last commit=${{ steps.value.outputs.LASTCOM }}" >> $GITHUB_ENV
@@ -71,13 +74,14 @@ jobs:
         if [[ "$Gitmojiko" != "UNRELEASED" ]]
         then 
         chmod +x ./script/releaseNOTES.sh
-        ./script/releaseNOTES.sh "$Gitmojiko" "$Version" "$Major" "$Minor" "$Patch"
+        ./script/releaseNOTES.sh "$Gitmojiko" "$Version" "$Major" "$Minor" "$Patch" "envUSER"
         fi
 
     - name: TEST VALUE
       run: |
         echo "commit count= ${{ steps.value.outputs.COUNTER }}"
         echo "last commit= ${{ steps.value.outputs.LASTCOM }}"
+        echo "envuser= ${{ steps.value.outputs.envuser }}"
         echo "envgitmojiko= ${{ steps.logic.outputs.envgitmojiko }}"
         echo "envMajor= ${{ steps.logic.outputs.envMajor }}"
         echo "envMinor= ${{ steps.logic.outputs.envMinor }}"

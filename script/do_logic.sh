@@ -2,8 +2,8 @@
 ver_major=$1
 ver_minor=$2
 ver_patch=$3
-user="$(git log -n 1 --pretty=format:%an)"
-repo="git_beginner"
+user=$4
+# repo="git_beginner"
 bMajor=false
 bMinor=false
 bPatch=false
@@ -77,7 +77,7 @@ echo "::set-output name=envVersion::$ver_major.$ver_minor.$ver_patch"
 echo "NEW= major=$ver_major,minor=$ver_minor,patch=$ver_patch"
 
 
-trLC=$4
+trLC=$5
 echo "trLC= $trLC"
 LenlastComm=${#trLC}
 echo "size of commit is = " $LenlastComm
