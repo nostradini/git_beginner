@@ -40,13 +40,14 @@ jobs:
         echo "curmajor=$cur_major" >> $GITHUB_ENV
         echo "curminor=$cur_minor" >> $GITHUB_ENV
         echo "curpatch=$cur_patch" >> $GITHUB_ENV
+        echo "lcommit=${{ steps.value.outputs.LASTCOM }}"
         echo "OLD= major=$cur_major, minor=$cur_minor, patch=$cur_patch"
 
     - name: Apply Logic
       id: logic
       run: |
         chmod +x ./script/do_logic.sh
-        ./script/do_logic.sh $curmajor $curminor $curpatch "${{ steps.value.outputs.LASTCOM }}"
+        ./script/do_logic.sh $curmajor $curminor $curpatch "lcommit"
 
     - name: Push New Version
       run: |
