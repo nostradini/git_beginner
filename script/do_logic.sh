@@ -33,16 +33,16 @@ then
     then
     echo "Found minor in commit"
     bMinor=true
-    colMinor="$colMinor - ##### ${line:0:7} - ${line:41:50} \n "
+    colMinor="$colMinor  - ##### ${line:0:7} - ${line:41:50} \n "
     elif [[ "${lowerstr}" == *"#patch"* ]]
     then
     echo "Found patch in commit"
     bPatch=true
-    colPatch="$colPatch - ##### ${line:0:7} - ${line:41:50} \n "
+    colPatch="$colPatch  - ##### ${line:0:7} - ${line:41:50} \n "
     else
     # echo "Default condition"
     bDefault=true
-    colDefault="$colDefault - #### ${line:0:7} - ${line:41:50} \n "
+    colDefault="$colDefault  - #### ${line:0:7} - ${line:41:50} \n "
     fi
 fi
 done < <( git log --after="$targetD" --format=oneline )
@@ -74,7 +74,7 @@ echo "::set-output name=envMajor::$colMajor"
 echo "::set-output name=envMinor::$colMinor"
 echo "::set-output name=envPatch::$colPatch"
 echo "::set-output name=envVersion::$ver_major.$ver_minor.$ver_patch"
-echo "NEW= ver_major=$ver_major,ver_minor=$ver_minor,ver_patch=$ver_patch"
+echo "NEW= major=$ver_major,minor=$ver_minor,patch=$ver_patch"
 
 
 trLC=$4

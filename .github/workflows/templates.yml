@@ -56,8 +56,11 @@ jobs:
         echo "Major=${{ steps.logic.outputs.envMajor }}" >> $GITHUB_ENV
         echo "Minor=${{ steps.logic.outputs.envMinor }}" >> $GITHUB_ENV
         echo "Patch=${{ steps.logic.outputs.envPatch }}" >> $GITHUB_ENV
+        if [[ $Gitmojiko != "UNRELEASED"]]
+        then
         chmod +x ./script/version_update.sh
         ./script/version_update.sh $ENV_TOKEN
+        fi
 
     - name: Release Tag
       run: |
