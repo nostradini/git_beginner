@@ -6,6 +6,9 @@ echo "user= $user , repo= $repo"
 echo "cred = $ENV_TOKEN"
 envGM=$1
 envVer=$2
+envMj=$3
+envMn=$4
+envPt=$5
 
 # echo "$(git log --after="2022-05-31T01:16:29Z" --format=oneline)"
 
@@ -19,7 +22,7 @@ echo "tag = $tag , prevtag = $prevtag , new = $envVer"
 
 data="# v$envVer " && $(date "+%F-%H-%M-%S")
 echo "data initial= $data"
-data="\n $data \n ## $envGM \n ### "
+data="\n $data \n ## $envGM \n ### $envMj \n ### $envMn \n $envPt"
 
 prep_data()
 {
