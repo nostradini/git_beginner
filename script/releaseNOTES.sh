@@ -1,7 +1,5 @@
 # !/usr/bin/bash
 
-# user="$(git log -n 1 --pretty=format:%an)"
-# repo="git_beginner"
 token=$ENV_TOKEN
 envGM=$1
 envVer=$2
@@ -14,11 +12,13 @@ echo "user= $user , repo= $repo"
 echo "cred = $ENV_TOKEN"
 
 if [[ ${#envMj} != 0 ]]
-then  MjTitle="- #### Major Changes"
-elif [[ ${#envMn} != 0 ]]
-then MnTitle="- #### Minor Changes"
-elif [[ ${#envPt} != 0 ]]
-then PtTitle="- #### Patches"
+then  MjTitle="\n - #### Major Changes"
+fi
+if [[ ${#envMn} != 0 ]]
+then MnTitle="\n - #### Minor Changes"
+fi
+if [[ ${#envPt} != 0 ]]
+then PtTitle="\n - #### Patches"
 fi
 
 
@@ -28,9 +28,9 @@ https://api.github.com/repos/$user/$repo/releases/latest | jq .tag_name)
 
 prevtag=$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-count=1))
 
-echo "tag = $tag , prevtag = $prevtag , new = $envVer"
+echo "prevtag = $prevtag , tag = $tag , new = $envVer"
 
-data="### $envGM \n $MjTitle \n $envMj $MnTitle \n $envMn $PtTitle \n $envPt"
+data="### $envGM $MjTitle $envMj $MnTitle $envMn $PtTitle $envPt"
 
 prep_data()
 {
