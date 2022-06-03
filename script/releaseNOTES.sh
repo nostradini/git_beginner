@@ -12,11 +12,11 @@ envMn=$4
 envPt=$5
 
 if [[ ${#envMj} != 0 ]]
-then  MjTitle="Major Changes"
+then  MjTitle="#### - Major Changes"
 elif [[ ${#envMn} != 0 ]]
-then MnTitle="Minor Changes"
+then MnTitle="#### - Minor Changes"
 elif [[ ${#envPt} != 0 ]]
-then PtTitle="Patches"
+then PtTitle="#### - Patches"
 fi
 
 
@@ -28,7 +28,7 @@ prevtag=$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-co
 
 echo "tag = $tag , prevtag = $prevtag , new = $envVer"
 
-data="### $envGM \n #### - $MjTitle \n $envMj #### - $MnTitle \n $envMn #### - $PtTitle \n $envPt"
+data="### $envGM \n $MjTitle \n $envMj $MnTitle \n $envMn $PtTitle \n $envPt"
 
 prep_data()
 {
