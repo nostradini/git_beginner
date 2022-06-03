@@ -11,7 +11,14 @@ envMj=$3
 envMn=$4
 envPt=$5
 
-# echo "$(git log --after="2022-05-31T01:16:29Z" --format=oneline)"
+if [[ ${#envMj} != 0 ]]
+then  MjTitle="Major Changes"
+elif [[ ${#envMn} != 0 ]]
+then MnTitle="Minor Changes"
+elif [[ ${#envPt} != 0 ]]
+then PtTitle="Patches"
+fi
+
 
 tag=$(curl \
 -H "Accept: application/vnd.github.v3+json" \
@@ -21,9 +28,7 @@ prevtag=$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-co
 
 echo "tag = $tag , prevtag = $prevtag , new = $envVer"
 
-# data="# v$envVer  $(date "+%F-%H-%M-%S")"
-# echo "data initial= $data"
-data="### $envGM \n ### - Major Changes \n $envMj ### - Minor Changes \n $envMn ### - Patches \n $envPt"
+data="### $envGM \n #### - $MjTitle \n $envMj #### - $MnTitle \n $envMn #### - $PtTitle \n $envPt"
 
 prep_data()
 {
