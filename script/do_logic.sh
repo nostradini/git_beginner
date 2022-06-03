@@ -17,6 +17,8 @@ https://api.github.com/repos/$user/$repo/releases/latest | jq .created_at)
 # targetD="2022-06-03T02:00:00Z"
 
 echo "Date = $targetD"
+echo "User= $USER , REPO= $REPO"
+
 # arrCom=()
 while IFS= read -r line; do
 # arrCom+=( "$line" )

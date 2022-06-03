@@ -3,7 +3,6 @@
 USER="$(git log -n 1 --pretty=format:%an)"
 # REPO="git_beginner"
 
-echo "User= $USER , REPO= $REPO"
 
 # targetD=$(curl \
 # -H "Accept: application/vnd.github.v3+json" \
