@@ -50,7 +50,7 @@ jobs:
       id: logic
       run: |
         chmod +x ./script/do_logic.sh
-        ./script/do_logic.sh $curmajor $curminor $curpatch "envUSER" "$lcommit" $REPO
+        ./script/do_logic.sh $curmajor $curminor $curpatch "${{ steps.value.outputs.USER }}" "$lcommit" $REPO
 
     - name: Push New Version
       run: |
@@ -59,7 +59,7 @@ jobs:
         echo "Major=${{ steps.logic.outputs.envMajor }}" >> $GITHUB_ENV
         echo "Minor=${{ steps.logic.outputs.envMinor }}" >> $GITHUB_ENV
         echo "Patch=${{ steps.logic.outputs.envPatch }}" >> $GITHUB_ENV
-        echo "Gitmojiko = $Gitmojiko"
+        echo "Gitmojiko = ${{ steps.logic.outputs.envgitmojiko }}"
         if [[ "${{ steps.logic.outputs.envgitmojiko }}" != "UNRELEASED" ]]
         then
         chmod +x ./script/version_update.sh
