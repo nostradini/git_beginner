@@ -14,7 +14,7 @@ jobs:
     outputs:
       # COUNTER: Commit count
       LASTCOM: Last commit
-      envuser: GitHub User
+      USER: GitHub User
       envgitmojiko: Change type
       envMajor: colMajor
       envMinor: colMinor
@@ -43,7 +43,7 @@ jobs:
         echo "curminor=$cur_minor" >> $GITHUB_ENV
         echo "curpatch=$cur_patch" >> $GITHUB_ENV
         echo "lcommit=${{ steps.value.outputs.LASTCOM }}" >> $GITHUB_ENV
-        echo "envUSER=${{ steps.value.outputs.envuser }}" >> $GITHUB_ENV
+        echo "envUSER=${{ steps.value.outputs.USER }}" >> $GITHUB_ENV
         echo "OLD= major=$cur_major, minor=$cur_minor, patch=$cur_patch"
 
     - name: Apply Logic
