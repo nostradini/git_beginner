@@ -17,6 +17,7 @@ jobs:
       envMajor: colMajor
       envMinor: colMinor
       envPatch: colPatch
+      envVersion: New version
     steps:
     - uses: actions/checkout@v3
       with:
@@ -52,10 +53,10 @@ jobs:
         chmod +x ./script/version_update.sh
         ./script/version_update.sh $ENV_TOKEN
 
-    # - name: Release Tag
-    #   run: |
-      #   chmod +x ./script/releaseNOTES.sh
-      #   ./script/releaseNOTES.sh
+    - name: Release Tag
+      run: |
+        chmod +x ./script/releaseNOTES.sh
+        ./script/releaseNOTES.sh ${{ steps.logic.outputs.envgitmojiko }} ${{ steps.logic.outputs.envVersion }}
 
     - name: TEST VALUE
       run: |
@@ -65,6 +66,7 @@ jobs:
         echo "envMajor= ${{ steps.logic.outputs.envMajor }}"
         echo "envMinor= ${{ steps.logic.outputs.envMinor }}"
         echo "envPatch= ${{ steps.logic.outputs.envPatch }}"
+        echo "envPatch= ${{ steps.logic.outputs.envVersion }}"
      
     # - name: Dump GitHub context
     #   env:

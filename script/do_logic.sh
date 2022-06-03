@@ -70,6 +70,7 @@ echo "::set-output name=envgitmojiko::$gitmojiko"
 echo "::set-output name=envMajor::$colMajor"
 echo "::set-output name=envMinor::$colMinor"
 echo "::set-output name=envPatch::$colPatch"
+echo "::set-output name=envVersion::$ver_major.$ver_minor.$ver_patch"
 echo "NEW= ver_major=$ver_major,ver_minor=$ver_minor,ver_patch=$ver_patch"
 
 
@@ -86,8 +87,3 @@ fi
 echo "trimmed = " $trimLC
 cat /dev/null > ./VERSION
 echo -n "Version $ver_major.$ver_minor.$ver_patch - $trimLC" > ./VERSION
-
-data="# $ENV_GM date "+%F-%H-%M-%S" \n "
-echo "data initial= $data"
-# data="$data ## * ${line:0:7} - ${line:41:50} \n "
-# echo "data == \n" $data

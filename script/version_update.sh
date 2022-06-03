@@ -7,7 +7,6 @@ Repo_SHA=$(curl -H "Authorization: token $Env_Token" \
 -X GET https://api.github.com/repos/$user/$repo/contents/VERSION | jq .sha)
 
 echo "This is repo_sha = " $Repo_SHA
-
 UpdatedVer=$(cat ./VERSION)
 echo "Updated Version = " $UpdatedVer
 content=$(echo $UpdatedVer | base64)
@@ -28,7 +27,7 @@ prep_data()
 EOF
 }
 
-echo "prep data= $(prep_data)"
+# echo "prep data= $(prep_data)"
 
 curl -i -X PUT \
 -H "Authorization: token $Env_Token" \
