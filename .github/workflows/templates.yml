@@ -50,7 +50,7 @@ jobs:
       id: logic
       run: |
         chmod +x ./script/do_logic.sh
-        ./script/do_logic.sh $curmajor $curminor $curpatch "${{ steps.value.outputs.USER }}" "$lcommit" $REPO
+        ./script/do_logic.sh $curmajor $curminor $curpatch "$envUSER" "$lcommit" $REPO
 
     - name: Push New Version
       run: |
