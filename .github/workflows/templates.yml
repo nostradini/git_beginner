@@ -63,7 +63,7 @@ jobs:
         if [[ "${{ steps.logic.outputs.envgitmojiko }}" != "UNRELEASED" ]]
         then
         chmod +x ./script/version_update.sh
-        ./script/version_update.sh $ENV_TOKEN "envUSER" $REPO
+        ./script/version_update.sh $ENV_TOKEN "$envUSER" $REPO
         fi
 
     - name: Create Release
@@ -74,7 +74,7 @@ jobs:
         if [[ "$Gitmojiko" != "UNRELEASED" ]]
         then 
         chmod +x ./script/releaseNOTES.sh
-        ./script/releaseNOTES.sh "$Gitmojiko" "$Version" "$Major" "$Minor" "$Patch" "envUSER" $REPO
+        ./script/releaseNOTES.sh "$Gitmojiko" "$Version" "$Major" "$Minor" "$Patch" "$envUSER" $REPO
         fi
 
     - name: TEST VALUE
