@@ -3,7 +3,8 @@ ver_major=$1
 ver_minor=$2
 ver_patch=$3
 user=$4
-# repo="git_beginner"
+trLC=$5
+repo=$6
 bMajor=false
 bMinor=false
 bPatch=false
@@ -76,8 +77,6 @@ echo "::set-output name=envPatch::$colPatch"
 echo "::set-output name=envVersion::$ver_major.$ver_minor.$ver_patch"
 echo "NEW= major=$ver_major,minor=$ver_minor,patch=$ver_patch"
 
-
-trLC=$5
 echo "trLC= $trLC"
 LenlastComm=${#trLC}
 echo "size of commit is = " $LenlastComm

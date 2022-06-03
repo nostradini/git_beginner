@@ -7,7 +7,7 @@ on:
 
 env:
   ENV_TOKEN: ${{ secrets.DOOR }}
-  repo: "git_beginner"
+  REPO: "git_beginner"
 jobs:
   run_script:
     runs-on: ubuntu-latest
@@ -50,7 +50,7 @@ jobs:
       id: logic
       run: |
         chmod +x ./script/do_logic.sh
-        ./script/do_logic.sh $curmajor $curminor $curpatch "envUSER" "$lcommit"
+        ./script/do_logic.sh $curmajor $curminor $curpatch "envUSER" "$lcommit" $REPO
 
     - name: Push New Version
       run: |
@@ -63,7 +63,7 @@ jobs:
         if [[ "${{ steps.logic.outputs.envgitmojiko }}" != "UNRELEASED" ]]
         then
         chmod +x ./script/version_update.sh
-        ./script/version_update.sh $ENV_TOKEN
+        ./script/version_update.sh $ENV_TOKEN "envUSER" $REPO
         fi
 
     - name: Create Release
@@ -74,7 +74,7 @@ jobs:
         if [[ "$Gitmojiko" != "UNRELEASED" ]]
         then 
         chmod +x ./script/releaseNOTES.sh
-        ./script/releaseNOTES.sh "$Gitmojiko" "$Version" "$Major" "$Minor" "$Patch" "envUSER"
+        ./script/releaseNOTES.sh "$Gitmojiko" "$Version" "$Major" "$Minor" "$Patch" "envUSER" $REPO
         fi
 
     - name: TEST VALUE

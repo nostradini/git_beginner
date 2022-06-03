@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 Env_Token=$1
-user="$(git log -n 1 --pretty=format:%an)"
-repo="git_beginner"
+user=$2
+repo=$3
 
 Repo_SHA=$(curl -H "Authorization: token $Env_Token" \
 -X GET https://api.github.com/repos/$user/$repo/contents/VERSION | jq .sha)
