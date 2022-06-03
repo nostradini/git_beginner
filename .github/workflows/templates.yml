@@ -40,7 +40,7 @@ jobs:
         echo "curmajor=$cur_major" >> $GITHUB_ENV
         echo "curminor=$cur_minor" >> $GITHUB_ENV
         echo "curpatch=$cur_patch" >> $GITHUB_ENV
-        echo "lcommit=${{ steps.value.outputs.LASTCOM }}"
+        echo "lcommit=${{ steps.value.outputs.LASTCOM }}" >> $GITHUB_ENV
         echo "OLD= major=$cur_major, minor=$cur_minor, patch=$cur_patch"
 
     - name: Apply Logic
