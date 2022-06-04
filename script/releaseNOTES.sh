@@ -12,13 +12,13 @@ echo "user= $user , repo= $repo"
 echo "cred = $ENV_TOKEN"
 
 if [[ ${#envMj} != 0 ]]
-then  MjTitle="\n - #### Major Changes"
+then  MjTitle="\n - #### Major Changes  "
 fi
 if [[ ${#envMn} != 0 ]]
-then MnTitle="\n - #### Minor Changes"
+then MnTitle="\n - #### Minor Changes  "
 fi
 if [[ ${#envPt} != 0 ]]
-then PtTitle="\n - #### Patches"
+then PtTitle="\n - #### Patches  "
 fi
 
 
