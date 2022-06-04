@@ -32,21 +32,21 @@ then
     then
     echo "Found major in commit"
     bMajor=true
-    colMajor="$colMajor \n    - ##### ${line:0:7} - ${line:41:50}  \n"
+    colMajor="$colMajor \n    - ##### ${line:0:7} - ${line:41:50} \n"
     elif [[ "${lowerstr}" == *"#minor"* ]]
     then
     echo "Found minor in commit"
     bMinor=true
-    colMinor="$colMinor \n    - ##### ${line:0:7} - ${line:41:50}  \n"
+    colMinor="$colMinor \n    - ##### ${line:0:7} - ${line:41:50} \n"
     elif [[ "${lowerstr}" == *"#patch"* ]]
     then
     echo "Found patch in commit"
     bPatch=true
-    colPatch="$colPatch \n    - ##### ${line:0:7} - ${line:41:50}  \n"
+    colPatch="$colPatch \n    - ##### ${line:0:7} - ${line:41:50} \n"
     else
     # echo "Default condition"
     bDefault=true
-    colDefault="$colDefault \n    - #### ${line:0:7} - ${line:41:50}  \n"
+    colDefault="$colDefault \n    - #### ${line:0:7} - ${line:41:50} \n"
     fi
 fi
 done < <( git log --after="$targetD" --format=oneline )
