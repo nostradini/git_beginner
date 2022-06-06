@@ -14,14 +14,17 @@ echo "cred = $ENV_TOKEN"
 if [[ ${#envMj} != 0 ]]
 then 
 MjTitle="\n - #### Major Changes  "
+$envMj=$(echo $envMj | sed 's/#major//g')
 fi
 if [[ ${#envMn} != 0 ]]
 then
 MnTitle="\n - #### Minor Changes  "
-$envMn=$(echo "$envMn" | sed 's/#patch//g')
+$envMn=$(echo $envMn | sed 's/#minor//g')
 fi
 if [[ ${#envPt} != 0 ]]
-then PtTitle="\n - #### Patches  "
+then
+PtTitle="\n - #### Patches  "
+$envPt=$(echo $envPt | sed 's/#patch//g')
 fi
 
 
