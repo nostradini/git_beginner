@@ -4,7 +4,7 @@ user=$2
 repo=$3
 cl=$4
 
-if[[ $cl == $false ]]
+if [[ $cl == $false ]]
 then
 path="VERSION"
 UpdatedVer=$(cat ./VERSION)
