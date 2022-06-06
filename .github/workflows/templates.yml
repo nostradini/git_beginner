@@ -83,11 +83,12 @@ jobs:
     - name: Create CHANGELOG
       run: |
         echo "clDATA=${{ steps.data.outputs.DATA }}"
+        echo "clDATA=${{ steps.data.outputs.DATA }}" >> $GITHUB_ENV
         echo "Gitmojiko = $Gitmojiko"
         if [[ "$Gitmojiko" != "UNRELEASED" ]]
         then 
         chmod +x ./script/version_update.sh
-        ./script/version_update.sh $ENV_TOKEN $envUSER $REPO $true "${{ steps.data.outputs.DATA }}"
+        ./script/version_update.sh $ENV_TOKEN $envUSER $REPO $true "$clDATA"
         fi
 
     - name: TEST VALUE
