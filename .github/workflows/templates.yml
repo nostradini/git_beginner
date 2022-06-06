@@ -3,7 +3,8 @@ on:
   push:
     branches: [main]
     paths-ignore:
-     - 'VERSION','CHANGELOG.md'
+     - 'VERSION'
+     - 'CHANGELOG.md'
 
 env:
   ENV_TOKEN: ${{ secrets.DOOR }}
