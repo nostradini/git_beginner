@@ -13,7 +13,6 @@ jobs:
   run_script:
     runs-on: ubuntu-latest
     outputs:
-      # Data: Content
       LASTCOM: Last commit
       USER: GitHub User
       envgitmojiko: Change type
@@ -61,23 +60,22 @@ jobs:
         echo "Minor=${{ steps.logic.outputs.envMinor }}" >> $GITHUB_ENV
         echo "Patch=${{ steps.logic.outputs.envPatch }}" >> $GITHUB_ENV
         echo "Gitmojiko = ${{ steps.logic.outputs.envgitmojiko }}"
-        if [[ "${{ steps.logic.outputs.envgitmojiko }}" != "UNRELEASED" ]]
-        then
-        chmod +x ./script/version_update.sh
-        ./script/version_update.sh $ENV_TOKEN "$envUSER" $REPO 0
-        fi
+        # if [[ "${{ steps.logic.outputs.envgitmojiko }}" != "UNRELEASED" ]]
+        # then
+        # chmod +x ./script/version_update.sh
+        # ./script/version_update.sh $ENV_TOKEN "$envUSER" $REPO 0
+        # fi
 
     - name: Create Release
-      id: data
       run: |
         echo "commit count=${{ steps.value.outputs.COUNTER }}" >> $GITHUB_ENV
         echo "last commit=${{ steps.value.outputs.LASTCOM }}" >> $GITHUB_ENV
         echo "Gitmojiko = $Gitmojiko"
-        if [[ "$Gitmojiko" != "UNRELEASED" ]]
-        then 
-        chmod +x ./script/releaseNOTES.sh
-        ./script/releaseNOTES.sh "$Gitmojiko" "$Version" "$Major" "$Minor" "$Patch" "$envUSER" $REPO
-        fi
+        # if [[ "$Gitmojiko" != "UNRELEASED" ]]
+        # then 
+        # chmod +x ./script/releaseNOTES.sh
+        # ./script/releaseNOTES.sh "$Gitmojiko" "$Version" "$Major" "$Minor" "$Patch" "$envUSER" $REPO
+        # fi
 
 
     - name: Create CHANGELOG
