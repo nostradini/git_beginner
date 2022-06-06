@@ -18,7 +18,7 @@ fi
 if [[ ${#envMn} != 0 ]]
 then
 MnTitle="\n - #### Minor Changes  "
-$envMn=$(echo '$envMn' | tr -d '#patch')
+$envMn=$(echo "$envMn" | tr -d "#patch")
 fi
 if [[ ${#envPt} != 0 ]]
 then PtTitle="\n - #### Patches  "
