@@ -81,7 +81,7 @@ jobs:
 
     - name: Create CHANGELOG
       run: |
-        echo "clDATA=${{ steps.data.outputs.DATA }}
+        echo "clDATA=${{ steps.data.outputs.DATA }}"
         echo "Gitmojiko = $Gitmojiko"
         if [[ "$Gitmojiko" != "UNRELEASED" ]]
         then 
