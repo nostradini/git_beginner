@@ -10,7 +10,7 @@ path="VERSION"
 UpdatedVer=$(cat ./$path)
 else
 path="CHANGELOG.md"
-UpdatedVer="$5"
+UpdatedVer=$5
 fi
 echo $path
 
