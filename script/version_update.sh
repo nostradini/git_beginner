@@ -26,7 +26,7 @@ then
 
   if [[ ${#envMj} != 0 ]]
   then 
-  MjTitle="\n - #### Major Changes  "
+  MjTitle=" - #### Major Changes  "
   $envMj=$(echo '$envMj' | sed 's/#major//g')
   fi
   if [[ ${#envMn} != 0 ]]
@@ -36,10 +36,10 @@ then
   fi
   if [[ ${#envPt} != 0 ]]
   then
-  PtTitle="\n - #### Patches  "
-  $envPt=$(echo '$envPt' | sed 's/#patch//g')
+  PtTitle="</br> - #### Patches  "
+  $envPt="$(echo '$envPt' | sed 's/#patch//g')"
   fi
-  
+
   UpdatedVer="### $envGM $MjTitle $envMj $MnTitle $envMn $PtTitle $envPt"
 
 fi
