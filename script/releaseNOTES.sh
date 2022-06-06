@@ -35,7 +35,7 @@ echo "prevtag = $prevtag , tag = $tag , new = $envVer"
 
 data="### $envGM $MjTitle $envMj $MnTitle $envMn $PtTitle $envPt"
 
-echo "::set-output name=DAT::$data"
+echo "::set-output name=DATA::$data"
 
 prep_data()
 {
