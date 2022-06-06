@@ -89,7 +89,7 @@ jobs:
         if [[ "$Gitmojiko" != "UNRELEASED" ]]
         then 
         chmod +x ./script/version_update.sh
-        ./script/version_update.sh $ENV_TOKEN $envUSER $REPO $true "$clDATA"
+        ./script/version_update.sh $ENV_TOKEN "$envUSER" $REPO "$true" "${{ steps.data.outputs.DATA }}"
         fi
 
     - name: TEST VALUE
