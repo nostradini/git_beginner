@@ -7,12 +7,10 @@ cl=$4
 if [[ $cl == $false ]]
 then
 path="VERSION"
-UpdatedVer=$(cat ./VERSION)
 else
 path="CHANGELOG.md"
-UpdatedVer="testing"
 fi
-
+UpdatedVer=$(cat ./$path)
 Repo_SHA=$(curl -H "Authorization: token $Env_Token" \
 -X GET https://api.github.com/repos/$user/$repo/contents/$path | jq .sha)
 
