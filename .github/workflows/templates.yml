@@ -13,7 +13,7 @@ jobs:
   run_script:
     runs-on: ubuntu-latest
     outputs:
-      Data: Content
+      # Data: Content
       LASTCOM: Last commit
       USER: GitHub User
       envgitmojiko: Change type
@@ -64,7 +64,7 @@ jobs:
         if [[ "${{ steps.logic.outputs.envgitmojiko }}" != "UNRELEASED" ]]
         then
         chmod +x ./script/version_update.sh
-        ./script/version_update.sh $ENV_TOKEN "$envUSER" $REPO $false
+        ./script/version_update.sh $ENV_TOKEN "$envUSER" $REPO 0
         fi
 
     - name: Create Release
@@ -82,14 +82,11 @@ jobs:
 
     - name: Create CHANGELOG
       run: |
-        echo "clDATA= ${{ steps.data.outputs.DATA }}"
-        echo "clDATA=${{ steps.data.outputs.DATA }}" >> $GITHUB_ENV
-        echo "clDATA2= $clDATA"
         echo "Gitmojiko = $Gitmojiko"
         if [[ "$Gitmojiko" != "UNRELEASED" ]]
         then 
         chmod +x ./script/version_update.sh
-        ./script/version_update.sh $ENV_TOKEN "$envUSER" $REPO "$true" "${{ steps.data.outputs.DATA }}"
+        ./script/version_update.sh $ENV_TOKEN "$envUSER" $REPO 1 "$Gitmojiko" "$Version" "$Major" "$Minor" "$Patch"
         fi
 
     - name: TEST VALUE

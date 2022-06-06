@@ -3,15 +3,47 @@ Env_Token=$1
 user=$2
 repo=$3
 cl=$4
+envGM=$5
+envVer=$6
+envMj=$7
+envMn=$8
+envPt=$9
 
-if [[ $cl == $false ]]
+echo "cl=$4"
+echo "envGM=$5"
+echo "envVer=$6"
+echo "envMj=$7"
+echo "envMn=$8"
+echo "envPt=$9"
+
+if [[ $cl == 0 ]]
 then
-path="VERSION"
-UpdatedVer=$(cat ./$path)
-else
-path="CHANGELOG.md"
-UpdatedVer=$5
+  path="VERSION"
+  UpdatedVer=$(cat ./$path)
+elif [[ $cl == 1 ]]
+then
+  path="CHANGELOG.md"
+
+  if [[ ${#envMj} != 0 ]]
+  then 
+  MjTitle="\n - #### Major Changes  "
+  $envMj=$(echo '$envMj' | sed 's/#major//g')
+  fi
+  if [[ ${#envMn} != 0 ]]
+  then
+  MnTitle="\n - #### Minor Changes  "
+  $envMn=$(echo '$envMn' | sed 's/#minor//g')
+  fi
+  if [[ ${#envPt} != 0 ]]
+  then
+  PtTitle="\n - #### Patches  "
+  $envPt=$(echo '$envPt' | sed 's/#patch//g')
+  fi
+  
+  UpdatedVer="### $envGM $MjTitle $envMj $MnTitle $envMn $PtTitle $envPt"
+
 fi
+
 echo $path
 
 Repo_SHA=$(curl -H "Authorization: token $Env_Token" \
