@@ -18,7 +18,7 @@ fi
 if [[ ${#envMn} != 0 ]]
 then
 MnTitle="\n - #### Minor Changes  "
-$envMn=$(echo "$envMn" | tr -d "#patch")
+$envMn=$(echo "$envMn" | tr -d '#patch')
 fi
 if [[ ${#envPt} != 0 ]]
 then PtTitle="\n - #### Patches  "
@@ -34,6 +34,8 @@ prevtag=$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-co
 echo "prevtag = $prevtag , tag = $tag , new = $envVer"
 
 data="### $envGM $MjTitle $envMj $MnTitle $envMn $PtTitle $envPt"
+
+echo "::set-output name=DAT::$data"
 
 prep_data()
 {
