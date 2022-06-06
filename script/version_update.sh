@@ -30,7 +30,7 @@ prep_data()
   cat <<EOF
 {
   "path": "$path",
-  "message":"[JOB] Push version",
+  "message":"[JOB] Push $path update",
   "branch":"main",
   "sha": $Repo_SHA,
   "content": $content
