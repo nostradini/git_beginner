@@ -23,6 +23,7 @@ echo "Date = $targetD"
 
 arrCom=()
 while IFS= read -r line; do
+arrCom+=( "$line" )
 lowerstr=$(echo ${line:41:50}|tr '[:upper:]' '[:lower:]')
 echo "transformed to lower = $lowerstr"
 if [[ "${lowerstr}" != "[job]"* ]]
@@ -73,7 +74,8 @@ echo "colMajor= $colMajor"
 echo "colMinor= $colMinor"
 echo "colPatch= $colPatch"
 
-echo "NEW= major=$ver_major,minor=$ver_minor,patch=$ver_patch"
+newVER="$ver_major.$ver_minor.$ver_patch"
+echo "newVer= $newVER"
 
 if [[ ${#envMj} != 0 ]]
 then 
@@ -91,7 +93,7 @@ PtTitle="<br><h3>Patches<h3/>"
 $envPt=$(echo '$envPt' | sed 's/#patch//g')
 fi
 
-content="<h1>CHANGELOG <h1/><br>
+content="<h1>CHANGELOG <h1/><br/>$newVER<br/>
 <h2>$gitmojiko<h2/><br>
 $MjTitle $colMajor
 $MnTitle $colMinor
