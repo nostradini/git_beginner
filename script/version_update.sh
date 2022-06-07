@@ -36,7 +36,7 @@ then
   fi
   if [[ ${#envPt} != 0 ]]
   then
-  PtTitle="<br /> <h2>Patches</h2/>  "
+  PtTitle="<br /> <h4>Patches</h4>  "
   $envPt="$(echo '$envPt' | sed 's/#patch//g')"
   fi
 
