@@ -40,7 +40,7 @@ then
   $envPt="$(echo '$envPt' | sed 's/#patch//g')"
   fi
 
-  UpdatedVer="### $envGM $MjTitle $envMj $MnTitle $envMn $PtTitle $envPt"
+  UpdatedVer="# CHNAGELOG <br /> ### $envGM $MjTitle $envMj $MnTitle $envMn $PtTitle $envPt"
 
 fi
 
