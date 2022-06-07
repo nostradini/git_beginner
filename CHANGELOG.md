@@ -1,1 +1,1 @@
-# CHNAGELOG <br /> ### :bug: Bug Fixes <br /> &nbsp; &nbsp; #### Patches \n - ##### 9ca121d - #patch 333 \n \n - ##### b422f44 - #patch more \n \n - ##### 0368769 - #patch 12222 \n
+# CHNAGELOG <br /> ### :bug: Bug Fixes <br /> <h2>Patches</h2/> \n - ##### 00f4c7c - #patch 444 \n \n - ##### 9ca121d - #patch 333 \n \n - ##### b422f44 - #patch more \n \n - ##### 0368769 - #patch 12222 \n
