@@ -29,17 +29,17 @@ then
     then
     # echo "Found major in commit"
     bMajor=true
-    colMajor="$colMajor <li><a href='https://github.com/$user/$repo/commit/$line[0]'> ${line:0:7} </a> - ${line:41:50} </li><br>"
+    colMajor="$colMajor <li><a href='https://github.com/$user/$repo/commit/${line:0:7}'> ${line:0:7} </a> - ${line:41:50} </li><br>"
     elif [[ "${lowerstr}" == *"#minor"* ]]
     then
     # echo "Found minor in commit"
     bMinor=true
-    colMinor="$colMinor <li><a href='https://github.com/$user/$repo/commit/$line[0]'> ${line:0:7} </a> - ${line:41:50} </li><br>"
+    colMinor="$colMinor <li><a href='https://github.com/$user/$repo/commit/${line:0:7}'> ${line:0:7} </a> - ${line:41:50} </li><br>"
     elif [[ "${lowerstr}" == *"#patch"* ]]
     then
     # echo "Found patch in commit"
     bPatch=true
-    colPatch="$colPatch <li><a href='https://github.com/$user/$repo/commit/$line[0]'> ${line:0:7} </a> - ${line:41:50} </li><br>"
+    colPatch="$colPatch <li><a href='https://github.com/$user/$repo/commit/${line:0:7}'> ${line:0:7} </a> - ${line:41:50} </li><br>"
     else
     # echo "Default condition"
     bDefault=true
