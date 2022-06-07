@@ -74,7 +74,7 @@ echo "colPatch= $colPatch"
 newVER="v$ver_major.$ver_minor.$ver_patch"
 echo "newVer= $newVER"
 
-if [[ ${#colvMajor} != 0 ]]
+if [[ ${#colMajor} != 0 ]]
 then 
     MjTitle="<br><h3>Major Changes</h3><br><ul>"
     colvMj="<h5>$colvMj</h5></ul>"
@@ -82,7 +82,7 @@ then
 fi
 if [[ ${#colMinor} != 0 ]]
 then
-    if [[ ${#colvMajor} != 0  ]]
+    if [[ ${#colMajor} != 0  ]]
     then
     MnTitle="<h3>Minor Changes</h3><br><ul>"
     else
@@ -102,7 +102,7 @@ then
 fi
 
 echo "MjTitle=$MjTitle,MnTitle=$MnTitle,PtTitle=$PtTitle"
-content="<h1>CHANGELOG</h1><br><h2>$newVER - $(date "+%F%H%M%S")</h2><br><h3>$gitmojiko</h3>$MjTitle $colMajor $MnTitle $colMinor $PtTitle $colPatch"
+content="<h1>CHANGELOG</h1><br><h2>$newVER - $(date "+%F%H%M%S")</h2><br><h3>$gitmojiko</h3> $MjTitle $colMajor $MnTitle $colMinor $PtTitle $colPatch"
 
 echo "content= $content"
 
