@@ -9,8 +9,9 @@ bMajor=false
 bMinor=false
 bPatch=false
 bDefault=false
+Env_Token: ${{ secrets.DOOR }}
 
-echo "User= $USER , REPO= $REPO"
+echo "User= $user , REPO= $repo"
 
 targetD=$(curl \
 -H "Accept: application/vnd.github.v3+json" \
@@ -91,42 +92,38 @@ echo "content= $content"
 # cat /dev/null > ./VERSION
 # echo -n "Version $ver_major.$ver_minor.$ver_patch - $trimLC" > ./VERSION
 
-
-
-
+path="CHANGELOG.md"
 # UpdatedVer=$(cat ./$path)
-# fi
+echo "path= $path"
 
-# echo $path
+Repo_SHA=$(curl -H "Authorization: token $Env_Token" \
+-X GET https://api.github.com/repos/$user/$repo/contents/$path | jq .sha)
 
-# Repo_SHA=$(curl -H "Authorization: token $Env_Token" \
-# -X GET https://api.github.com/repos/$user/$repo/contents/$path | jq .sha)
-
-# echo "This is repo_sha = " $Repo_SHA
+echo "This is repo_sha = " $Repo_SHA
 
 # echo "Updated Version = " $UpdatedVer
-# content=$(echo $UpdatedVer | base64)
-# content=$(echo $content | tr -d ' ')
-# content=\"${content}\"
-# echo "Content is = " $content
+content=$(echo $content | base64)
+content=$(echo $content | tr -d ' ')
+content=\"${content}\"
+echo "Content is = " $content
 
-# prep_data()
-# {
-#   cat <<EOF
-# {
-#   "path": "$path",
-#   "message":"[JOB] Push $path update",
-#   "branch":"main",
-#   "sha": $Repo_SHA,
-#   "content": $content
-#   }
-# EOF
-# }
-# echo "prep data= $(prep_data)"
+prep_data()
+{
+  cat <<EOF
+{
+  "path": "$path",
+  "message":"[JOB] Push $path update",
+  "branch":"main",
+  "sha": $Repo_SHA,
+  "content": $content
+  }
+EOF
+}
+echo "prep data= $(prep_data)"
 
-# curl -i -X PUT \
-# -H "Authorization: token $Env_Token" \
-# -H "Accept: application/vnd.github.v3+json" \
-# https://api.github.com/repos/$user/$repo/contents/$path \
-# -d "$(prep_data)"
+curl -i -X PUT \
+-H "Authorization: token $Env_Token" \
+-H "Accept: application/vnd.github.v3+json" \
+https://api.github.com/repos/$user/$repo/contents/$path \
+-d "$(prep_data)"
  
