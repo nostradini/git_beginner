@@ -29,21 +29,21 @@ then
     then
     echo "Found major in commit"
     bMajor=true
-    colMajor="$colMajor <h4><li> ${line:0:7} - ${line:41:50} <li/><h4/><br>"
+    colMajor="$colMajor <h5><li> ${line:0:7} - ${line:41:50} <li/><h5/><br>"
     elif [[ "${lowerstr}" == *"#minor"* ]]
     then
     echo "Found minor in commit"
     bMinor=true
-    colMinor="$colMinor <h4><li> ${line:0:7} - ${line:41:50} <li/><h4/><br>"
+    colMinor="$colMinor <h5><li> ${line:0:7} - ${line:41:50} <li/><h5/><br>"
     elif [[ "${lowerstr}" == *"#patch"* ]]
     then
     echo "Found patch in commit"
     bPatch=true
-    colPatch="$colPatch <h4><li> ${line:0:7} - ${line:41:50} <li/><h4/><br>"
+    colPatch="$colPatch <h5><li> ${line:0:7} - ${line:41:50} <li/><h5/><br>"
     else
     # echo "Default condition"
     bDefault=true
-    colDefault="$colDefault <h4><li> ${line:0:7} - ${line:41:50} <li/><h4/><br>"
+    colDefault="$colDefault <h5><li> ${line:0:7} - ${line:41:50} <li/><h5/><br>"
     fi
 fi
 done < <( git log --after="$targetD" --format=oneline )
@@ -90,7 +90,7 @@ PtTitle="<br><h3>Patches<h3/>"
 $envPt=$(echo '$envPt' | sed 's/#patch//g')
 fi
 
-content="<h1>CHANGELOG <h1/><br/>$newVER - $(date "+%F-%H-%M-%S")<br/><h2>$gitmojiko<h2/>$MjTitle $colMajor$MnTitle $colMinor$PtTitle $colPatch"
+content="<h1>CHANGELOG <h1/><br/>$newVER - $(date "+%F-%H-%M-%S")<br/><h2>$gitmojiko<h2/>$MjTitle $colMajor $MnTitle $colMinor $PtTitle $colPatch"
 
 echo "content= $content"
 
