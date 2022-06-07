@@ -102,7 +102,7 @@ then
 fi
 
 echo "MjTitle=$MjTitle,MnTitle=$MnTitle,PtTitle=$PtTitle"
-content="<h1>CHANGELOG</h1><h6></h6><br><h2>$newVER - $(date "+%F%H%M%S")</h2><br><h3>$gitmojiko</h3> $MjTitle $colMajor $MnTitle $colMinor $PtTitle $colPatch"
+content="<div style="line-height:150%;"><h1>CHANGELOG</h1><h6></h6><br><h2>$newVER - $(date " +%F%H%M%S")</h2><br><h3>$gitmojiko</h3> $MjTitle $colMajor $MnTitle $colMinor $PtTitle $colPatch </div>"
 
 echo "content= $content"
 
