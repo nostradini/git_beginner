@@ -1,7 +1,7 @@
 # !/usr/bin/bash
-ver_major=$1
-ver_minor=$2
-ver_patch=$3
+ver_major=0
+ver_minor=0
+ver_patch=0
 user="nostradini"
 trLC=$5
 repo="git_beginner"
@@ -20,10 +20,7 @@ https://api.github.com/repos/$user/$repo/releases/latest | jq .created_at)
 # targetD="2022-06-01T01:00:00Z"
 echo "Date = $targetD"
 
-
-arrCom=()
 while IFS= read -r line; do
-arrCom+=( "$line" )
 lowerstr=$(echo ${line:41:50}|tr '[:upper:]' '[:lower:]')
 echo "transformed to lower = $lowerstr"
 if [[ "${lowerstr}" != "[job]"* ]]
@@ -74,7 +71,7 @@ echo "colMajor= $colMajor"
 echo "colMinor= $colMinor"
 echo "colPatch= $colPatch"
 
-newVER="$ver_major.$ver_minor.$ver_patch"
+newVER="v$ver_major.$ver_minor.$ver_patch"
 echo "newVer= $newVER"
 
 if [[ ${#envMj} != 0 ]]
@@ -93,26 +90,9 @@ PtTitle="<br><h3>Patches<h3/>"
 $envPt=$(echo '$envPt' | sed 's/#patch//g')
 fi
 
-content="<h1>CHANGELOG <h1/><br/>$newVER<br/>
-<h2>$gitmojiko<h2/><br>
-$MjTitle $colMajor
-$MnTitle $colMinor
-$PtTitle $colPatch"
+content="<h1>CHANGELOG <h1/><br/>$newVER - $(date "+%F-%H-%M-%S")<br/><h2>$gitmojiko<h2/>$MjTitle $colMajor$MnTitle $colMinor$PtTitle $colPatch"
 
 echo "content= $content"
-
-# echo "trLC= $trLC"
-# LenlastComm=${#trLC}
-# echo "size of commit is = " $LenlastComm
-# if [[ $LenlastComm -gt 50 ]]
-# then
-#     trimLC="${trLC:0:50}..."
-# else
-#     trimLC=${trLC}
-# fi
-# echo "trimmed = " $trimLC 
-# cat /dev/null > ./VERSION
-# echo -n "Version $ver_major.$ver_minor.$ver_patch - $trimLC" > ./VERSION
 
 path="CHANGELOG.md"
 # UpdatedVer=$(cat ./$path)
@@ -124,9 +104,9 @@ Repo_SHA=$(curl -H "Authorization: token $Env_Token" \
 echo "This is repo_sha = " $Repo_SHA
 
 # echo "Updated Version = " $UpdatedVer
-content=$(echo $content | base64)
-content=$(echo $content | tr -d ' ')
-content=\"${content}\"
+# content=$(echo $content | base64)
+# content=$(echo $content | tr -d ' ')
+# content=\"${content}\"
 echo "Content is = " $content
 
 prep_data()
