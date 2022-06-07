@@ -41,6 +41,12 @@ then
   # fi
 
   # UpdatedVer="# CHNAGELOG <br /> ### $envGM $MjTitle $envMj $MnTitle $envMn $PtTitle $envPt"
+
+sed -i 's/#/<hd>/g' ./$path
+sed -i 's/##/<hd2>/g' ./$path
+sed -i 's/###/<hd4>/g' ./$path
+sed -i 's/\n/<br>/g' ./$path
+
 UpdatedVer=$(cat ./$path)
 fi
 
