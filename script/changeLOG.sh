@@ -27,17 +27,17 @@ if [[ "${lowerstr}" != "[job]"* ]]
 then
     if [[ "${lowerstr}" == *"#major"* ]]
     then
-    echo "Found major in commit"
+    # echo "Found major in commit"
     bMajor=true
     colMajor="$colMajor <h5><li> ${line:0:7} - ${line:41:50} <li/><h5/><br>"
     elif [[ "${lowerstr}" == *"#minor"* ]]
     then
-    echo "Found minor in commit"
+    # echo "Found minor in commit"
     bMinor=true
     colMinor="$colMinor <h5><li> ${line:0:7} - ${line:41:50} <li/><h5/><br>"
     elif [[ "${lowerstr}" == *"#patch"* ]]
     then
-    echo "Found patch in commit"
+    # echo "Found patch in commit"
     bPatch=true
     colPatch="$colPatch <h5><li> ${line:0:7} - ${line:41:50} <li/><h5/><br>"
     else
@@ -117,7 +117,7 @@ prep_data()
   "message":"[JOB] Push $path update",
   "branch":"main",
   "sha": $Repo_SHA,
-  "content": $content
+  "content": "$content"
   }
 EOF
 }
