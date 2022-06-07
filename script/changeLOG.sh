@@ -29,21 +29,21 @@ then
     then
     # echo "Found major in commit"
     bMajor=true
-    colMajor="$colMajor<li> ${line:0:7} - ${line:41:50}</li><br>"
+    colMajor="$colMajor <li> ${line:0:7} - ${line:41:50}</li><br>"
     elif [[ "${lowerstr}" == *"#minor"* ]]
     then
     # echo "Found minor in commit"
     bMinor=true
-    colMinor="$colMinor<li> ${line:0:7} - ${line:41:50}</li><br>"
+    colMinor="$colMinor <li> ${line:0:7} - ${line:41:50}</li><br>"
     elif [[ "${lowerstr}" == *"#patch"* ]]
     then
     # echo "Found patch in commit"
     bPatch=true
-    colPatch="$colPatch<li> ${line:0:7} - ${line:41:50}</li><br>"
+    colPatch="$colPatch <li> ${line:0:7} - ${line:41:50}</li><br>"
     else
     # echo "Default condition"
     bDefault=true
-    colDefault="$colDefault<li> ${line:0:7} - ${line:41:50}</li><br>"
+    colDefault="$colDefault <li> ${line:0:7} - ${line:41:50}</li><br>"
     fi
 fi
 done < <( git log --after="$targetD" --format=oneline )
@@ -102,7 +102,7 @@ then
 fi
 
 echo "MjTitle=$MjTitle,MnTitle=$MnTitle,PtTitle=$PtTitle"
-content="<h1>CHANGELOG</h1><h6></h6><br><h2>$newVER - $(date '+%F%H%M%S')</h2><br><h3>$gitmojiko</h3> $MjTitle $colMajor $MnTitle $colMinor $PtTitle $colPatch"
+content="<h1>CHANGELOG</h1><br><h2>$newVER - $(date '+%F%H%M%S')</h2><br><h3>$gitmojiko</h3> $MjTitle $colMajor $MnTitle $colMinor $PtTitle $colPatch"
 
 echo "content= $content"
 
