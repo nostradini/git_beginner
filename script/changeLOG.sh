@@ -120,7 +120,7 @@ prep_data()
   "message":"[JOB] Push $path update",
   "branch":"main",
   "sha": $Repo_SHA,
-  "content": "$content"
+  "content": $content
   }
 EOF
 }
