@@ -29,21 +29,21 @@ then
     then
     # echo "Found major in commit"
     bMajor=true
-    colMajor="$colMajor <li> ${line:0:7} - ${line:41:50}</li><br>"
+    colMajor="$colMajor <li> ${line:0:7} - ${line:41:50} </li><br>"
     elif [[ "${lowerstr}" == *"#minor"* ]]
     then
     # echo "Found minor in commit"
     bMinor=true
-    colMinor="$colMinor <li> ${line:0:7} - ${line:41:50}</li><br>"
+    colMinor="$colMinor <li> ${line:0:7} - ${line:41:50} </li><br>"
     elif [[ "${lowerstr}" == *"#patch"* ]]
     then
     # echo "Found patch in commit"
     bPatch=true
-    colPatch="$colPatch <li> ${line:0:7} - ${line:41:50}</li><br>"
+    colPatch="$colPatch <li> ${line:0:7} - ${line:41:50} </li><br>"
     else
     # echo "Default condition"
     bDefault=true
-    colDefault="$colDefault <li> ${line:0:7} - ${line:41:50}</li><br>"
+    colDefault="$colDefault <li> ${line:0:7} - ${line:41:50} </li><br>"
     fi
 fi
 done < <( git log --after="$targetD" --format=oneline )
@@ -108,7 +108,7 @@ then
     colPatch="<ul><h5>$colPatch</h5></ul></ul>"
     else
     PtTitle="<ul><br><li><h4>Patches</h4></li><br>"
-    colPatch="<ul><h5>$colPatch</h5></ul></ul>""
+    colPatch="<ul><h5>$colPatch</h5></ul></ul>"
     fi
 
 fi
