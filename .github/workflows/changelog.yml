@@ -13,6 +13,7 @@ jobs:
   Change_Log:
     runs-on: "ubuntu-latest"
     steps:
+    - uses: actions/checkout@v3
     - name: "Create local changelog"
       run: |
         chmod +x ./script/changeLOG.sh
