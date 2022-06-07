@@ -29,21 +29,21 @@ then
     then
     # echo "Found major in commit"
     bMajor=true
-    colMajor="$colMajor<li> ${line:0:7} - ${line:41:50} <li/><br>"
+    colMajor="$colMajor<li> ${line:0:7} - ${line:41:50}</li><br>"
     elif [[ "${lowerstr}" == *"#minor"* ]]
     then
     # echo "Found minor in commit"
     bMinor=true
-    colMinor="$colMinor<li> ${line:0:7} - ${line:41:50} <li/><br>"
+    colMinor="$colMinor<li> ${line:0:7} - ${line:41:50}</li><br>"
     elif [[ "${lowerstr}" == *"#patch"* ]]
     then
     # echo "Found patch in commit"
     bPatch=true
-    colPatch="$colPatch<li> ${line:0:7} - ${line:41:50} <li/><br>"
+    colPatch="$colPatch<li> ${line:0:7} - ${line:41:50}</li><br>"
     else
     # echo "Default condition"
     bDefault=true
-    colDefault="$colDefault<li> ${line:0:7} - ${line:41:50} <li/><br>"
+    colDefault="$colDefault<li> ${line:0:7} - ${line:41:50}</li><br>"
     fi
 fi
 done < <( git log --after="$targetD" --format=oneline )
@@ -76,25 +76,25 @@ echo "newVer= $newVER"
 
 if [[ ${#colvMajor} != 0 ]]
 then 
-MjTitle="<br><h3>Major Changes<h3/><br><ul>"
-colvMj="<h5>$colvMj<h5/><ul/>"
+MjTitle="<br><h3>Major Changes</h3><br><ul>"
+colvMj="<h5>$colvMj</h5><ul/>"
 # $envMj=$(echo '$envMj' | sed 's/#major//g')
 fi
 if [[ ${#colMinor} != 0 ]]
 then
-MnTitle="<br><h3>Minor Changes<h3/><br><ul>"
-colMn="<h5>$colMn<h5/><ul/>"
+MnTitle="<br><h3>Minor Changes</h3><br><ul>"
+colMn="<h5>$colMn</h5></ul>"
 # $envMn=$(echo '$envMn' | sed 's/#minor//g')
 fi
 if [[ ${#colPatch} != 0 ]]
 then
-PtTitle="<br><h3>Patches<h3/><br><ul>"
-colPt="<h5>$colPt<h5/><ul/>"
+PtTitle="<br><h3>Patches</h3><br><ul>"
+colPt="<h5>$colPt</h5><ul>"
 # $envPt=$(echo '$envPt' | sed 's/#patch//g')
 fi
 
 echo "MjTitle=$MjTitle,MnTitle=$MnTitle,PtTitle=$PtTitle"
-content="<h1>CHANGELOG <h1/><br><h2>$newVER - $(date "+%F%H%M%S")<h2/><br><h3>$gitmojiko<h3/>$MjTitle $colMajor $MnTitle $colMinor $PtTitle $colPatch"
+content="<h1>CHANGELOG </h1><br><h2>$newVER - $(date "+%F%H%M%S")</h2><br><h3>$gitmojiko</h3>$MjTitle $colMajor $MnTitle $colMinor $PtTitle $colPatch"
 
 echo "content= $content"
 
