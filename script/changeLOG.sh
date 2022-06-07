@@ -75,30 +75,42 @@ newVER="v$ver_major.$ver_minor.$ver_patch"
 echo "newVer= $newVER"
 
 if [[ ${#colMajor} != 0 ]]
-then 
-    MjTitle="<ul><br><li><h4>Major Changes</h4></li><br><ul>"
-    colMajor="<h6>$colMajor</h6></ul>"
+then
+    MjTitle="<ul><br><li><h4>Major Changes</h4></li><br>"
+    if [[ ${#colMinor} != 0 ]] || [[ ${#colPatch} != 0 ]]
+    then
+    colMajor="<ul><h6>$colMajor</h6></ul>"
+    else
+    colMajor="<ul><h6>$colMajor</h6></ul></ul>"
+    fi
 # $envMj=$(echo '$envMj' | sed 's/#major//g')
 fi
 if [[ ${#colMinor} != 0 ]]
 then
     if [[ ${#colMajor} != 0  ]]
     then
-    MnTitle="<li><h4>Minor Changes</h4></li><br><ul>"
+    MnTitle="<li><h4>Minor Changes</h4></li><br>"
     else
-    MnTitle="<ul><br><li><h4>Minor Changes</h4></li><br><ul>"
+    MnTitle="<ul><br><li><h4>Minor Changes</h4></li><br>"
     fi
-    colMinor="<h5>$colMinor</h5></ul>"
+    if [[ ${#colPatch} != 0 ]]
+    then
+    colMinor="<ul><h5>$colMinor</h5></ul>"
+    else
+    colMinor="<ul><h5>$colMinor</h5></ul></ul>"
+    fi
 fi
 if [[ ${#colPatch} != 0 ]]
 then
-    if [[ ${#colMinor} != 0 ]]
+    if [[ ${#colMinor} != 0 ]] || [[ ${#colMajor} != 0 ]]
     then
-    PtTitle="<li><h4>Patches</h4></li><br><ul>"
+    PtTitle="<li><h4>Patches</h4></li><br>"
+    colPatch="<ul><h5>$colPatch</h5></ul></ul>"
     else
-    PtTitle="<ul><br><li><h4>Patches</h4></li><br><ul>"
+    PtTitle="<ul><br><li><h4>Patches</h4></li><br>"
+    colPatch="<ul><h5>$colPatch</h5></ul></ul>""
     fi
-    colPatch="<h5>$colPatch</h5></ul>
+
 fi
 
 echo "MjTitle=$MjTitle,MnTitle=$MnTitle,PtTitle=$PtTitle"
