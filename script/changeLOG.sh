@@ -22,7 +22,7 @@ echo "Date = $targetD"
 
 while IFS= read -r line; do
 lowerstr=$(echo ${line:41:50}|tr '[:upper:]' '[:lower:]')
-echo "transformed to lower = $lowerstr"
+# echo "transformed to lower = $lowerstr"
 if [[ "${lowerstr}" != "[job]"* ]]
 then
     if [[ "${lowerstr}" == *"#major"* ]]
@@ -74,20 +74,23 @@ echo "colPatch= $colPatch"
 newVER="v$ver_major.$ver_minor.$ver_patch"
 echo "newVer= $newVER"
 
-if [[ ${#envMj} != 0 ]]
+if [[ ${#colvMj} != 0 ]]
 then 
-MjTitle="<br><h3>Major Changes<h3/>"
-$envMj=$(echo '$envMj' | sed 's/#major//g')
+MjTitle="<br><h3>Major Changes<h3/><br><ul>"
+colvMj="$colvMj<ul/>"
+# $envMj=$(echo '$envMj' | sed 's/#major//g')
 fi
-if [[ ${#envMn} != 0 ]]
+if [[ ${#colMn} != 0 ]]
 then
-MnTitle="<br><h3>Minor Changes<h3/>"
-$envMn=$(echo '$envMn' | sed 's/#minor//g')
+MnTitle="<br><h3>Minor Changes<h3/><br><ul>"
+colMn="$colMn<ul/>"
+# $envMn=$(echo '$envMn' | sed 's/#minor//g')
 fi
-if [[ ${#envPt} != 0 ]]
+if [[ ${#colPt} != 0 ]]
 then
-PtTitle="<br><h3>Patches<h3/>"
-$envPt=$(echo '$envPt' | sed 's/#patch//g')
+PtTitle="<br><h3>Patches<h3/><br><ul>"
+colPt="$colPt<ul/>"
+# $envPt=$(echo '$envPt' | sed 's/#patch//g')
 fi
 
 content="<h1>CHANGELOG <h1/><br/>$newVER - $(date "+%F-%H-%M-%S")<br/><h2>$gitmojiko<h2/>$MjTitle $colMajor $MnTitle $colMinor $PtTitle $colPatch"
@@ -104,9 +107,9 @@ Repo_SHA=$(curl -H "Authorization: token $Env_Token" \
 echo "This is repo_sha = " $Repo_SHA
 
 # echo "Updated Version = " $UpdatedVer
-# content=$(echo $content | base64)
-# content=$(echo $content | tr -d ' ')
-# content=\"${content}\"
+content=$(echo $content | base64)
+content=$(echo $content | tr -d ' ')
+content=\"${content}\"
 echo "Content is = " $content
 
 prep_data()
