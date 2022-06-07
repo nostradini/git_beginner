@@ -24,24 +24,24 @@ elif [[ $cl == 1 ]]
 then
   path="CHANGELOG.md"
 
-  if [[ ${#envMj} != 0 ]]
-  then 
-  MjTitle=" - #### Major Changes  "
-  $envMj=$(echo '$envMj' | sed 's/#major//g')
-  fi
-  if [[ ${#envMn} != 0 ]]
-  then
-  MnTitle="\n - #### Minor Changes  "
-  $envMn=$(echo '$envMn' | sed 's/#minor//g')
-  fi
-  if [[ ${#envPt} != 0 ]]
-  then
-  PtTitle="<br /> <h4>Patches</h4>  "
-  $envPt="$(echo '$envPt' | sed 's/#patch//g')"
-  fi
+  # if [[ ${#envMj} != 0 ]]
+  # then 
+  # MjTitle=" - #### Major Changes  "
+  # $envMj=$(echo '$envMj' | sed 's/#major//g')
+  # fi
+  # if [[ ${#envMn} != 0 ]]
+  # then
+  # MnTitle="\n - #### Minor Changes  "
+  # $envMn=$(echo '$envMn' | sed 's/#minor//g')
+  # fi
+  # if [[ ${#envPt} != 0 ]]
+  # then
+  # PtTitle="<br /> <h4>Patches</h4>  "
+  # $envPt="$(echo '$envPt' | sed 's/#patch//g')"
+  # fi
 
-  UpdatedVer="# CHNAGELOG <br /> ### $envGM $MjTitle $envMj $MnTitle $envMn $PtTitle $envPt"
-
+  # UpdatedVer="# CHNAGELOG <br /> ### $envGM $MjTitle $envMj $MnTitle $envMn $PtTitle $envPt"
+UpdatedVer=$(cat ./$path)
 fi
 
 echo $path
