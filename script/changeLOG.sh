@@ -13,11 +13,11 @@ Env_Token=$ENV_TOKEN
 
 echo "User= $user , REPO= $repo"
 
-targetD=$(curl \
--H "Accept: application/vnd.github.v3+json" \
-https://api.github.com/repos/$user/$repo/releases/latest | jq .created_at)
+# targetD=$(curl \
+# -H "Accept: application/vnd.github.v3+json" \
+# https://api.github.com/repos/$user/$repo/releases/latest | jq .created_at)
 
-# targetD="2022-06-01T01:00:00Z"
+targetD="2022-06-01T00:00:00Z"
 echo "Date = $targetD"
 
 while IFS= read -r line; do
