@@ -9,7 +9,7 @@ bMajor=false
 bMinor=false
 bPatch=false
 bDefault=false
-Env_Token:$ENV_TOKEN
+Env_Token=$ENV_TOKEN
 
 echo "User= $user , REPO= $repo"
 
