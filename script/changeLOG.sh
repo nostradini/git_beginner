@@ -29,7 +29,7 @@ then
     then
     # echo "Found major in commit"
     bMajor=true
-    colMajor="$colMajor <li><a fref='https://github.com/$user/$repo/commit/$line'> ${line:0:7} - ${line:41:50} </li><br>"
+    colMajor="$colMajor <li><a href='https://github.com/$user/$repo/commit/$line[0]'> ${line:0:7} - ${line:41:50} </li><br>"
     elif [[ "${lowerstr}" == *"#minor"* ]]
     then
     # echo "Found minor in commit"
