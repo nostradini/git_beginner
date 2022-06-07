@@ -76,7 +76,7 @@ echo "newVer= $newVER"
 
 if [[ ${#colMajor} != 0 ]]
 then 
-    MjTitle="<ul><br><h4>Major Changes</h4><br><ul>"
+    MjTitle="<ul><br><li><h4>Major Changes</h4></li><br><ul>"
     colMajor="<h6>$colMajor</h6></ul>"
 # $envMj=$(echo '$envMj' | sed 's/#major//g')
 fi
@@ -84,9 +84,9 @@ if [[ ${#colMinor} != 0 ]]
 then
     if [[ ${#colMajor} != 0  ]]
     then
-    MnTitle="<h4>Minor Changes</h4><br><ul>"
+    MnTitle="<li><h4>Minor Changes</h4></li><br><ul>"
     else
-    MnTitle="<ul><br><h4>Minor Changes</h4><br><ul>"
+    MnTitle="<ul><br><li><h4>Minor Changes</h4></li><br><ul>"
     fi
     colMinor="<h5>$colMinor</h5></ul>"
 fi
@@ -94,15 +94,15 @@ if [[ ${#colPatch} != 0 ]]
 then
     if [[ ${#colMinor} != 0 ]]
     then
-    PtTitle="<h4>Patches</h4><br><ul>"
+    PtTitle="<li><h4>Patches</h4></li><br><ul>"
     else
-    PtTitle="<ul><br><h4>Patches</h4><br><ul>"
+    PtTitle="<ul><br><li><h4>Patches</h4></li><br><ul>"
     fi
-    colPatch="<h5>$colPatch</h5></ul></ul>
+    colPatch="<h5>$colPatch</h5></ul>
 fi
 
 echo "MjTitle=$MjTitle,MnTitle=$MnTitle,PtTitle=$PtTitle"
-content="<h1>CHANGELOG</h1><h6></h6><br><h2>$newVER - $(date "+%F%H%M%S")</h2><br><h3>$gitmojiko</h3> $MjTitle $colMajor $MnTitle $colMinor $PtTitle $colPatch"
+content="<h1>CHANGELOG</h1><h6></h6><br><h2>$newVER - $(date '+%F%H%M%S')</h2><br><h3>$gitmojiko</h3> $MjTitle $colMajor $MnTitle $colMinor $PtTitle $colPatch"
 
 echo "content= $content"
 
