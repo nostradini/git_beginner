@@ -75,7 +75,7 @@ echo "colPatch= $colPatch"
 
 echo "NEW= major=$ver_major,minor=$ver_minor,patch=$ver_patch"
 
-content="<h1> CHANGELOG <h1/> <br> <h2> $gitmojiko <h2/> <br><ul> $colMajor $colMinor $colPatch <ul/>"
+content="#CHANGELOG <br>###"$gitmojiko"<h2/><br><ul> $colMajor $colMinor $colPatch <ul/>"
 
 echo "content= $content"
 
