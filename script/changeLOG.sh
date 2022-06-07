@@ -76,29 +76,29 @@ echo "newVer= $newVER"
 
 if [[ ${#colMajor} != 0 ]]
 then 
-    MjTitle="<br><h3>Major Changes</h3><br><ul>"
-    colvMj="<h5>$colvMj</h5></ul>"
+    MjTitle="<br><h4>Major Changes</h4><br><ul>"
+    colMajor="<h6>$colMajor</h6></ul>"
 # $envMj=$(echo '$envMj' | sed 's/#major//g')
 fi
 if [[ ${#colMinor} != 0 ]]
 then
     if [[ ${#colMajor} != 0  ]]
     then
-    MnTitle="<h3>Minor Changes</h3><br><ul>"
+    MnTitle="<h4>Minor Changes</h4><br><ul>"
     else
-    MnTitle="<br><h3>Minor Changes</h3><br><ul>"
+    MnTitle="<br><h4>Minor Changes</h4><br><ul>"
     fi
-    colMn="<h5>$colMn</h5></ul>"
+    colMinor="<h5>$colMinor</h5></ul>"
 fi
 if [[ ${#colPatch} != 0 ]]
 then
     if [[ ${#colMinor} != 0 ]]
     then
-    PtTitle="<h3>Patches</h3><br><ul>"
+    PtTitle="<h4>Patches</h4><br><ul>"
     else
-    PtTitle="<br><h3>Patches</h3><br><ul>"
+    PtTitle="<br><h4>Patches</h4><br><ul>"
     fi
-    colPt="<h5>$colPt</h5></ul>"
+    colPatch="<h5>$colPatch</h5></ul>"
 fi
 
 echo "MjTitle=$MjTitle,MnTitle=$MnTitle,PtTitle=$PtTitle"
