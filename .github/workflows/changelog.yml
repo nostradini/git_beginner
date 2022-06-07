@@ -8,7 +8,8 @@ on: # yamllint disable-line rule:truthy
     branches: [main]
     paths-ignore:
      - 'CHANGELOG.md'
-
+env:
+  ENV_TOKEN: ${{ secrets.DOOR }}
 jobs:
   Change_Log:
     runs-on: "ubuntu-latest"
