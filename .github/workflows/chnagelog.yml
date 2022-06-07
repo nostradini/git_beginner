@@ -1,16 +1,17 @@
-name: "Release"
+name: "Changelog"
 
 on: # yamllint disable-line rule:truthy
   push:
-    tags:
-      - "**"
+  #   tags:
+  #     - "**"
+  push:
+    branches: [main]
+    paths-ignore:
+     - 'CHANGELOG.md'
 
 jobs:
-  release:
-    name: "Release"
-
+  Change_Log:
     runs-on: "ubuntu-latest"
-
     steps:
       - name: "Determine tag"
         run: "echo \"RELEASE_TAG=${GITHUB_REF#refs/tags/}\" >> $GITHUB_ENV"
