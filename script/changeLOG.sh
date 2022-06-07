@@ -29,21 +29,21 @@ then
     then
     # echo "Found major in commit"
     bMajor=true
-    colMajor="$colMajor <h5><li> ${line:0:7} - ${line:41:50} <li/><h5/><br>"
+    colMajor="$colMajor<li> ${line:0:7} - ${line:41:50} <li/><br>"
     elif [[ "${lowerstr}" == *"#minor"* ]]
     then
     # echo "Found minor in commit"
     bMinor=true
-    colMinor="$colMinor <h5><li> ${line:0:7} - ${line:41:50} <li/><h5/><br>"
+    colMinor="$colMinor<li> ${line:0:7} - ${line:41:50} <li/><br>"
     elif [[ "${lowerstr}" == *"#patch"* ]]
     then
     # echo "Found patch in commit"
     bPatch=true
-    colPatch="$colPatch <h5><li> ${line:0:7} - ${line:41:50} <li/><h5/><br>"
+    colPatch="$colPatch<li> ${line:0:7} - ${line:41:50} <li/><br>"
     else
     # echo "Default condition"
     bDefault=true
-    colDefault="$colDefault <h5><li> ${line:0:7} - ${line:41:50} <li/><h5/><br>"
+    colDefault="$colDefault<li> ${line:0:7} - ${line:41:50} <li/><br>"
     fi
 fi
 done < <( git log --after="$targetD" --format=oneline )
@@ -74,26 +74,27 @@ echo "colPatch= $colPatch"
 newVER="v$ver_major.$ver_minor.$ver_patch"
 echo "newVer= $newVER"
 
-if [[ ${#colvMj} != 0 ]]
+if [[ ${#colvMajor} != 0 ]]
 then 
 MjTitle="<br><h3>Major Changes<h3/><br><ul>"
-colvMj="$colvMj<ul/>"
+colvMj="<h5>$colvMj<h5/><ul/>"
 # $envMj=$(echo '$envMj' | sed 's/#major//g')
 fi
-if [[ ${#colMn} != 0 ]]
+if [[ ${#colMinor} != 0 ]]
 then
 MnTitle="<br><h3>Minor Changes<h3/><br><ul>"
-colMn="$colMn<ul/>"
+colMn="<h5>$colMn<h5/><ul/>"
 # $envMn=$(echo '$envMn' | sed 's/#minor//g')
 fi
-if [[ ${#colPt} != 0 ]]
+if [[ ${#colPatch} != 0 ]]
 then
 PtTitle="<br><h3>Patches<h3/><br><ul>"
-colPt="$colPt<ul/>"
+colPt="<h5>$colPt<h5/><ul/>"
 # $envPt=$(echo '$envPt' | sed 's/#patch//g')
 fi
 
-content="<h1>CHANGELOG <h1/><br/>$newVER - $(date "+%F-%H-%M-%S")<br/><h2>$gitmojiko<h2/>$MjTitle $colMajor $MnTitle $colMinor $PtTitle $colPatch"
+echo "MjTitle=$MjTitle,MnTitle=$MnTitle,PtTitle=$PtTitle"
+content="<h1>CHANGELOG <h1/><br><h2>$newVER - $(date "+%F%H%M%S")<h2/><br><h3>$gitmojiko<h3/>$MjTitle $colMajor $MnTitle $colMinor $PtTitle $colPatch"
 
 echo "content= $content"
 
@@ -104,7 +105,7 @@ echo "path= $path"
 Repo_SHA=$(curl -H "Authorization: token $Env_Token" \
 -X GET https://api.github.com/repos/$user/$repo/contents/$path | jq .sha)
 
-echo "This is repo_sha = " $Repo_SHA
+# echo "This is repo_sha = " $Repo_SHA
 
 # echo "Updated Version = " $UpdatedVer
 content=$(echo $content | base64)
