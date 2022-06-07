@@ -75,7 +75,27 @@ echo "colPatch= $colPatch"
 
 echo "NEW= major=$ver_major,minor=$ver_minor,patch=$ver_patch"
 
-content="#CHANGELOG <br>###"$gitmojiko"<h2/><br><ul> $colMajor $colMinor $colPatch <ul/>"
+if [[ ${#envMj} != 0 ]]
+then 
+MjTitle="<br><h3>Major Changes<h3/>"
+$envMj=$(echo '$envMj' | sed 's/#major//g')
+fi
+if [[ ${#envMn} != 0 ]]
+then
+MnTitle="<br><h3>Minor Changes<h3/>"
+$envMn=$(echo '$envMn' | sed 's/#minor//g')
+fi
+if [[ ${#envPt} != 0 ]]
+then
+PtTitle="<br><h3>Patches<h3/>"
+$envPt=$(echo '$envPt' | sed 's/#patch//g')
+fi
+
+content="<h1>CHANGELOG <h1/><br>
+<h2>$gitmojiko<h2/><br>
+$MjTitle $colMajor
+$MnTitle $colMinor
+$PtTitle $colPatch"
 
 echo "content= $content"
 
