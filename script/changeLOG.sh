@@ -113,10 +113,13 @@ then
 
 fi
 
-d1=$(date +"%m-%d-%y")
-d2=$(date +"%r")
+d1=$(date +"%Y-%m-%d")
+d2=$(date +"%T")
+d2=$(echo $d2 | tr -d ':')
 varDate="$d1-$d2"
 echo "varDATE= $varDate"
+
+# echo "Updated Version = " $UpdatedVer
 # echo "MjTitle=$MjTitle,MnTitle=$MnTitle,PtTitle=$PtTitle"
 content="<h1>CHANGELOG</h1><h2>$newVER - $varDate</h2><h3>$gitmojiko</h3> $MjTitle $colMajor $MnTitle $colMinor $PtTitle $colPatch"
 
@@ -131,7 +134,6 @@ Repo_SHA=$(curl -H "Authorization: token $Env_Token" \
 
 # echo "This is repo_sha = " $Repo_SHA
 
-# echo "Updated Version = " $UpdatedVer
 content=$(echo $content | base64)
 content=$(echo $content | tr -d ' ')
 content=\"${content}\"
@@ -149,7 +151,7 @@ prep_data()
   }
 EOF
 }
-echo "prep data= $(prep_data)"
+# echo "prep data= $(prep_data)"
 
 curl -i -X PUT \
 -H "Authorization: token $Env_Token" \
