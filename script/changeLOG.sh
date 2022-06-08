@@ -76,7 +76,7 @@ echo "newVer= $newVER"
 
 if [[ ${#colMajor} != 0 ]]
 then
-    MjTitle="<ul><<li><h4>Major Changes</h4></li>"
+    MjTitle="<ul><li><h4>Major Changes</h4></li>"
     if [[ ${#colMinor} != 0 ]] || [[ ${#colPatch} != 0 ]]
     then
     colMajor="<ul><h6>$colMajor</h6></ul>"
@@ -114,8 +114,9 @@ then
 fi
 
 d1=$(date +"%m-%d-%y")
-d2=$(date +"%r"_)
+d2=$(date +"%r")
 varDate="d1-d2"
+echo "varDATE= $varDate"
 # echo "MjTitle=$MjTitle,MnTitle=$MnTitle,PtTitle=$PtTitle"
 content="<h1>CHANGELOG</h1><h2>$newVER - $varDate</h2><h3>$gitmojiko</h3> $MjTitle $colMajor $MnTitle $colMinor $PtTitle $colPatch"
 
@@ -134,7 +135,7 @@ Repo_SHA=$(curl -H "Authorization: token $Env_Token" \
 content=$(echo $content | base64)
 content=$(echo $content | tr -d ' ')
 content=\"${content}\"
-echo "Content is = " $content
+# echo "Content is = " $content
 
 prep_data()
 {
