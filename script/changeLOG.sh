@@ -115,7 +115,7 @@ fi
 
 d1=$(date +"%m-%d-%y")
 d2=$(date +"%r")
-varDate="d1-d2"
+varDate="$d1-$d2"
 echo "varDATE= $varDate"
 # echo "MjTitle=$MjTitle,MnTitle=$MnTitle,PtTitle=$PtTitle"
 content="<h1>CHANGELOG</h1><h2>$newVER - $varDate</h2><h3>$gitmojiko</h3> $MjTitle $colMajor $MnTitle $colMinor $PtTitle $colPatch"
