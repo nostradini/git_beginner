@@ -113,10 +113,7 @@ then
 
 fi
 
-d1=$(date +"%Y-%m-%d")
-d2=$(date +"%T")
-d2=$(echo $d2 | tr -d ':')
-varDate="$d1-$d2"
+varDate=$(date -d "-7 hours" "+%Y-%m-%d-%H%M%S")
 echo "varDATE= $varDate"
 
 # echo "Updated Version = " $UpdatedVer
