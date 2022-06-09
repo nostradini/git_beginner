@@ -4,10 +4,10 @@ on: # yamllint disable-line rule:truthy
   # push:
   #   tags:
   #     - "**"
-  # push:
-  #   branches: [main]
-  #   paths-ignore:
-  #    - 'CHANGELOG.md'
+  push:
+    branches: [main]
+    paths-ignore:
+     - 'CHANGELOG.md'
   workflow_dispatch:
     paths-ignore:
     - 'CHANGELOG.md'

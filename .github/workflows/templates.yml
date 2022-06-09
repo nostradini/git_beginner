@@ -85,8 +85,8 @@ jobs:
         echo "Gitmojiko = $Gitmojiko"
         if [[ "$Gitmojiko" != "UNRELEASED" ]]
         then 
-        chmod +x ./script/version_update.sh
-        ./script/version_update.sh $ENV_TOKEN "$envUSER" $REPO 1 "$Gitmojiko" "$Version" "$Major" "$Minor" "$Patch"
+        chmod +x ./script/changeLOG.sh
+        ./script/changeLOG.sh $ENV_TOKEN "$envUSER" $REPO 1 "$Gitmojiko" "$Version" "$Major" "$Minor" "$Patch"
         fi
 
     - name: TEST VALUE
