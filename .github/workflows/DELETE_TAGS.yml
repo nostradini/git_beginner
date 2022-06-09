@@ -4,7 +4,7 @@ on:
 
 env:
   ENV_TOKEN: ${{ secrets.DOOR }}
-  REPO: "git_beginner"
+  REPO: "myrepo3"
 jobs:
   Execute_Versioning:
     runs-on: ubuntu-latest
