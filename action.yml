@@ -1,6 +1,6 @@
 name: 'Auto assign PR and request review'
 description: 'Auto assign PR and request review'
-author: '@delivery-much'
+author: '@nostradini'
 branding:
   icon: 'code'
   color: 'yellow'
