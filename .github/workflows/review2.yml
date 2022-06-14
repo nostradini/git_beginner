@@ -7,8 +7,8 @@ on:
   #   branches: [ main ]
   #   types: [opened,ready_for_review]
   pull_request_target:
-    branches: [ main ]
-    types: [opened,ready_for_review]
+    # branches: [ main ]
+    # types: [opened,ready_for_review]
 
   workflow_dispatch:
 
