@@ -12,6 +12,7 @@ inputs:
   reviewers:
     description: 'GitHub usernames'
     required: false
+    default: 'ekojyppah'
   team-reviewers:
     description: 'GitHub teams'
     required: false
