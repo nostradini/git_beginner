@@ -1,0 +1,22 @@
+name: Review moto
+
+on:
+  # push:
+  #   branches: [ main ]
+  pull_request:
+    branches: [ main ]
+    types: [opened,ready_for_review]
+
+  workflow_dispatch:
+env:
+  lastCommit: ${{ github.event.commits[0].message }}
+jobs:
+  add-review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Run review
+        uses: ./
+
