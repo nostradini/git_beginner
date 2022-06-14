@@ -3,11 +3,11 @@ name: Reviewer1
 on:
 #   push:
 #     branches: [ "main" ]
-  pull_request:
-    branches: [ main ]
-    types: [opened,ready_for_review]
+  # pull_request:
+  #   branches: [ main ]
+  #   types: [opened,ready_for_review]
 
-  # workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
   # This workflow contains a single job called "build"
