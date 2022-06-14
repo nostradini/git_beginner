@@ -3,9 +3,9 @@ name: Reviewer1
 on:
 #   push:
 #     branches: [ "main" ]
-  # pull_request:
-  #   branches: [ main ]
-  #   types: [opened,ready_for_review]
+  pull_request:
+    branches: [ main ]
+    types: [opened,ready_for_review]
 
   workflow_dispatch:
 
@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Add Pull Request Reviewer
-        uses: AveryCameronUofR/add-reviewer-gh-action@1.0.3
+        uses: ./actions
         with: 
-          reviewers: "AveryCameronUofR"
+          reviewers: "ekojyppah , nostradini"
           token: ${{ secrets.GITHUB_TOKEN }}

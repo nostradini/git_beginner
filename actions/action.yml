@@ -1,0 +1,16 @@
+name: "Add Pull Request Reviewer"
+description: "Adds reviewer(s) to a pull request"
+branding:
+  icon: "bar-chart"
+  color: "green"
+inputs:
+  reviewers:
+    description: "Reviewer(s) to add, in comma separated list."
+    required: true
+  token:
+    description: GitHub Personal Access Token
+  remove:
+    description: "Remove a review request (defaults to false)"
+runs:
+  using: "node12"
+  main: "index.js"

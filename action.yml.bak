@@ -1,4 +1,4 @@
-name: 'Auto assign PR and request review'
+name: '2 Auto assign PR and request review'
 description: 'Auto assign PR and request review'
 author: '@nostradini'
 branding:
