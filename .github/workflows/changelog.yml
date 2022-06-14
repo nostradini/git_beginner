@@ -1,0 +1,27 @@
+name: "Changelog"
+
+on: # yamllint disable-line rule:truthy
+  # push:
+  #   tags:
+  #     - "**"
+  # push:
+  #   branches: [main]
+  #   paths-ignore:
+  #    - 'CHANGELOG.md'
+  workflow_dispatch:
+    paths-ignore:
+    - 'CHANGELOG.md'
+
+env:
+  ENV_TOKEN: ${{ secrets.DOOR }}
+jobs:
+  Change_Log:
+    runs-on: "ubuntu-latest"
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - name: "Create local changelog"
+      run: |
+        chmod +x ./script/changeLOG.sh
+        ./script/changeLOG.sh

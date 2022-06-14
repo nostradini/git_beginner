@@ -1,30 +1,110 @@
 name: Template Workflow
 on:
-  push:
-    branches: [main]
+  # push:
+  #   branches: [main]
+  #   paths-ignore:
+  #    - 'VERSION'
+  #    - 'CHANGELOG.md'
+
+  workflow_dispatch:
+
 env:
-  message: ${{ github.event.head_commit.message }}
   ENV_TOKEN: ${{ secrets.DOOR }}
+  REPO: "git_beginner"
 jobs:
   run_script:
     runs-on: ubuntu-latest
+    outputs:
+      LASTCOM: Last commit
+      USER: GitHub User
+      envgitmojiko: Change type
+      envMajor: colMajor
+      envMinor: colMinor
+      envPatch: colPatch
+      envVersion: New version
     steps:
     - uses: actions/checkout@v3
       with:
         fetch-depth: 0
-    - name: Test github.event
+        
+    - name: Run Checkpoints
+      id: value
       run: |
-        echo $message
-        # git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        # git config --global user.name "github-actions[bot]"
-        # git tag -l | xargs -n 1 git push --delete origin
-        # git tag | xargs git tag -d
-    - name: Release Notes
+        chmod +x ./script/checkpoints.sh
+        ./script/checkpoints.sh
+    
+    - name: Check current version
       run: |
-        chmod +x ./script/releaseNOTES.sh
-        ./script/releaseNOTES.sh
-    - name: Dump GitHub context
-      env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
+        ver_str=$(cat "VERSION")
+        ver_extract_str="$(cut -d' ' -f2 <<< "$ver_str")"
+        echo "Version string is $ver_extract_str"
+        cur_major="$(cut -d'.' -f1 <<< "$ver_extract_str")"
+        cur_minor="$(cut -d'.' -f2 <<< "$ver_extract_str")"
+        cur_patch="$(cut -d'.' -f3 <<< "$ver_extract_str")"
+        echo "curmajor=$cur_major" >> $GITHUB_ENV
+        echo "curminor=$cur_minor" >> $GITHUB_ENV
+        echo "curpatch=$cur_patch" >> $GITHUB_ENV
+        echo "lcommit=${{ steps.value.outputs.LASTCOM }}" >> $GITHUB_ENV
+        echo "envUSER=${{ steps.value.outputs.USER }}" >> $GITHUB_ENV
+        echo "OLD= major=$cur_major, minor=$cur_minor, patch=$cur_patch"
+
+    - name: Apply Logic
+      id: logic
+      run: |
+        chmod +x ./script/do_logic.sh
+        ./script/do_logic.sh $curmajor $curminor $curpatch "$envUSER" "$lcommit" $REPO
+
+    - name: Push New Version
+      run: |
+        echo "Gitmojiko=${{ steps.logic.outputs.envgitmojiko }}" >> $GITHUB_ENV
+        echo "Version=${{ steps.logic.outputs.envVersion }}" >> $GITHUB_ENV
+        echo "Major=${{ steps.logic.outputs.envMajor }}" >> $GITHUB_ENV
+        echo "Minor=${{ steps.logic.outputs.envMinor }}" >> $GITHUB_ENV
+        echo "Patch=${{ steps.logic.outputs.envPatch }}" >> $GITHUB_ENV
+        echo "Gitmojiko = ${{ steps.logic.outputs.envgitmojiko }}"
+        # if [[ "${{ steps.logic.outputs.envgitmojiko }}" != "UNRELEASED" ]]
+        # then
+        # chmod +x ./script/version_update.sh
+        # ./script/version_update.sh $ENV_TOKEN "$envUSER" $REPO 0
+        # fi
+
+    - name: Create Release
+      run: |
+        echo "commit count=${{ steps.value.outputs.COUNTER }}" >> $GITHUB_ENV
+        echo "last commit=${{ steps.value.outputs.LASTCOM }}" >> $GITHUB_ENV
+        echo "Gitmojiko = $Gitmojiko"
+        # if [[ "$Gitmojiko" != "UNRELEASED" ]]
+        # then 
+        # chmod +x ./script/releaseNOTES.sh
+        # ./script/releaseNOTES.sh "$Gitmojiko" "$Version" "$Major" "$Minor" "$Patch" "$envUSER" $REPO
+        # fi
+
+
+    - name: Create CHANGELOG
+      run: |
+        echo "Gitmojiko = $Gitmojiko"
+        if [[ "$Gitmojiko" != "UNRELEASED" ]]
+        then 
+        chmod +x ./script/changeLOG.sh
+        ./script/changeLOG.sh $ENV_TOKEN "$envUSER" $REPO 1 "$Gitmojiko" "$Version" "$Major" "$Minor" "$Patch"
+        fi
+
+    - name: TEST VALUE
+      run: |
+        echo "commit count= ${{ steps.value.outputs.COUNTER }}"
+        echo "last commit= ${{ steps.value.outputs.LASTCOM }}"
+        echo "envuser= ${{ steps.value.outputs.USER }}"
+        echo "REPO= $REPO"
+        echo "envgitmojiko= ${{ steps.logic.outputs.envgitmojiko }}"
+        echo "envMajor= ${{ steps.logic.outputs.envMajor }}"
+        echo "envMinor= ${{ steps.logic.outputs.envMinor }}"
+        echo "envPatch= ${{ steps.logic.outputs.envPatch }}"
+        echo "envVersion= ${{ steps.logic.outputs.envVersion }}"
+        echo "clDATA= ${{ steps.data.outputs.DATA }}"
+     
+    # - name: Dump GitHub context
+    #   env:
+    #       GITHUB_CONTEXT: ${{ toJson(github) }}
+      # run: echo "$GITHUB_CONTEXT"
       
+

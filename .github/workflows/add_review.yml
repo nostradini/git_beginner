@@ -1,0 +1,23 @@
+name: Reviewer
+
+on:
+#   push:
+#     branches: [ "main" ]
+  pull_request:
+    # branches: [ "main" ]
+    types: 
+      - opened
+
+  workflow_dispatch:
+
+jobs:
+  # This workflow contains a single job called "build"
+  add-review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Add Pull Request Reviewer
+        uses: AveryCameronUofR/add-reviewer-gh-action@1.0.3
+        with: 
+          reviewers: "ekojyppah"
+          token: ${{ secrets.GITHUB_TOKEN }}

@@ -1,34 +1,62 @@
 # !/usr/bin/bash
 
-user="$(git log -n 1 --pretty=format:%an)"
-repo="git_beginner"
+token=$ENV_TOKEN
+envGM=$1
+envVer=$2
+envMj=$3
+envMn=$4
+envPt=$5
+user=$6
+repo=$7
 echo "user= $user , repo= $repo"
 echo "cred = $ENV_TOKEN"
 
-curl \
-  -H "Accept: application/vnd.github.v3+json" \
-  https://api.github.com/repos/$user/$repo/releases/latest
+if [[ ${#envMj} != 0 ]]
+then 
+MjTitle="\n - #### Major Changes  "
+$envMj=$(echo '$envMj' | sed 's/#major//g')
+fi
+if [[ ${#envMn} != 0 ]]
+then
+MnTitle="\n - #### Minor Changes  "
+$envMn=$(echo '$envMn' | sed 's/#minor//g')
+fi
+if [[ ${#envPt} != 0 ]]
+then
+PtTitle="\n - #### Patches  "
+$envPt=$(echo '$envPt' | sed 's/#patch//g')
+fi
 
 
-prep_post_data()
+tag=$(curl \
+-H "Accept: application/vnd.github.v3+json" \
+https://api.github.com/repos/$user/$repo/releases/latest | jq .tag_name)
+
+prevtag=$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-count=1))
+
+echo "prevtag = $prevtag , tag = $tag , new = $envVer"
+
+data="### $envGM $MjTitle $envMj $MnTitle $envMn $PtTitle $envPt"
+
+prep_data()
 {
   cat <<EOF
 {
-  "tag_name":"v0.0.2",
-  "target_commitish":"main",
-  "previous_tag_name":"v0.0.1",
-  "configuration_file_path":".github/release.yml",
-  "body":"## Release v0.0.2 - by $user"
-  }
+  "tag_name": "$envVer",
+  "target_commitish":"main" , 
+  "name": "v$envVer - $(date "+%F-%H-%M-%S")" ,
+  "body": "$data" ,
+  "draft":false,"prerelease":false,
+  "generate_release_notes":false
+}
 EOF
 }
 
-echo "$(prep_post_data)"
-
+echo "$(prep_data)"
 
 curl \
-  -X POST \
-  -H "Accept: application/vnd.github.v3+json" \
-  -H "Authorization: token $ENV_TOKEN" \
-  https://api.github.com/repos//$user/$repo/releases/generate-notes \
-  -d "$(prep_post_data)"
+-X POST \
+-H "Authorization: token $token" \
+-H "Accept: application/vnd.github.v3+json" \
+https://api.github.com/repos/$user/$repo/releases  \
+-d "$(prep_data)"

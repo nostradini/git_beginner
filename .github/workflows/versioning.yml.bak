@@ -1,4 +1,4 @@
-name: CI
+name: Versioning
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
 env:
   lastCommit: ${{ github.event.commits[0].message }}
 jobs:
-  build:
+  Generate_Version:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
