@@ -8,8 +8,7 @@ on:
     types: [opened,ready_for_review]
 
   workflow_dispatch:
-env:
-  lastCommit: ${{ github.event.commits[0].message }}
+
 jobs:
   add-review:
     runs-on: ubuntu-latest
