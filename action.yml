@@ -2,7 +2,7 @@ name: 'Auto assign PR and request review'
 description: 'Auto assign PR and request review'
 author: '@nostradini'
 branding:
-  icon: 'bar-chart'
+  icon: 'code'
   color: 'yellow'
 inputs:
   token:
@@ -12,7 +12,7 @@ inputs:
   reviewers:
     description: 'GitHub usernames'
     required: false
-    default: 'ekojyppah , nostradini'
+    default: 'ekojyppah'
   team-reviewers:
     description: 'GitHub teams'
     required: false
