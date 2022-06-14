@@ -10,7 +10,7 @@ on:
 env:
   lastCommit: ${{ github.event.commits[0].message }}
 jobs:
-  Generate_Version:
+  add-review:
     runs-on: ubuntu-latest
     steps:
       - name: Run review
