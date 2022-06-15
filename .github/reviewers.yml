@@ -19,25 +19,26 @@ reviewers:
 
   # Reviewers per author.
   # Keys are reviewees, each of which has an array of reviewers.
-  per_author:
-    engineers:
-      - engineers # group
-      - team:engineering-managers # GitHub team
-    lead_designer:
-      - js-lovers # group
-      - desinger_a # username
-    designer_a:
-      - lead_designer # username
-    designer_b:
-      - lead_desinger # username
-      - desinger_a # username
+
+  # per_author:
+  #   engineers:
+  #     - engineers # group
+  #     - team:engineering-managers # GitHub team
+  #   lead_designer:
+  #     - js-lovers # group
+  #     - desinger_a # username
+  #   designer_a:
+  #     - lead_designer # username
+  #   designer_b:
+  #     - lead_desinger # username
+  #     - desinger_a # username
 
 files:
   # Keys are glob expressions.
   # You can assign groups defined above as well as GitHub usernames.
   '**':
     - repository-owners # group
-    - team:external-reviewers # GitHub team
+    # - team:external-reviewers # GitHub team
   '**/*.js':
     - core-contributors # group
     - js-lovers # group
