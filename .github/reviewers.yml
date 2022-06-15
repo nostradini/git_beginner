@@ -2,20 +2,20 @@ reviewers:
   # The default reviewers
   defaults:
     - repository-owners # group
-    - octocat # username
+    - octocat 
     - team:default-reviewers # GitHub team
 
   # Reviewer groups each of which has a list of GitHub usernames
   groups:
     repository-owners:
-      - nostradini # username
-      - ekojyppah # username
+      - nostradini 
+      - ekojyppah 
       # - team:owners # GitHub team
     core-contributors:
-      - ekojyppah # username
+      - ekojyppah 
     # js-lovers:
-    #   - js-man # username
-    #   - js-woman # username
+    #   - js-man 
+    #   - js-woman 
 
   # Reviewers per author.
   # Keys are reviewees, each of which has an array of reviewers.
@@ -26,30 +26,32 @@ reviewers:
   #     - team:engineering-managers # GitHub team
   #   lead_designer:
   #     - js-lovers # group
-  #     - desinger_a # username
+  #     - desinger_a 
   #   designer_a:
-  #     - lead_designer # username
+  #     - lead_designer 
   #   designer_b:
-  #     - lead_desinger # username
-  #     - desinger_a # username
+  #     - lead_desinger 
+  #     - desinger_a 
 
 files:
   # Keys are glob expressions.
   # You can assign groups defined above as well as GitHub usernames.
-  '**':
-    - repository-owners # group
+
+  # '**':
+  #   - repository-owners # group
     # - team:external-reviewers # GitHub team
   '**/*.js':
     - core-contributors # group
     # - js-lovers # group
   '**/*.md':
     - core-contributors # group
-  '**/*.yml':
-    - core-contributors # group
-    # - yamler # username
+  # '**/*.yml':
+  #   - core-contributors # group
+    # - yamler 
+  
   # '.github/**':
-  #   - octopus # username
-  #   - cat # username
+  #   - octopus 
+  #   - cat 
 
 options:
   ignore_draft: true
