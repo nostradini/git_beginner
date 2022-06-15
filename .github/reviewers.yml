@@ -42,6 +42,8 @@ files:
   '**/*.js':
     - core-contributors # group
     - js-lovers # group
+  '**/*.md':
+    - core-contributors # group
   '**/*.yml':
     - core-contributors # group
     - yamler # username
