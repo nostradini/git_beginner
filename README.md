@@ -12,5 +12,6 @@ test pr 6
 test pr 7
 test pr 8
 test pr 9
+test pr 10
 test on pull_request_target
 test on new assign
