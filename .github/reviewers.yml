@@ -8,14 +8,14 @@ reviewers:
   # Reviewer groups each of which has a list of GitHub usernames
   groups:
     repository-owners:
-      - me # username
-      - you # username
-      - team:owners # GitHub team
+      - nostradini # username
+      - ekojyppah # username
+      # - team:owners # GitHub team
     core-contributors:
       - ekojyppah # username
-    js-lovers:
-      - js-man # username
-      - js-woman # username
+    # js-lovers:
+    #   - js-man # username
+    #   - js-woman # username
 
   # Reviewers per author.
   # Keys are reviewees, each of which has an array of reviewers.
@@ -41,15 +41,15 @@ files:
     # - team:external-reviewers # GitHub team
   '**/*.js':
     - core-contributors # group
-    - js-lovers # group
+    # - js-lovers # group
   '**/*.md':
     - core-contributors # group
   '**/*.yml':
     - core-contributors # group
-    - yamler # username
-  '.github/**':
-    - octopus # username
-    - cat # username
+    # - yamler # username
+  # '.github/**':
+  #   - octopus # username
+  #   - cat # username
 
 options:
   ignore_draft: true
