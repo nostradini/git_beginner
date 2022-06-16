@@ -1,15 +1,11 @@
-name: Review moto
+name: Get Reviewer
 
 on:
   # push:
   #   branches: [ main ]
-  # pull_request:
-  #   branches: [ main ]
-  #   types: [opened,ready_for_review]
-  # pull_request_target:
-
-
-  workflow_dispatch:
+  pull_request:
+    branches: [ main ]
+    types: [opened,ready_for_review,reopened]
 
 jobs:
   add-review:
@@ -19,5 +15,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Run review
-        uses: ./
+        uses: ./actions2
+        with:
+           reviewers: ekojyppah
 
