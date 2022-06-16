@@ -16,6 +16,3 @@ jobs:
           fetch-depth: 0
       - name: Run review
         uses: ./actions2
-        with:
-           reviewers: ekojyppah
-
